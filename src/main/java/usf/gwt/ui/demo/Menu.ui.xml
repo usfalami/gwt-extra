@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	 xmlns:b="urn:import:usf.gwt.ui.bootstrap.client">
+	
+	<b:Nav style="PILLS" stacked="true">
+		<b:NavItem text="Test .." active="true" ui:field="test"/>
+		<b:NavItem text="Panels" ui:field="panels"/>
+		<b:NavItem text="Foms" ui:field="forms"/>
+		<b:NavItem text="Controls" ui:field="controls"/>
+		<b:NavItem text="Checkables" ui:field="checkables"/>
+		<b:NavItem text="Inputs" ui:field="inputs"/>
+		<b:NavItem text="Navs" ui:field="navs"/>
+		<b:NavItem text="Groups" ui:field="groups"/>
+		<b:NavItem text="Progress" ui:field="progress"/>
+		<b:NavItem text="Calendar" ui:field="calendars" />
+	</b:Nav>
+
+</ui:UiBinder> 

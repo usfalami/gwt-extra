@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Extra-GWT</title>
+    
+	<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+	
+    <script type="text/javascript" src="chart/highstock-2.0.1.js"></script>
+    <script type="text/javascript" src="chart/highstock-locales.fr.js"></script>
+	
+    <script type="text/javascript" src="timeline/timeline-2.9.0.js"></script>
+    <script type="text/javascript" src="timeline/timeline-locales.js"></script>
+    
+	<script type="text/javascript" src="boot/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"></script>
+	<script type="text/javascript" src="boot/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="picker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="picker/bootstrap-datetimepicker.fr.js"></script>
+    
+    <script type="text/javascript" src="stmaddon/stmaddon.nocache.js"></script>
+    
+    <link type="text/css"  rel="stylesheet" href="StmAddOn.css">
+    <link type="text/css"  rel="stylesheet" href="boot/bootstrap.min.css">
+    <link type="text/css"  rel="stylesheet" href="picker/bootstrap-datetimepicker.min.css">
+    <link type="text/css"  rel="stylesheet" href="timeline/timeline.css">
+    
+	<script type="text/javascript" src="demo/shCore.js"></script>
+	<script type="text/javascript" src="demo/shBrushXml.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="demo/css/shCoreEclipse.css" id="styleRef"/>
+        
+    <style>
+		div.timeline-event-range {border-right-style:dashed;border-top-style:none;border-left-style:none; border-bottom-style:none;border-color:black;background-color:transparent;}
+		div.style1 {background-color:#005ece; color: white;} /* blue */
+		div.style2 {background-color:#f2f2f2; } /* grayLight */
+		div.calendar-month{display: inline-block; margin-right: 10px; height: 240px;}
+		div.radio > input[type='radio'], div.checkbox > input[type='checkbox']{margin-left:0px; } 
+		div.row {margin-bottom: 20px}
+		div.syntaxhighlighter {overflow: inherit!important; box-shadow: 0 0 20px rgba(43, 43, 43, 0.70);}
+		.exempleAlign{padding-top: 15px;}
+    </style>
+    
+  </head>
+  <body>
+	<div class="well row">	
+		<div class="col-md-2">
+			<select class="form-control" id="codeSelect">
+				<option>Eclipse</option>
+				<option>Default</option>
+				<option>Django</option>
+				<option>Emacs</option>
+				<option>FadeToGrey</option>
+				<option>MDUltra</option>
+				<option>Midnight</option>
+				<option>RDark</option>
+			</select>
+		</div>		
+		<div class="col-md-4 pull-right">
+			Developed by :
+			<a href="http://aliaz.com/usf"><code>Youssef ALAMI HARCHALI</code></a>
+			<a href="http://fr.linkedin.com/pub/youssef-alami-harchali/56/3a1/753"><img alt="Linkedin" src="img/linkedin.png" width="32"></a>
+			<a href="http://fr.viadeo.com/fr/profile/youssef.alami-harchali"><img alt="Linkedin" src="img/viadeo.png" width="32"></a>
+			<a href="http://j-provider.appspot.com"><img alt="Linkedin" src="img/GWT.png" width="32"></a>
+		</div >
+	</div>
+	<script type="text/javascript">
+ 		var c = $("#codeSelect");c.change(function(){$("#styleRef").prop('href',"demo/css/shCore"+c.val()+".css")});
+	</script>	
+	<div class="container-fluid" id="container" >
+		<div class="row">
+			<div class="col-md-2" id="sidebar" style="border-width: 1px; border-style:outset;"></div>
+			<div class="col-md-10" id="gwt"></div>
+		</div>
+	</div>
+  </body>
+</html>
