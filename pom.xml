@@ -82,6 +82,7 @@
           gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
           <runTarget>ExtraGwt.html</runTarget>
+<!--           <hostedWebapp>${webappDirectory}</hostedWebapp> -->
           <modules>
             <module>usf.gwt.ExtraGwt</module>
           </modules>

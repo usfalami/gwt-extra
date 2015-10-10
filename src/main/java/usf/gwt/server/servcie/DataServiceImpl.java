@@ -33,15 +33,16 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 
 
 	private static final List<Value> list;
+	
 
 	@Override
 	public List<Value> getValues(String value) {
-		return list;
+		return null;
 	}
 
 	static{
 		list = new ArrayList<Value>();
-		list.add(new Value("AC", "Ascension Island"));
+		list.add(new Value("AC ", "Ascension Island"));
 		list.add(new Value("AD", "Andorra"));
 		list.add(new Value("AE", "United Arab Emirates"));
 		list.add(new Value("AF", "Afghanistan"));
