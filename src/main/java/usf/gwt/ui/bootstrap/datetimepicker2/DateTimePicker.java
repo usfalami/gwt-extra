@@ -8,6 +8,14 @@ import usf.gwt.ui.bootstrap.datetimepicker.client.JavaScriptOption;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
+/**
+ * 
+ * @author YAH
+ * 
+ * @see https://eonasdan.github.io/bootstrap-datetimepicker/
+ *
+ */
+
 public class DateTimePicker extends TextBox {
 	
     protected static final String DATE_TIME_PICKER = "DateTimePicker";
@@ -52,7 +60,7 @@ public class DateTimePicker extends TextBox {
 	
 	public final native void setMinDate(Date date) /*-{
 		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::convertDate(Ljava/util/Date;);
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.minDate(date ? new $wnd.Date(c(date)) : null);
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.minDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMinDate() /*-{
 		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.minDate();
@@ -60,7 +68,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	public final native void setMaxDate(Date date) /*-{
 		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::convertDate(Ljava/util/Date;);
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.maxDate(date ? new $wnd.Date(c(date)) : null);
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.maxDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMaxDate() /*-{
 		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.maxDate();
