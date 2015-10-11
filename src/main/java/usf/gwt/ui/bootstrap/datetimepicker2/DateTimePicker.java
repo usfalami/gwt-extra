@@ -75,6 +75,22 @@ public class DateTimePicker extends TextBox {
 		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::convertDate(D)(d) : null;
 	}-*/;
 	
+	/**
+	 * Number of minutes the up/down arrow's will move the minutes value in the time picker
+	 * 
+	 * @param step
+	 */
+	public final native void setMinuteStep(int step) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping(step);
+	}-*/;
+	/**
+	 * Number of minutes the up/down arrow's will move the minutes value in the time picker
+	 * 
+	 * @return step
+	 */
+	public final native int getMinuteStep() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping();
+	}-*/;	
 
 	public final native void setOption(JavaScriptOption option) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.option(option);
@@ -84,11 +100,20 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	
 	//action functions
+	
+	/**
+	 * Clears the datepicker by setting the value to null
+	 */
+	public final native void clear() /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.clear();
+	}-*/;
+	
+	
 	/**
 	 * Destroys the widget and removes all attached event listeners
 	 */
 	public final native void destroy() /*-{
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.estroy();
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.destroy();
 	}-*/;
 	/**
 	 * Shows or hides the widget
@@ -105,8 +130,8 @@ public class DateTimePicker extends TextBox {
 	/**
 	 * Shows or hides the widget
 	 */
-	public final native void toggole() /*-{
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.toggole();
+	public final native void toggle() /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.toggle();
 	}-*/;
 	
 	protected static double convertDate(Date date) {

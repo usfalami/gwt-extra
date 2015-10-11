@@ -37,10 +37,12 @@ public class TestSampes extends Composite {
 		
 		p.add(pick = new DateTimePicker());
 
-		pick.setDate(DateTimeFormat.getFormat("dd/mm/yyyy").parse("21/10/1987"));
+//		pick.setDate();
 		
-		pick.setMinDate(DateTimeFormat.getFormat("dd/mm/yyyy").parse("21/10/2011"));
-		pick.setMaxDate(DateTimeFormat.getFormat("dd/mm/yyyy").parse("21/10/2012"));
+		pick.setDefaultDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("21/01/2012"));
+		
+		pick.setMinDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2011"));
+		pick.setMaxDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("30/12/2012"));
 		
 		
 //		pick.setFormat("L");
@@ -51,10 +53,8 @@ public class TestSampes extends Composite {
 		b.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent arg0) {
-				Window.alert(pick.getMinDate() + " " +pick.getMaxDate()) ;
-			
-				pick.setMinDate(null);
-				pick.setMaxDate(null);
+//				Window.alert(pick.getMinDate() + " " +pick.getMaxDate()) ;
+				pick.clear();
 			}
 		});
 		
