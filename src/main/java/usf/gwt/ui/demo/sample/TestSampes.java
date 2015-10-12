@@ -6,7 +6,6 @@ import java.util.List;
 import usf.gwt.ui.bootstrap.client.Bootstrap.ButtonStyles;
 import usf.gwt.ui.bootstrap.client.Button;
 import usf.gwt.ui.bootstrap.client.GridCol;
-import usf.gwt.ui.bootstrap.client.Label;
 import usf.gwt.ui.bootstrap.client.Layout;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePickerDayOfWeek;
@@ -105,7 +104,6 @@ public class TestSampes extends Composite {
 			@Override
 			public void onClick(ClickEvent arg0) {
 				Window.alert(pick.getDaysOfWeekDisabled().length + "") ;
-				pick.setDaysOfWeekDisabled();
 				pick.show();
 			}
 		});

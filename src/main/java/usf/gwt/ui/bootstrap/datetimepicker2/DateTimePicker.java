@@ -51,6 +51,7 @@ public class DateTimePicker extends TextBox {
 		DateTimePickerDayOfWeek[] days = new DateTimePickerDayOfWeek[a.length()];
 		for(int i=0; i<a.length(); i++)
 			days[i] = DateTimePickerDayOfWeek.dayOf(a.getInteger(i));
+		setDaysOfWeekDisabledArray(a); //resolve get problem 
 		return days;
 	}
 
