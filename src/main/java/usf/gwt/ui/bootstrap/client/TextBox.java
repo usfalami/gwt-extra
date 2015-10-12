@@ -7,16 +7,18 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Text;
 
+/**
+ * <pre>{@code
+ *  <input type='text' class='form-control'>
+ * }</pre>
+ *
+ * @author Youssef ALAMI
+ * 
+ */
+
 public class TextBox extends FormControl<String> {
 	
-	/**
-	 * <pre>{@code
-	 *  <input type='text' class='form-control'>
-	 * }</pre>
-	 *
-	 * @author Youssef ALAMI
-	 * 
-	 */
+
 	public TextBox() {
 		super();
 	}

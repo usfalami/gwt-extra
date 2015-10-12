@@ -3,6 +3,7 @@ package usf.gwt.ui.bootstrap.datetimepicker2;
 import java.util.Date;
 
 import usf.gwt.ui.bootstrap.client.TextBox;
+import usf.gwt.ui.bootstrap.client.core.JavaScriptArray;
 import usf.gwt.ui.bootstrap.datetimepicker.client.JavaScriptOption;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -10,7 +11,7 @@ import com.google.gwt.dom.client.Element;
 
 /**
  * 
- * @author YAH
+ * @author Youssef ALAMI
  * 
  * @see https://eonasdan.github.io/bootstrap-datetimepicker/
  *
@@ -28,16 +29,41 @@ public class DateTimePicker extends TextBox {
 	public DateTimePicker(JavaScriptOption option) {
 		picker = render(getBaseElement(), option);
 	}
+	
+	public void setFormat(DateTimePickerFormat format) {
+		setFormatAsString(format == null ? null : format.getPattern());
+		setPlaceholder(format == null ? "" : format.getLabel());
+	}
+	public DateTimePickerFormat getFormat() {
+		String f = getFormatAsString();
+		return f == null ? null : DateTimePickerFormat.patternOf(f);
+	}
+	
+	public void setDaysOfWeekDisabled(DateTimePickerDayOfWeek... days) {
+		JavaScriptArray array = JavaScriptArray.createArray();
+		if(days != null)
+			for(DateTimePickerDayOfWeek d : days)
+				array.append(d.getValue());
+		setDaysOfWeekDisabledArray(array);
+	}
+	public DateTimePickerDayOfWeek[] getDaysOfWeekDisabled() {
+		JavaScriptArray a = getDaysOfWeekDisabledArray();
+		DateTimePickerDayOfWeek[] days = new DateTimePickerDayOfWeek[a.length()];
+		for(int i=0; i<a.length(); i++)
+			days[i] = DateTimePickerDayOfWeek.values()[a.getInteger(i)];
+		return days;
+	}
 
 	/**
 	 * @see http://momentjs.com/docs/#/displaying/format/
 	 * @param format
 	 */
-	public final native JavaScriptObject setFormat(String format) /*-{
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.format(format);
+	public final native JavaScriptObject setFormatAsString(String format) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.format(format ? format : false);
 	}-*/;
-	public final native String getFormat() /*-{
-		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.format();
+	public final native String getFormatAsString() /*-{
+		var f = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.format();
+		return f ? f : null; //f can be false if no format has been set
 	}-*/;
 
 	public final native void setDate(Date date) /*-{
@@ -80,7 +106,7 @@ public class DateTimePicker extends TextBox {
 	 * 
 	 * @param step
 	 */
-	public final native void setMinuteStep(int step) /*-{
+	public final native void SetStepping(double step) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping(step);
 	}-*/;
 	/**
@@ -88,9 +114,23 @@ public class DateTimePicker extends TextBox {
 	 * 
 	 * @return step
 	 */
-	public final native int getMinuteStep() /*-{
+	public final native double getMinuteStep() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping();
-	}-*/;	
+	}-*/;
+	
+	/**
+	 * Disables the section of days of the week, e.g. weekends.
+	 * 
+	 * @param array
+	 */
+	protected final native void setDaysOfWeekDisabledArray(JavaScriptArray array) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled(array ? array : new $wnd.Array());
+	}-*/;
+	
+	protected final native JavaScriptArray getDaysOfWeekDisabledArray() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled();
+	}-*/;
+	
 
 	public final native void setOption(JavaScriptOption option) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.option(option);

@@ -7,7 +7,7 @@ public class BrowserConsole {
 	}
 	
 	public static final native void init() /*-{
-//		$wnd.logLevel=0;
+		$wnd.logLevel=0;
 	}-*/;
 
 	public static final native void error(Object o)/*-{$wnd.logLevel<6 && $wnd.console.error(o);}-*/;
