@@ -91,7 +91,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	public final native Date getMinDate() /*-{
 		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.minDate();
-		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null;
+		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null; // d can be false
 	}-*/;
 	public final native void setMaxDate(Date date) /*-{
 		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
@@ -99,7 +99,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	public final native Date getMaxDate() /*-{
 		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.maxDate();
-		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null;
+		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null; // d can be false
 	}-*/;
 	
 	/**
