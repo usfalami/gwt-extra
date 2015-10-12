@@ -1,6 +1,7 @@
 package usf.gwt.ui.demo.sample;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import usf.gwt.ui.bootstrap.client.Bootstrap.ButtonStyles;
@@ -17,6 +18,7 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
@@ -34,7 +36,9 @@ public class TestSampes extends Composite {
 	@UiField GridCol main;
 	
 	DateTimePicker pick;
-		
+	
+	DateTimeFormat df = DateTimeFormat.getFormat("dd/MM/yyyy");
+	
 	public TestSampes() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
@@ -49,14 +53,16 @@ public class TestSampes extends Composite {
 		});
 		main.add(reset);
 		
+		pick.setEnabledDates(df.parse("30/10/2012"), new Date());
 		
+//		Window.alert(pick.getEnabledDates() + "");
 
 //		pick.setDate();
 		
-//		pick.setDefaultDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("21/01/2012"));
+//		pick.setDefaultDate(df.parse("21/01/2012"));
 //		
-//		pick.setMinDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2011"));
-//		pick.setMaxDate(DateTimeFormat.getFormat("dd/MM/yyyy").parse("30/12/2012"));
+//		pick.setMinDate(df.parse("01/01/2011"));
+//		pick.setMaxDate(df.parse("30/12/2012"));
 		
 //		pick.setFormat("DD/MM/YYYY HH:mm:ss");
 		

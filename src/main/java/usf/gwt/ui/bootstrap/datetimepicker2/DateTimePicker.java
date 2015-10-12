@@ -7,6 +7,7 @@ import usf.gwt.ui.bootstrap.client.core.JavaScriptArray;
 import usf.gwt.ui.bootstrap.client.core.JavaScriptOption;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsDate;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -39,22 +40,6 @@ public class DateTimePicker extends TextBox {
 		return f == null ? null : DateTimePickerFormat.patternOf(f);
 	}
 	
-	public void setDaysOfWeekDisabled(DateTimePickerDayOfWeek... days) {
-		JavaScriptArray array = JavaScriptArray.createArray();
-		if(days != null)
-			for(DateTimePickerDayOfWeek d : days)
-				array.append(d.getValue());
-		setDaysOfWeekDisabledArray(array);
-	}
-	public DateTimePickerDayOfWeek[] getDaysOfWeekDisabled() {
-		JavaScriptArray a = getDaysOfWeekDisabledArray();
-		DateTimePickerDayOfWeek[] days = new DateTimePickerDayOfWeek[a.length()];
-		for(int i=0; i<a.length(); i++)
-			days[i] = DateTimePickerDayOfWeek.dayOf(a.getInteger(i));
-		setDaysOfWeekDisabledArray(a); //resolve get problem 
-		return days;
-	}
-
 	/**
 	 * @see http://momentjs.com/docs/#/displaying/format/
 	 * @param format
@@ -78,11 +63,11 @@ public class DateTimePicker extends TextBox {
 
 	public final native void setDefaultDate(Date date) /*-{
 		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.defaultDate(date ? new $wnd.Date(c(date)) : null);
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.defaultDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getDefaultDate() /*-{
 		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.defaultDate();
-		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null;
+		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null;  // d can be false
 	}-*/;
 	
 	public final native void setMinDate(Date date) /*-{
@@ -118,20 +103,30 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	
 	/**
-	 * Disables the section of days of the week, e.g. weekends.
 	 * 
-	 * @param array
+	 * @param Disables the section of days of the week, e.g. weekends.
 	 */
-	protected final native void setDaysOfWeekDisabledArray(JavaScriptArray array) /*-{
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled(array ? array : new $wnd.Array());
+	public final native void setDaysOfWeekDisabled(DateTimePickerDayOfWeek... days) /*-{
+		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Lusf/gwt/ui/bootstrap/datetimepicker2/DateTimePickerDayOfWeek;)(days);
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled(array ? array : false);
 	}-*/;
 	/**
 	 * 
-	 * 
 	 * @return Disables the section of days of the week, e.g. weekends.
 	 */
-	protected final native JavaScriptArray getDaysOfWeekDisabledArray() /*-{
-		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled();
+	public final native DateTimePickerDayOfWeek[] getDaysOfWeekDisabled() /*-{
+		var d = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled();
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled(d); // resolve some bugs 
+		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toWeekDays(Lusf/gwt/ui/bootstrap/client/core/JavaScriptArray;)(d) : null;
+	}-*/;
+	
+	
+	public final native void setEnabledDates(Date... dates) /*-{
+		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates(array ? array : false);
+	}-*/;
+	public final native JavaScriptArray getEnabledDates() /*-{
+		return $wnd.enab = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates();
 	}-*/;
 	
 	
@@ -220,13 +215,6 @@ public class DateTimePicker extends TextBox {
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.toggle();
 	}-*/;
 	
-	protected static double toDoube(Date date) {
-		return date.getTime();
-	}
-	protected static Date toDate(double date) {
-		return new Date((long)date);
-	}
-
 	/**
 	 * 
 	 * @return new DateTimePicker javascript instance
@@ -240,5 +228,51 @@ public class DateTimePicker extends TextBox {
 		.set("locale", "fr");
 //		.set("format", "L");
 	}
+	
+	
+	
+	protected static double toDoube(Date date) {
+		return date.getTime();
+	}
+	protected static native JsDate toJsDate(double date) /*-{
+		return new $wnd.Date(date);
+	}-*/;
+	protected static Date toDate(double date) {
+		return new Date((long)date);
+	}
+	protected static Date toDate(JsDate date) {
+		return new Date((long)date.getTime());
+	}
+	
+	protected static JavaScriptArray toJsArray(DateTimePickerDayOfWeek... days) {
+		JavaScriptArray array = JavaScriptArray.createArray();
+		if(days != null)
+			for(DateTimePickerDayOfWeek d : days)
+				array.append(d.getValue());
+		return array;
+	}
+	protected static DateTimePickerDayOfWeek[] toWeekDays(JavaScriptArray array) {
+		if(array == null) return null;
+		DateTimePickerDayOfWeek[] days = new DateTimePickerDayOfWeek[array.length()];
+		for(int i=0; i<array.length(); i++)
+			days[i] = DateTimePickerDayOfWeek.dayOf(array.getInteger(i));
+		return days;
+	}
+	
+	protected static JavaScriptArray toJsArray(Date... dates) {
+		JavaScriptArray array = JavaScriptArray.createArray();
+		if(dates != null)
+			for(Date d : dates)
+				array.append(toJsDate(d.getTime()));
+		return array;
+	}
+	protected static Date[] toDates(JavaScriptArray array) {
+		if(array == null) return null;
+		Date[] days = new Date[array.length()];
+		for(int i=0; i<array.length(); i++)
+			days[i] = toDate(array.getJsDate(i));
+		return days;
+	}
+
 
 }

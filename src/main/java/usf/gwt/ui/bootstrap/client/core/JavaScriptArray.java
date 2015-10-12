@@ -1,6 +1,7 @@
 package usf.gwt.ui.bootstrap.client.core;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsDate;
 
 public final class JavaScriptArray extends JavaScriptObject {
 	
@@ -8,18 +9,15 @@ public final class JavaScriptArray extends JavaScriptObject {
 		
 	}
 	
-	public final native JavaScriptArray append(final int value) /*-{
+	public final native JavaScriptArray append(int value) /*-{
 		this[this.length] = value;
 		return this;
 	}-*/;
-	public final native JavaScriptArray append(final double value) /*-{
-		this[this.lenght] = value;
+	public final native JavaScriptArray append(JsDate value) /*-{
+		this[this.length] = value;
 		return this;
 	}-*/;
-	public final native JavaScriptArray append(final String value) /*-{
-		this[this.lenght] = value;
-		return this;
-	}-*/;
+	
 	
 	public final native int getInteger(final int index) /*-{
 		return this[index];
@@ -28,6 +26,9 @@ public final class JavaScriptArray extends JavaScriptObject {
 		return this[index];
 	}-*/;
 	public final native String getString(final int index) /*-{
+		return this[index];
+	}-*/;
+	public final native JsDate getJsDate(final int index) /*-{
 		return this[index];
 	}-*/;
 
