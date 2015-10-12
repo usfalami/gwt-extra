@@ -125,6 +125,9 @@ public class DateTimePicker extends TextBox {
 		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates(array ? array : false);
 	}-*/;
+	/**
+	 * @return an array with the currently set enabled dates on the component.
+	 */
 	public final native JavaScriptArray getEnabledDates() /*-{//TODO Object{date:boolean}
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates();
 	}-*/;
@@ -132,6 +135,9 @@ public class DateTimePicker extends TextBox {
 		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.disabledDates(array ? array : false);
 	}-*/;
+	/**
+	 * @return an array with the currently set disabled dates on the component.
+	 */
 	public final native JavaScriptArray getDisabledDates() /*-{//TODO Object{date:boolean}
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.disabledDates();
 	}-*/;
@@ -249,8 +255,8 @@ public class DateTimePicker extends TextBox {
 	}
 	
 	protected static JavaScriptArray toJsArray(DateTimePickerDayOfWeek... days) {
+		if(days == null) return null;
 		JavaScriptArray array = JavaScriptArray.createArray();
-		if(days != null)
 			for(DateTimePickerDayOfWeek d : days)
 				array.append(d.getValue());
 		return array;
@@ -263,18 +269,18 @@ public class DateTimePicker extends TextBox {
 		return days;
 	}
 	protected static JavaScriptArray toJsArray(Date... dates) {
+		if(dates == null) return null;
 		JavaScriptArray array = JavaScriptArray.createArray();
-		if(dates != null)
 			for(Date d : dates)
 				array.append(toJsDate(d.getTime()));
 		return array;
 	}
 	protected static Date[] toDates(JavaScriptArray array) {
 		if(array == null) return null;
-		Date[] days = new Date[array.length()];
+		Date[] dates = new Date[array.length()];
 		for(int i=0; i<array.length(); i++)
-			days[i] = toDate(array.getJsDate(i));
-		return days;
+			dates[i] = toDate(array.getJsDate(i));
+		return dates;
 	}
 
 

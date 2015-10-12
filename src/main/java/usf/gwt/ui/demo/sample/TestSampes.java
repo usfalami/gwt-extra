@@ -53,12 +53,11 @@ public class TestSampes extends Composite {
 			}
 		});
 		main.add(reset);
-		
-		pick.setDisabledDates(df.parse("30/10/2015"), new Date());
-		
-		BrowserConsole.log(pick.getDisabledDates() + "");
+//		
+//		pick.setDisabledDates(df.parse("30/10/2015"), new Date());
+//		
+//		BrowserConsole.log(pick.getDisabledDates() + "");
 
-//		pick.setDate();
 		
 //		pick.setDefaultDate(df.parse("21/01/2012"));
 //		
@@ -166,7 +165,7 @@ public class TestSampes extends Composite {
 						days.add(DateTimePickerDayOfWeek.dayOf(val));
 					}
 				}
-				pick.setDaysOfWeekDisabled(days.toArray(new DateTimePickerDayOfWeek[days.size()]));
+//				pick.setDaysOfWeekDisabled(days.toArray(new DateTimePickerDayOfWeek[days.size()]));
 				pick.show();
 				log("disabled days are : " + pick.getDaysOfWeekDisabled());
 			}
