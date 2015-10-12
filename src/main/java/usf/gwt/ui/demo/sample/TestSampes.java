@@ -9,6 +9,7 @@ import usf.gwt.ui.bootstrap.client.Button;
 import usf.gwt.ui.bootstrap.client.CheckBox;
 import usf.gwt.ui.bootstrap.client.GridCol;
 import usf.gwt.ui.bootstrap.client.Layout;
+import usf.gwt.ui.bootstrap.client.core.BrowserConsole;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePickerDayOfWeek;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePickerFormat;
@@ -53,9 +54,9 @@ public class TestSampes extends Composite {
 		});
 		main.add(reset);
 		
-		pick.setEnabledDates(df.parse("30/10/2012"), new Date());
+		pick.setDisabledDates(df.parse("30/10/2015"), new Date());
 		
-//		Window.alert(pick.getEnabledDates() + "");
+		BrowserConsole.log(pick.getDisabledDates() + "");
 
 //		pick.setDate();
 		

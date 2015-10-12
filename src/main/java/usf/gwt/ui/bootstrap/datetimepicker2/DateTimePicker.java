@@ -53,7 +53,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 
 	public final native void setDate(Date date) /*-{
-		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
+		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDouble(Ljava/util/Date;);
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.date(date ? new $wnd.Date(c(date)) : null);
 	}-*/;
 	public final native Date getDate() /*-{
@@ -62,7 +62,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 
 	public final native void setDefaultDate(Date date) /*-{
-		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
+		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDouble(Ljava/util/Date;);
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.defaultDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getDefaultDate() /*-{
@@ -71,7 +71,7 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	
 	public final native void setMinDate(Date date) /*-{
-		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
+		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDouble(Ljava/util/Date;);
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.minDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMinDate() /*-{
@@ -79,7 +79,7 @@ public class DateTimePicker extends TextBox {
 		return d ? @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDate(D)(d) : null; // d can be false
 	}-*/;
 	public final native void setMaxDate(Date date) /*-{
-		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDoube(Ljava/util/Date;);
+		var c = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toDouble(Ljava/util/Date;);
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.maxDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMaxDate() /*-{
@@ -125,8 +125,15 @@ public class DateTimePicker extends TextBox {
 		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates(array ? array : false);
 	}-*/;
-	public final native JavaScriptArray getEnabledDates() /*-{
-		return $wnd.enab = this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates();
+	public final native JavaScriptArray getEnabledDates() /*-{//TODO Object{date:boolean}
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.enabledDates();
+	}-*/;
+	public final native void setDisabledDates(Date... dates) /*-{
+		var array = @usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.disabledDates(array ? array : false);
+	}-*/;
+	public final native JavaScriptArray getDisabledDates() /*-{//TODO Object{date:boolean}
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.disabledDates();
 	}-*/;
 	
 	
@@ -188,8 +195,6 @@ public class DateTimePicker extends TextBox {
 	public final native void clear() /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.clear();
 	}-*/;
-	
-	
 	/**
 	 * Destroys the widget and removes all attached event listeners
 	 */
@@ -230,8 +235,7 @@ public class DateTimePicker extends TextBox {
 	}
 	
 	
-	
-	protected static double toDoube(Date date) {
+	protected static double toDouble(Date date) {
 		return date.getTime();
 	}
 	protected static native JsDate toJsDate(double date) /*-{
@@ -258,7 +262,6 @@ public class DateTimePicker extends TextBox {
 			days[i] = DateTimePickerDayOfWeek.dayOf(array.getInteger(i));
 		return days;
 	}
-	
 	protected static JavaScriptArray toJsArray(Date... dates) {
 		JavaScriptArray array = JavaScriptArray.createArray();
 		if(dates != null)
