@@ -4,21 +4,17 @@
 	xmlns:b="urn:import:usf.gwt.ui.bootstrap.client" xmlns:d="urn:import:usf.gwt.ui.bootstrap.datetimepicker.client">
 	
 	<b:Layout>
-		<b:Anchor text="Collapse" ui:field="anchor"/>
 		<b:GridRow>
-			<b:GridCol size="MD_4">
-				<b:GroupItem text="List de POM">
-					<b:Badge text="55" />
-				</b:GroupItem>
-				<b:Group ui:field="group">
-					<b:GroupItem text = "usf" />
-					<b:GroupCheckItem text="POM 1" checked="true" />
-					<b:GroupCheckItem text="POM 2" />
-					<b:GroupCheckItem text="POM 3" checked="true" />
-				</b:Group>
-			</b:GridCol>
-		</b:GridRow>
+			
+			<b:GridCol size="MD_6" ui:field="main">
 				
+			</b:GridCol>
+			
+			<b:GridCol size="MD_6">
+				<g:TextArea ui:field="log" readOnly="true"  width="100%" height="600px" text="log :" />
+			</b:GridCol>
+			
+		</b:GridRow>
 	</b:Layout>
-
+	
 </ui:UiBinder> 

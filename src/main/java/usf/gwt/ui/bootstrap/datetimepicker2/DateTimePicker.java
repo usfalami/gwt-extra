@@ -4,7 +4,7 @@ import java.util.Date;
 
 import usf.gwt.ui.bootstrap.client.TextBox;
 import usf.gwt.ui.bootstrap.client.core.JavaScriptArray;
-import usf.gwt.ui.bootstrap.datetimepicker.client.JavaScriptOption;
+import usf.gwt.ui.bootstrap.client.core.JavaScriptOption;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -50,7 +50,7 @@ public class DateTimePicker extends TextBox {
 		JavaScriptArray a = getDaysOfWeekDisabledArray();
 		DateTimePickerDayOfWeek[] days = new DateTimePickerDayOfWeek[a.length()];
 		for(int i=0; i<a.length(); i++)
-			days[i] = DateTimePickerDayOfWeek.values()[a.getInteger(i)];
+			days[i] = DateTimePickerDayOfWeek.dayOf(a.getInteger(i));
 		return days;
 	}
 
@@ -126,17 +126,46 @@ public class DateTimePicker extends TextBox {
 	protected final native void setDaysOfWeekDisabledArray(JavaScriptArray array) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled(array ? array : new $wnd.Array());
 	}-*/;
-	
+	/**
+	 * 
+	 * 
+	 * @return Disables the section of days of the week, e.g. weekends.
+	 */
 	protected final native JavaScriptArray getDaysOfWeekDisabledArray() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.daysOfWeekDisabled();
 	}-*/;
 	
+	
+	
+	public final native void setShowClear(boolean visible) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClear(visible);
+	}-*/;
+	public final native boolean getShowClear() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClear();
+	}-*/;
+	
+	public final native void setShowClose(boolean visible) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClose(visible);
+	}-*/;
+	public final native boolean getShowClose() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClose();
+	}-*/;
+
+	public final native void setShowTodayButton(boolean visible) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showTodayButton(visible);
+	}-*/;
+	public final native boolean getShowTodayButton() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showTodayButton();
+	}-*/;
+
+	
+	
 
 	public final native void setOption(JavaScriptOption option) /*-{
-		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.option(option);
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.options(option);
 	}-*/;
 	public final native JavaScriptObject getOption() /*-{
-		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.option();
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.options();
 	}-*/;
 	
 	//action functions

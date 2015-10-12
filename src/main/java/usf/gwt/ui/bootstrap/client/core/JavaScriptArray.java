@@ -37,7 +37,7 @@ public final class JavaScriptArray extends JavaScriptObject {
 	}-*/;
 	
     public static final native JavaScriptArray createArray() /*-{
-    	return new $wnd.Array();
+    	return new $wnd.Array(); //return []
     }-*/;
     public static final native JavaScriptArray createArray(int size) /*-{
 		return new $wnd.Array(size);

@@ -16,7 +16,7 @@ public enum DateTimePickerFormat {
     
     HH_MM_SS("HH:mm:ss", "hh:mm:ss"),
     
-    Week("W", "N° de Semaine");
+    W("W", "N° de Semaine");
     
     private String pattern;
     private String label;

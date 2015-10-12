@@ -1,22 +1,28 @@
 package usf.gwt.ui.demo.sample;
 
-import usf.gwt.ui.bootstrap.client.Anchor;
+import java.util.ArrayList;
+import java.util.List;
+
 import usf.gwt.ui.bootstrap.client.Bootstrap.ButtonStyles;
 import usf.gwt.ui.bootstrap.client.Button;
-import usf.gwt.ui.bootstrap.client.Group;
+import usf.gwt.ui.bootstrap.client.GridCol;
+import usf.gwt.ui.bootstrap.client.Label;
 import usf.gwt.ui.bootstrap.client.Layout;
-import usf.gwt.ui.bootstrap.client.Panel;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePickerDayOfWeek;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePickerFormat;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TestSampes extends Composite {
@@ -24,16 +30,25 @@ public class TestSampes extends Composite {
 	interface TestUiBinder extends UiBinder<Widget, TestSampes> {}
 	private static TestUiBinder uiBinder = GWT.create(TestUiBinder.class);
 
-	@UiField Anchor anchor;
-	@UiField Group group;
+	@UiField TextArea log;
+	@UiField GridCol main;
 	
 	DateTimePicker pick;
 		
 	public TestSampes() {
-		Panel p = new Panel();
-		initWidget(p);
+		initWidget(uiBinder.createAndBindUi(this));
 		
-		p.add(pick = new DateTimePicker());
+		main.add(pick = new DateTimePicker());
+		Button reset = new Button("Reset");
+		reset.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent arg0) {
+				pick.setOption(DateTimePicker.defaultDateTimePickerOptions());
+			}
+		});
+		main.add(reset);
+		
+		
 
 //		pick.setDate();
 		
@@ -46,18 +61,17 @@ public class TestSampes extends Composite {
 		
 //		pick.SetStepping(30);
 		
-		pick.setDaysOfWeekDisabled(DateTimePickerDayOfWeek.SUNDAY, DateTimePickerDayOfWeek.SATURDAY, DateTimePickerDayOfWeek.WEDNESDAY);
-		
-		
+//		pick.setDaysOfWeekDisabled(DateTimePickerDayOfWeek.SUNDAY, DateTimePickerDayOfWeek.SATURDAY, DateTimePickerDayOfWeek.WEDNESDAY);
 		
 		Layout formatLayout = new Layout();
-		p.add(formatLayout);
+		main.add(formatLayout);
 
 		Button b = new Button("default");
 		b.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent arg0) {
 				pick.setFormat(null);
+				log("selected format is reset to default");
 			}
 		});
 		formatLayout.add(b);
@@ -69,7 +83,8 @@ public class TestSampes extends Composite {
 				@Override
 				public void onClick(ClickEvent arg0) {
 					pick.setFormat(l);
-//					Window.alert(pick.getFormat().toString());
+					pick.show();
+					log("selected format is : " + pick.getFormat());
 				}
 			});
 			formatLayout.add(but);
@@ -91,10 +106,71 @@ public class TestSampes extends Composite {
 			public void onClick(ClickEvent arg0) {
 				Window.alert(pick.getDaysOfWeekDisabled().length + "") ;
 				pick.setDaysOfWeekDisabled();
+				pick.show();
 			}
 		});
-		p.add(test);
+		main.add(test);
 		
+		
+		//****************************** show/hide control buttons ******************************//
+		
+		Layout btnLayout = new Layout();
+		main.add(btnLayout);
+		
+		final Button hideBtn = new Button("hide control buttons");
+		final Button showBtn = new Button("show control buttons");
+		
+		ClickHandler c = new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent arg0) {
+				boolean v = arg0.getSource().equals(showBtn);
+				pick.setShowClear(v);
+				pick.setShowClose(v);
+				pick.setShowTodayButton(v);
+				pick.show();
+				log("control buttons are " + ((pick.getShowClear() && pick.getShowClose() && pick.getShowTodayButton()) ? "shown" : "hidden"));
+			}
+		};
+		
+		hideBtn.addClickHandler(c);
+		showBtn.addClickHandler(c);
+		
+		btnLayout.add(showBtn);
+		btnLayout.add(hideBtn);
+
+		//****************************** Day Of Week ******************************//
+		
+		Layout weekDay = new Layout();
+		
+		main.add(weekDay);
+		
+		final ListBox listday = new ListBox();
+		listday.setMultipleSelect(true);
+		for(DateTimePickerDayOfWeek d : DateTimePickerDayOfWeek.values())
+			listday.addItem(d.name(), d.getValue() + "");
+		weekDay.add(listday);
+		
+		listday.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent arg0) {
+				List<DateTimePickerDayOfWeek> days = new ArrayList<DateTimePickerDayOfWeek>();
+				for(int i =0; i<listday.getItemCount(); i++){
+					if(listday.isItemSelected(i)) {
+						int val = Integer.parseInt(listday.getValue(i));
+						days.add(DateTimePickerDayOfWeek.dayOf(val));
+					}
+				}
+				pick.setDaysOfWeekDisabled(days.toArray(new DateTimePickerDayOfWeek[days.size()]));
+				pick.show();
+				log("disabled days are : " + pick.getDaysOfWeekDisabled());
+			}
+		});		
 	}
+	
+
+	public void log(String text) {
+		log.setText(log.getText() + "\n" + text);
+	}
+	
 	
 }

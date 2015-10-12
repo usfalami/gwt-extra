@@ -13,5 +13,9 @@ public enum DateTimePickerDayOfWeek {
     public int getValue() {
         return value;
     }
+    
+    public static DateTimePickerDayOfWeek dayOf(int value){
+    	return value >= values().length ? null :  values()[value];
+    }
 
 }

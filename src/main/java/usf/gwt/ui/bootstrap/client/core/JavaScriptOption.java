@@ -45,6 +45,6 @@ public class JavaScriptOption extends JavaScriptObject {
 	}-*/;
 
 	public static final native JavaScriptOption createOption() /*-{
-		return {};
+		return new $wnd.Object(); // return {}
 	}-*/;
 }
