@@ -165,7 +165,7 @@ public class TestSampes extends Composite {
 						days.add(DateTimePickerDayOfWeek.dayOf(val));
 					}
 				}
-//				pick.setDaysOfWeekDisabled(days.toArray(new DateTimePickerDayOfWeek[days.size()]));
+				pick.setDaysOfWeekDisabled(days.toArray(new DateTimePickerDayOfWeek[days.size()]));
 				pick.show();
 				log("disabled days are : " + pick.getDaysOfWeekDisabled());
 			}
