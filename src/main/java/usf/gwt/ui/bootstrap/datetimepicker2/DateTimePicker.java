@@ -103,19 +103,17 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	
 	/**
-	 * Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 * 
-	 * @param step
+	 * @param step : Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 */
-	public final native void SetStepping(double step) /*-{
+	public final native void setStepping(double step) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping(step);
 	}-*/;
 	/**
-	 * Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 * 
-	 * @return step
+	 * @return Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 */
-	public final native double getMinuteStep() /*-{
+	public final native double getStepping() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.stepping();
 	}-*/;
 	
@@ -138,17 +136,17 @@ public class DateTimePicker extends TextBox {
 	
 	
 	
-	public final native void setShowClear(boolean visible) /*-{
+	public final native void setShowClearButton(boolean visible) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClear(visible);
 	}-*/;
-	public final native boolean getShowClear() /*-{
+	public final native boolean getShowClearButton() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClear();
 	}-*/;
 	
-	public final native void setShowClose(boolean visible) /*-{
+	public final native void setShowCloseButton(boolean visible) /*-{
 		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClose(visible);
 	}-*/;
-	public final native boolean getShowClose() /*-{
+	public final native boolean getShowCloseButton() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showClose();
 	}-*/;
 
@@ -158,8 +156,19 @@ public class DateTimePicker extends TextBox {
 	public final native boolean getShowTodayButton() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.showTodayButton();
 	}-*/;
+	public final native void setKeepOpen(boolean visible) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.keepOpen(visible);
+	}-*/;
+	public final native boolean getKeepOpen() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.keepOpen();
+	}-*/;
+	public final native void setSideBySide(boolean sideBySide) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.sideBySide(sideBySide);
+	}-*/;
+	public final native boolean getSideBySide() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.sideBySide();
+	}-*/;
 
-	
 	
 
 	public final native void setOption(JavaScriptOption option) /*-{
@@ -167,6 +176,13 @@ public class DateTimePicker extends TextBox {
 	}-*/;
 	public final native JavaScriptObject getOption() /*-{
 		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.options();
+	}-*/;
+	
+	public final native void setLocale(String locale) /*-{
+		this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.locale(locale);
+	}-*/;
+	public final native String getLocale() /*-{
+		return this.@usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker::picker.locale();
 	}-*/;
 	
 	//action functions
@@ -210,12 +226,12 @@ public class DateTimePicker extends TextBox {
 	protected static Date convertDate(double date) {
 		return new Date ((long)date);
 	}
-	
+
 	/**
-	 * creates datetimepicker javascript object
 	 * 
+	 * @return new DateTimePicker javascript instance
 	 */
-	protected final static native JavaScriptObject render(Element e, JavaScriptObject o) /*-{
+	protected final static native JavaScriptObject render(Element e, JavaScriptOption o) /*-{
 		return $wnd.deb = $wnd.$(e).datetimepicker(o).data("DateTimePicker");
 	}-*/;
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import usf.gwt.ui.bootstrap.client.Bootstrap.ButtonStyles;
 import usf.gwt.ui.bootstrap.client.Button;
+import usf.gwt.ui.bootstrap.client.CheckBox;
 import usf.gwt.ui.bootstrap.client.GridCol;
 import usf.gwt.ui.bootstrap.client.Layout;
 import usf.gwt.ui.bootstrap.datetimepicker2.DateTimePicker;
@@ -38,6 +39,7 @@ public class TestSampes extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		main.add(pick = new DateTimePicker());
+		
 		Button reset = new Button("Reset");
 		reset.addClickHandler(new ClickHandler() {
 			@Override
@@ -122,11 +124,11 @@ public class TestSampes extends Composite {
 			@Override
 			public void onClick(ClickEvent arg0) {
 				boolean v = arg0.getSource().equals(showBtn);
-				pick.setShowClear(v);
-				pick.setShowClose(v);
+				pick.setShowClearButton(v);
+				pick.setShowCloseButton(v);
 				pick.setShowTodayButton(v);
 				pick.show();
-				log("control buttons are " + ((pick.getShowClear() && pick.getShowClose() && pick.getShowTodayButton()) ? "shown" : "hidden"));
+				log("control buttons are " + ((pick.getShowClearButton() && pick.getShowCloseButton() && pick.getShowTodayButton()) ? "shown" : "hidden"));
 			}
 		};
 		
@@ -139,7 +141,6 @@ public class TestSampes extends Composite {
 		//****************************** Day Of Week ******************************//
 		
 		Layout weekDay = new Layout();
-		
 		main.add(weekDay);
 		
 		final ListBox listday = new ListBox();
@@ -163,6 +164,47 @@ public class TestSampes extends Composite {
 				log("disabled days are : " + pick.getDaysOfWeekDisabled());
 			}
 		});		
+		
+
+		//****************************** Local ******************************//
+
+
+		Layout localDiv = new Layout();
+		main.add(localDiv);
+		
+		final CheckBox local = new CheckBox();
+		local.setText("Local");
+		
+		local.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent arg0) {
+				pick.setLocale(local.getChecked() ? "fr" : "en");
+				pick.show();
+			}
+		});
+
+		localDiv.add(local);
+		
+
+
+		//****************************** Side by side ******************************//
+		
+
+		Layout sideByDiv = new Layout();
+		main.add(sideByDiv);
+		
+		final CheckBox side = new CheckBox();
+		side.setText("Side by Side");
+		
+		side.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent arg0) {
+				pick.setSideBySide(side.getChecked());
+				pick.show();
+			}
+		});
+
+		sideByDiv.add(side);
 	}
 	
 
