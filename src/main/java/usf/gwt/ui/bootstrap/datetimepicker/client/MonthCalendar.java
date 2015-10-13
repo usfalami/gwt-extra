@@ -150,10 +150,10 @@ public class MonthCalendar extends BootstrapWidget implements HasClickHandlers {
 	}-*/;
 
     public static final native JavaScriptArray getShortDays() /*-{
-    	return $wnd.$.fn.datetimepicker.dates[@usf.gwt.ui.bootstrap.datetimepicker.client.MonthCalendar::DEAFULT_LANGUAGE].daysMin;
+    	return $wnd.moment.weekdaysMin();
 	}-*/;
     public static final native JavaScriptArray getMonths() /*-{
-		return $wnd.$.fn.datetimepicker.dates[@usf.gwt.ui.bootstrap.datetimepicker.client.MonthCalendar::DEAFULT_LANGUAGE].months;
+		return $wnd.moment.months();
 	}-*/;
     
     public void clearStyle(){
