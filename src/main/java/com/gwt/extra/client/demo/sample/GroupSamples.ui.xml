@@ -1,0 +1,71 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:b="urn:import:usf.gwt.bootstrap.ui.widget" xmlns:t="urn:import:com.gwt.extra.client.demo.tools">
+
+	<b:Layout>
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Group>
+					<b:GroupItem text="Group item 1" />
+					<b:GroupItem text="Group item 2" />
+					<b:GroupItem text="Group item 3" />
+				</b:Group>
+			</b:GridCol>
+
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Group>
+						<GroupItem text="Group item 1" />
+						<GroupItem text="Group item 2" />
+						<GroupItem text="Group item 3" />
+					</Group>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Group>
+					<b:GroupItem text="Group item 1" enabled="false" />
+					<b:GroupItem text="Group item 2" />
+					<b:GroupItem text="Group item 3" active="true" />
+				</b:Group>
+			</b:GridCol>
+
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Group>
+						<GroupItem text="Group item 1" enabled="false"  />
+						<GroupItem text="Group item 2" />
+						<GroupItem text="Group item 3" active="true" />
+					</Group>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+				
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Group>
+					<b:GroupCheckItem text="Check item 1" checked="true" />
+					<b:GroupCheckItem text="Check item 2" active="true" />
+					<b:GroupCheckItem text="Check item 3" enabled="false" />
+				</b:Group>
+			</b:GridCol>
+
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Group>
+						<GroupCheckItem text="Check item 1" checked="true" />
+						<GroupCheckItem text="Check item 2" active="true" />
+						<GroupCheckItem text="Check item 3" enabled="false" />
+					</Group>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>	
+		
+	</b:Layout>
+
+
+</ui:UiBinder> 

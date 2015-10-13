@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+	xmlns:b="urn:import:usf.gwt.bootstrap.ui.widget"
+	xmlns:t="urn:import:com.gwt.extra.client.demo.tools">
+
+	<b:Layout>
+	
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="TABS">
+					<b:NavItem text="Nav 1" />
+					<b:NavItem text="Nav 2" />
+					<b:NavItem text="Nav 3" active="true" />
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="TABS">
+						<NavItem text="Nav 1" />
+						<NavItem text="Nav 2" />
+						<NavItem text="Nav 3" active="true" />
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="TABS" stacked="true">
+					<b:NavItem text="Nav 1" active="true" />
+					<b:NavItem text="Nav 2" />
+					<b:NavItem text="Nav 3" />
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="TABS" stacked="true">
+						<NavItem text="Nav 1" active="true" />
+						<NavItem text="Nav 2" />
+						<NavItem text="Nav 3" />
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="PILLS">
+					<b:NavItem text="Nav 1" />
+					<b:NavItem text="Nav 2" active="true" />
+					<b:NavItem text="Nav 3" />
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="PILLS">
+						<NavItem text="Nav 1" />
+						<NavItem text="Nav 2" active="true" />
+						<NavItem text="Nav 3" />
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="PILLS" stacked="true">
+					<b:NavItem text="Nav 1" active="true" />
+					<b:NavItem text="Nav 2" enabled="false" />
+					<b:NavItem text="Nav 3" enabled="false" />
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="PILLS" stacked="true">
+						<NavItem text="Nav 1" active="true" />
+						<NavItem text="Nav 2" enabled="false" />
+						<NavItem text="Nav 3" enabled="false" />
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="PILLS" stacked="true">
+					<b:SubNavItem text="Nav 1" style="PILLS">
+						<b:NavItem text="Sous Nav 1" />
+						<b:NavItem text="Sous Nav 2" />
+					</b:SubNavItem>
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="PILLS" stacked="true">
+						<SubNavItem text="Nav 1" style="PILLS">
+							<NavItem text="Sous Nav 1" />
+							<NavItem text="Sous Nav 2" />
+						</SubNavItem>
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Nav style="PILLS" stacked="true">
+					<b:SubNavItem text="Nav 1" style="PILLS" stacked="true" collapsed="true">
+						<b:SubNavItem text="Sub Nav 1.1" style="PILLS" stacked="true" collapsed="true">
+							<b:SubNavItem text="Sub Nav item 1.1.1" stacked="true" collapsed="true">
+								<b:NavItem text="Nav item 1.1.1.1" />
+							</b:SubNavItem>
+						</b:SubNavItem>
+					</b:SubNavItem>
+				</b:Nav>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Nav style="PILLS" stacked="true">
+						<SubNavItem text="Nav 1" style="PILLS" stacked="true" collapsed="true">
+							<SubNavItem text="Sub Nav 1.1" style="PILLS" stacked="true" collapsed="true">
+								<SubNavItem text="Sub Nav 1.1.1" style="PILLS" stacked="true" collapsed="true">
+									<NavItem text="Nav item 1.1.1.1" />
+								</SubNavItem>
+							</SubNavItem>
+						</SubNavItem>
+					</Nav>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+	</b:Layout>
+
+</ui:UiBinder>

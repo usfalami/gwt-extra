@@ -1,0 +1,84 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:usf.gwt.bootstrap.ui.widget"
+	xmlns:t="urn:import:com.gwt.extra.client.demo.tools">
+
+	<b:Layout>
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<b:Button text="Button" />
+				<b:Button text="Button" style="DEFAULT" />
+				<b:Button text="Button" style="PRIMARY" />
+				<b:Button text="Button" style="SUCCESS" />
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Button text="Button" />
+					<Button text="Button" style="DEFAULT" />
+					<Button text="Button" style="PRIMARY" />
+					<Button text="Button" style="SUCCESS" />
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<b:Button text="Button" style="INFO" enabled="false" />
+				<b:Button text="Button" style="WARNING" enabled="false" />
+				<b:Button text="Button" style="DANGER" enabled="false" />
+				<b:Button text="Button" style="LINK" enabled="false" />
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Button text="Button" style="INFO" enabled="false" />
+					<Button text="Button" style="WARNING" enabled="false" />
+					<Button text="Button" style="DANGER" enabled="false" />
+					<Button text="Button" style="LINK" enabled="false" />
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<b:Button type="SUBMIT" text="Submit" style="DEFAULT" align="LEFT" />
+				<b:Button type="RESET" text="Reset" style="LINK" align="RIGHT" />
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Button type="SUBMIT" text="Submit" style="DEFAULT" align="LEFT" />
+					<Button type="RESET" text="Reset" style="LINK" align="RIGHT"/>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<b:IconButton text="Button" style="SUCCESS" icon="EURO" />
+				<b:IconButton text="Button" style="WARNING" icon="FLASH" />
+				<b:IconButton text="Button" style="DANGER" icon="PHONE" />
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<IconButton text="Button" style="SUCCESS" icon="EURO" />
+					<IconButton text="Button" style="WARNING" icon="FLASH" />
+					<IconButton text="Button" style="DANGER" icon="PHONE" />
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<b:Button text="Button" style="SUCCESS" state="LOADING"/>
+				<b:Button text="Button" style="INFO" loadingText="Searching ..." state="LOADING" />
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Button text="Button" style="SUCCESS" state="LOADING"/>
+					<Button text="Button" style="INFO" loadingText="Searching ..." state="LOADING" />
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		
+	</b:Layout>
+</ui:UiBinder> 

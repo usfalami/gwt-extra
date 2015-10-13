@@ -84,7 +84,7 @@
           <runTarget>ExtraGwt.html</runTarget>
 <!--           <hostedWebapp>${webappDirectory}</hostedWebapp> -->
           <modules>
-            <module>usf.gwt.ExtraGwt</module>
+            <module>com.gwt.extra.ExtraGwt</module>
           </modules>
         </configuration>
       </plugin>

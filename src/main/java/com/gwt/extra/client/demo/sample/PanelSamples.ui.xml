@@ -1,0 +1,120 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:b="urn:import:usf.gwt.bootstrap.ui.widget" xmlns:t="urn:import:com.gwt.extra.client.demo.tools">
+	
+	<b:Layout>
+	
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Panel style="DEFAULT">
+					<b:PanelFrame style="BODY">
+						<b:Text>
+							Lorem ipsum dolor sit amet, dicant minimum vituperata et vix, mel soleat vocent ei. 
+							Labitur appellantur vix ea, ex munere vocibus dissentiunt eos, ut idque sensibus vix. 
+							Sed nisl delicata theophrastus ea, etiam mnesarchum sententiae vis eu. 
+							Recusabo delicata repudiare ad vix, ad everti appellantur nam.
+						</b:Text>
+					</b:PanelFrame>
+				</b:Panel>
+			</b:GridCol>
+			
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+				<Panel style="DEFAULT">
+					<PanelFrame style="BODY"> ... </PanelFrame>
+				</Panel>
+				</t:XmlCode>
+			</b:GridCol>
+			
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Panel style="DEFAULT">
+					<b:PanelFrame style="HEADING">
+						<b:Text>Panel header</b:Text>
+					</b:PanelFrame>
+					<b:PanelFrame style="BODY">
+						<b:Text>
+							Lorem ipsum dolor sit amet, dicant minimum vituperata et vix, mel soleat vocent ei. 
+							Labitur appellantur vix ea, ex munere vocibus dissentiunt eos, ut idque sensibus vix. 
+							Sed nisl delicata theophrastus ea, etiam mnesarchum sententiae vis eu. 
+							Recusabo delicata repudiare ad vix, ad everti appellantur nam.
+						</b:Text>
+					</b:PanelFrame>
+					<b:PanelFrame style="FOOTER">
+						<b:Text>Panel footer</b:Text>
+					</b:PanelFrame>
+				</b:Panel>
+			</b:GridCol>
+			
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Panel style="DEFAULT">
+						<PanelFrame style="HEADING"> ... </PanelFrame>
+						<PanelFrame style="BODY"> ... </PanelFrame>
+						<PanelFrame style="FOOTER"> ... </PanelFrame>
+					</Panel>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Panel style="PRIMARY">
+					<b:PanelFrame style="HEADING">
+						<b:Text>Panel header</b:Text>
+					</b:PanelFrame>
+					<b:PanelFrame style="BODY">
+						<b:Text>
+							Lorem ipsum dolor sit amet, dicant minimum vituperata et vix, mel soleat vocent ei. 
+							Labitur appellantur vix ea, ex munere vocibus dissentiunt eos, ut idque sensibus vix. 
+							Sed nisl delicata theophrastus ea, etiam mnesarchum sententiae vis eu. 
+							Recusabo delicata repudiare ad vix, ad everti appellantur nam.
+						</b:Text>
+					</b:PanelFrame>
+				</b:Panel>
+			</b:GridCol>
+			
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Panel style="PRIMARY">
+						<PanelFrame style="HEADING"> ... </PanelFrame>
+						<PanelFrame style="BODY"> ... </PanelFrame>
+					</Panel>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Panel style="SUCCESS">
+					<b:PanelFrame style="HEADING">
+						<b:Text>Panel header</b:Text>
+					</b:PanelFrame>
+					<b:Group>
+						<b:GroupCheckItem text="Check item 1" />
+						<b:GroupCheckItem text="Check item 2" />
+						<b:GroupCheckItem text="Check item 3" />
+					</b:Group>
+				</b:Panel>
+			</b:GridCol>
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<Panel style="SUCCESS">
+						<PanelFrame style="HEADING"> ... </PanelFrame>
+						<Group>
+							<GroupCheckItem text="Check item 1" />
+							<GroupCheckItem text="Check item 2" />
+							<GroupCheckItem text="Check item 3" />
+						</Group>
+					</Panel>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+	
+	</b:Layout>
+	
+	
+</ui:UiBinder> 
