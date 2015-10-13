@@ -1,4 +1,4 @@
-package usf.gwt.ui.bootstrap.datetimepicker.client;
+package usf.gwt.ui.bootstrap.datetimepicker2;
 
 import usf.gwt.ui.bootstrap.client.core.BootstrapWidget;
 

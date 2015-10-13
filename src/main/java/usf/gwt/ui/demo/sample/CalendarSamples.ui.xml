@@ -4,7 +4,7 @@
 	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
 	xmlns:b="urn:import:usf.gwt.ui.bootstrap.client" 
 	xmlns:t="urn:import:usf.gwt.ui.demo.tools" 
-	xmlns:d="urn:import:usf.gwt.ui.bootstrap.datetimepicker.client">
+	xmlns:d="urn:import:usf.gwt.ui.bootstrap.datetimepicker2">
 
 	<b:Layout>
 		

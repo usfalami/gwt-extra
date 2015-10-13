@@ -1,4 +1,4 @@
-package usf.gwt.ui.bootstrap.datetimepicker.client;
+package usf.gwt.ui.bootstrap.datetimepicker2;
 
 import usf.gwt.ui.bootstrap.client.core.BootstrapContainer;
 import usf.gwt.ui.bootstrap.client.core.JqueryEvents;
@@ -70,11 +70,11 @@ public class YearCalendar extends BootstrapContainer implements HasClickHandlers
     }
     
     public final native JsDate getSelectedDate() /*-{
-    	var elem = $wnd.$(this.@usf.gwt.ui.bootstrap.datetimepicker.client.YearCalendar::getElement()()).find(".active");
+    	var elem = $wnd.$(this.@usf.gwt.ui.bootstrap.datetimepicker2.YearCalendar::getElement()()).find(".active");
     	if(!elem.length) return null;
-    	var y = this.@usf.gwt.ui.bootstrap.datetimepicker.client.YearCalendar::diplayedYear;
-    	var m = (elem.parents('.' + @usf.gwt.ui.bootstrap.datetimepicker.client.MonthCalendar::DEFAULT_CALENDAR_MONTH_STYLE).index() + 
-    		this.@usf.gwt.ui.bootstrap.datetimepicker.client.YearCalendar::diplayedFirstMonth) % @usf.gwt.ui.bootstrap.datetimepicker.client.YearCalendar::MONTHS;
+    	var y = this.@usf.gwt.ui.bootstrap.datetimepicker2.YearCalendar::diplayedYear;
+    	var m = (elem.parents('.' + @usf.gwt.ui.bootstrap.datetimepicker2.MonthCalendar::DEFAULT_CALENDAR_MONTH_STYLE).index() + 
+    		this.@usf.gwt.ui.bootstrap.datetimepicker2.YearCalendar::diplayedFirstMonth) % @usf.gwt.ui.bootstrap.datetimepicker2.YearCalendar::MONTHS;
     	var d = elem.children(0).text();
     	return new Date(y, m, d);
     }-*/;

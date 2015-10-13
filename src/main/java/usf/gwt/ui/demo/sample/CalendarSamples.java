@@ -1,6 +1,6 @@
 package usf.gwt.ui.demo.sample;
 
-import usf.gwt.ui.bootstrap.datetimepicker.client.YearCalendar;
+import usf.gwt.ui.bootstrap.datetimepicker2.YearCalendar;
 import usf.gwt.ui.demo.SampleComposite;
 
 import com.google.gwt.core.client.GWT;

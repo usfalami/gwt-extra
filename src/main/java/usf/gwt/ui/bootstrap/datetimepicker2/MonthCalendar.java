@@ -1,6 +1,7 @@
-package usf.gwt.ui.bootstrap.datetimepicker.client;
+package usf.gwt.ui.bootstrap.datetimepicker2;
 
 import usf.gwt.ui.bootstrap.client.core.BootstrapWidget;
+import usf.gwt.ui.bootstrap.client.core.JavaScriptArray;
 import usf.gwt.ui.bootstrap.client.core.JqueryEvents;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -171,8 +172,8 @@ public class MonthCalendar extends BootstrapWidget implements HasClickHandlers {
 		return function(e) {
 			$wnd.$(w).find(@com.google.gwt.dom.client.TableCellElement::TAG_TD).removeClass(@usf.gwt.ui.bootstrap.client.core.Constants::BOOTSTRAP_ACTIVE);
 			var t = $wnd.$(e.target);
-			var p = t.hasClass(@usf.gwt.ui.bootstrap.datetimepicker.client.MonthCalendar::DEFAULT_CALENDAR_DAY_STYLE) ? 
-				t.parent() : t.hasClass(@usf.gwt.ui.bootstrap.datetimepicker.client.MonthCalendar::DEFAULT_CALENDAR_CELL_STYLE) ? t : null;
+			var p = t.hasClass(@usf.gwt.ui.bootstrap.datetimepicker2.MonthCalendar::DEFAULT_CALENDAR_DAY_STYLE) ? 
+				t.parent() : t.hasClass(@usf.gwt.ui.bootstrap.datetimepicker2.MonthCalendar::DEFAULT_CALENDAR_CELL_STYLE) ? t : null;
 			if(p) p.addClass(@usf.gwt.ui.bootstrap.client.core.Constants::BOOTSTRAP_ACTIVE);
 		};
 	}-*/;
