@@ -9,6 +9,10 @@ import usf.gwt.ui.bootstrap.client.core.JavaScriptOption;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsDate;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * 
@@ -18,7 +22,7 @@ import com.google.gwt.dom.client.Element;
  *
  */
 
-public class DateTimePicker extends TextBox {
+public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date> {
 	
     protected static final String DATE_TIME_PICKER = "DateTimePicker";
 
@@ -29,6 +33,7 @@ public class DateTimePicker extends TextBox {
 	}
 	public DateTimePicker(JavaScriptOption option) {
 		picker = render(getBaseElement(), option);
+		setPlaceholder(DateTimePickerFormat.DD_MM_YYYY.getLabel());
 	}
 	
 	public void setFormat(DateTimePickerFormat format) {
@@ -231,13 +236,14 @@ public class DateTimePicker extends TextBox {
 	 * @return new DateTimePicker javascript instance
 	 */
 	protected final static native JavaScriptObject render(Element e, JavaScriptOption o) /*-{
-		return $wnd.deb = $wnd.$(e).datetimepicker(o).data("DateTimePicker");
+		return $wnd.$(e).datetimepicker(o).data("DateTimePicker");
 	}-*/;
 
 	public final static JavaScriptOption defaultDateTimePickerOptions(){
 		return JavaScriptOption.createOption()
-		.set("locale", "fr");
-//		.set("format", "L");
+		.set("locale", "fr")
+		.set("format", "L")
+		.set("showTodayButton", true);
 	}
 	
 	
@@ -282,6 +288,30 @@ public class DateTimePicker extends TextBox {
 			dates[i] = toDate(array.getJsDate(i));
 		return dates;
 	}
-
-
+	
+    @Override
+    public final HandlerRegistration addValueChangeHandler(ValueChangeHandler<Date> handler) {
+    	return addHandler(handler, ValueChangeEvent.getType());
+    }
+    protected final void fireChange() {
+    	ValueChangeEvent.fire(this, getDate());
+    }
+	
+	@Deprecated
+    public void setFocus(boolean focused) {
+        if (focused) {
+            getBaseElement().focus();
+        } else {
+        	getBaseElement().blur();
+        }
+    }
+	@Deprecated
+	public String getValueString() {
+		return getText();
+	}
+	@Deprecated
+	public boolean isEmpty() {
+		String text = getText();
+		return text == null ? false : text.isEmpty();
+	}
 }

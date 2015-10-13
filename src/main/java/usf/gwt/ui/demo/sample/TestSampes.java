@@ -36,14 +36,13 @@ public class TestSampes extends Composite {
 	@UiField TextArea log;
 	@UiField GridCol main;
 	
-	DateTimePicker pick;
+	@UiField DateTimePicker pick;
 	
 	DateTimeFormat df = DateTimeFormat.getFormat("dd/MM/yyyy");
 	
 	public TestSampes() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		main.add(pick = new DateTimePicker());
 		
 		Button reset = new Button("Reset");
 		reset.addClickHandler(new ClickHandler() {
