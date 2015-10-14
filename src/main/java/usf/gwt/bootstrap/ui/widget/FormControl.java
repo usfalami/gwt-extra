@@ -45,6 +45,5 @@ public abstract class FormControl<T> extends BootstrapWidget implements HasChang
 	public InputElement getBaseElement() {
 		return getElement().cast();
 	}
-	
 
 }

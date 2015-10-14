@@ -3,6 +3,7 @@ package usf.gwt.bootstrap.ui.js;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 
@@ -40,6 +41,15 @@ public final class JqueryEvents {
 				@usf.gwt.bootstrap.ui.event.SubmitEvent::new(Lcom/google/gwt/dom/client/NativeEvent;)(e));
     	});
     	f.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()()._submit=true;
+    }-*/;
+    
+
+    public static final native int registerEvent(Element w, String event, JavaScriptObject funct, boolean append)/*-{
+		if(append || !w[event]){
+			$wnd.$(w).on(event, null, 'gwtEvent', funct);
+			w[event] = true;
+		}
+		else $wnd.console.log(event + " event is already attach on ", w);
     }-*/;
     
 }
