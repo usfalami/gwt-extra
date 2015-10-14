@@ -1,4 +1,4 @@
-package usf.gwt.ui.timeline;
+package usf.gwt.timeline;
 
 import java.util.Date;
 
