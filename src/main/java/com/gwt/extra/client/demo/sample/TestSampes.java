@@ -227,7 +227,31 @@ public class TestSampes extends Composite {
 		});
 
 		sideByDiv.add(side);
+		
+		
+
+
+		//****************************** Weeks ******************************//
+		
+
+		Layout weekLayout = new Layout();
+		main.add(weekLayout);
+		
+		final CheckBox week = new CheckBox();
+		week.setText("Week number");
+		
+		week.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent arg0) {
+				pick.setShowWeeksNumber(week.getChecked());
+				pick.show();
+			}
+		});
+		weekLayout.add(week);
 	}
+	
+	
+	
 	
 
 	public void log(String text) {

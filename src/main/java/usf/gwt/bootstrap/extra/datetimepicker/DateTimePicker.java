@@ -147,6 +147,12 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	}-*/;
 	
 	
+	public final native void setShowWeeksNumber(boolean visible) /*-{
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().calendarWeeks(visible);
+	}-*/;
+	public final native boolean getShowWeeksNumber() /*-{
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().calendarWeeks();
+	}-*/;
 	
 	public final native void setShowClearButton(boolean visible) /*-{
 		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showClear(visible);

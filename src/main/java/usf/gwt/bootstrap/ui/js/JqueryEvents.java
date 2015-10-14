@@ -45,9 +45,9 @@ public final class JqueryEvents {
     
 
     public static final native int registerEvent(Element w, String event, JavaScriptObject funct, boolean append)/*-{
-		if(append || !w[event]){
+		if(append || !w['gwtEvent'] || !w['gwtEvent'].contains(event)){
 			$wnd.$(w).on(event, null, 'gwtEvent', funct);
-			w[event] = true;
+			w['gwtEvent'] += event+ ", ";
 		}
 		else $wnd.console.log(event + " event is already attach on ", w);
     }-*/;
