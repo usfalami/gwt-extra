@@ -4,11 +4,11 @@ import java.util.Date;
 
 import usf.gwt.bootstrap.ui.js.JavaScriptArray;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
+import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.widget.TextBox;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -25,15 +25,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date> {
 	
     protected static final String DATE_TIME_PICKER = "DateTimePicker";
-
-	protected JavaScriptObject picker;
+    protected static final JavaScriptOption DEFAULT_OPTION = JavaScriptOption.createOption();
 
 	public DateTimePicker() {
-		this(defaultDateTimePickerOptions());
+		this(DEFAULT_OPTION);
 	}
 	public DateTimePicker(JavaScriptOption option) {
-		picker = render(getBaseElement(), option);
-		setPlaceholder(DateTimePickerFormat.DD_MM_YYYY.getLabel());
+		setOption(option);
+		setFormat(DateTimePickerFormat.DD_MM_YYYY);
 	}
 	
 	public void setFormat(DateTimePickerFormat format) {
@@ -50,45 +49,45 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	 * @param format
 	 */
 	public final native JavaScriptObject setFormatAsString(String format) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.format(format ? format : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().format(format ? format : false);
 	}-*/;
 	public final native String getFormatAsString() /*-{
-		var f = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.format();
+		var f = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().format();
 		return f ? f : null; //f can be false if no format has been set
 	}-*/;
 
 	public final native void setDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.date(date ? new $wnd.Date(c(date)) : null);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date(date ? new $wnd.Date(c(date)) : null);
 	}-*/;
 	public final native Date getDate() /*-{
-		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.date();
+		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date();
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null;
 	}-*/;
 
 	public final native void setDefaultDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.defaultDate(date ? new $wnd.Date(c(date)) : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().defaultDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getDefaultDate() /*-{
-		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.defaultDate();
+		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().defaultDate();
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null;  // d can be false
 	}-*/;
 	
 	public final native void setMinDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.minDate(date ? new $wnd.Date(c(date)) : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().minDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMinDate() /*-{
-		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.minDate();
+		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().minDate();
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null; // d can be false
 	}-*/;
 	public final native void setMaxDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.maxDate(date ? new $wnd.Date(c(date)) : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().maxDate(date ? new $wnd.Date(c(date)) : false);
 	}-*/;
 	public final native Date getMaxDate() /*-{
-		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.maxDate();
+		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().maxDate();
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null; // d can be false
 	}-*/;
 	
@@ -97,14 +96,14 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	 * @param step : Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 */
 	public final native void setStepping(double step) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.stepping(step);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().stepping(step);
 	}-*/;
 	/**
 	 * 
 	 * @return Number of minutes the up/down arrow's will move the minutes value in the time picker
 	 */
 	public final native double getStepping() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.stepping();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().stepping();
 	}-*/;
 	
 	/**
@@ -113,89 +112,93 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	 */
 	public final native void setDaysOfWeekDisabled(DateTimePickerDayOfWeek... days) /*-{
 		var array = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toJsArray([Lusf/gwt/bootstrap/extra/datetimepicker/DateTimePickerDayOfWeek;)(days);
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.daysOfWeekDisabled(array ? array : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().daysOfWeekDisabled(array ? array : false);
 	}-*/;
 	/**
 	 * 
 	 * @return Disables the section of days of the week, e.g. weekends.
 	 */
 	public final native DateTimePickerDayOfWeek[] getDaysOfWeekDisabled() /*-{
-		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.daysOfWeekDisabled();
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.daysOfWeekDisabled(d); // resolve some bugs 
+		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().daysOfWeekDisabled();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().daysOfWeekDisabled(d); // resolve some bugs 
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toWeekDays(Lusf/gwt/bootstrap/ui/js/JavaScriptArray;)(d) : null;
 	}-*/;
 	
 	
 	public final native void setEnabledDates(Date... dates) /*-{
 		var array = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.enabledDates(array ? array : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().enabledDates(array ? array : false);
 	}-*/;
 	/**
 	 * @return an array with the currently set enabled dates on the component.
 	 */
 	public final native JavaScriptArray getEnabledDates() /*-{//TODO Object{date:boolean}
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.enabledDates();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().enabledDates();
 	}-*/;
 	public final native void setDisabledDates(Date... dates) /*-{
 		var array = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toJsArray([Ljava/util/Date;)(dates)
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.disabledDates(array ? array : false);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().disabledDates(array ? array : false);
 	}-*/;
 	/**
 	 * @return an array with the currently set disabled dates on the component.
 	 */
 	public final native JavaScriptArray getDisabledDates() /*-{//TODO Object{date:boolean}
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.disabledDates();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().disabledDates();
 	}-*/;
 	
 	
+	public final native void setShowWeeksNumber(boolean visible) /*-{
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().calendarWeeks(visible);
+	}-*/;
+	public final native boolean getShowWeeksNumber() /*-{
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().calendarWeeks();
+	}-*/;
 	
 	public final native void setShowClearButton(boolean visible) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showClear(visible);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showClear(visible);
 	}-*/;
 	public final native boolean getShowClearButton() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showClear();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showClear();
 	}-*/;
 	
 	public final native void setShowCloseButton(boolean visible) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showClose(visible);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showClose(visible);
 	}-*/;
 	public final native boolean getShowCloseButton() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showClose();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showClose();
 	}-*/;
 
 	public final native void setShowTodayButton(boolean visible) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showTodayButton(visible);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showTodayButton(visible);
 	}-*/;
 	public final native boolean getShowTodayButton() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.showTodayButton();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().showTodayButton();
 	}-*/;
 	public final native void setKeepOpen(boolean visible) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.keepOpen(visible);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().keepOpen(visible);
 	}-*/;
 	public final native boolean getKeepOpen() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.keepOpen();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().keepOpen();
 	}-*/;
 	public final native void setSideBySide(boolean sideBySide) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.sideBySide(sideBySide);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().sideBySide(sideBySide);
 	}-*/;
 	public final native boolean getSideBySide() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.sideBySide();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().sideBySide();
 	}-*/;
-
 	
-
 	public final native void setOption(JavaScriptOption option) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.options(option);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options(option);
 	}-*/;
 	public final native JavaScriptObject getOption() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.options();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options();
 	}-*/;
 	
 	public final native void setLocale(String locale) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.locale(locale);
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().locale(locale);
 	}-*/;
 	public final native String getLocale() /*-{
-		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.locale();
+		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().locale();
 	}-*/;
 	
 	//action functions
@@ -204,48 +207,42 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	 * Clears the datepicker by setting the value to null
 	 */
 	public final native void clear() /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.clear();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().clear();
 	}-*/;
 	/**
 	 * Destroys the widget and removes all attached event listeners
 	 */
 	public final native void destroy() /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.destroy();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().destroy();
 	}-*/;
 	/**
 	 * Shows or hides the widget
 	 */
 	public final native void show() /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.show();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().show();
 	}-*/;
 	/**
 	 * Hides the widget
 	 */
 	public final native void hide() /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.hide();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().hide();
 	}-*/;
 	/**
 	 * Shows or hides the widget
 	 */
 	public final native void toggle() /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker.toggle();
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().toggle();
 	}-*/;
 	
-	/**
-	 * 
-	 * @return new DateTimePicker javascript instance
-	 */
-	protected final static native JavaScriptObject render(Element e, JavaScriptOption o) /*-{
-		return $wnd.$(e).datetimepicker(o).data("DateTimePicker");
+	
+	protected final native JavaScriptObject picker() /*-{
+		var e = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::getBaseElement()();
+		return $wnd.$(e).datetimepicker().data("DateTimePicker");
 	}-*/;
-
-	public final static JavaScriptOption defaultDateTimePickerOptions(){
-		return JavaScriptOption.createOption()
-		.set("locale", "fr")
-		.set("format", "L")
-		.set("showTodayButton", true);
+	
+	public static JavaScriptOption getDefaultOption() {
+		return DEFAULT_OPTION;
 	}
-	
 	
 	protected static double toDouble(Date date) {
 		return date.getTime();
@@ -291,11 +288,19 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	
     @Override
     public final HandlerRegistration addValueChangeHandler(ValueChangeHandler<Date> handler) {
+    	JqueryEvents.registerEvent(getElement(), "dp.change", onChange(), false);
     	return addHandler(handler, ValueChangeEvent.getType());
     }
     protected final void fireChange() {
     	ValueChangeEvent.fire(this, getDate());
     }
+    
+	protected final native JavaScriptObject onChange() /*-{
+		var that = this;
+		return function(e) {
+			that.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::fireChange()();
+		};
+	}-*/;
 	
 	@Deprecated
     public void setFocus(boolean focused) {

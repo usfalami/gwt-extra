@@ -34,6 +34,15 @@ public class JavaScriptOption extends JavaScriptObject {
 	public final native JsDate getDate(final String name) /*-{
 		return this[name];
 	}-*/;
+	
+	public final native JavaScriptOption set(final String name, final JavaScriptOption value) /*-{
+		this[name] = value;
+		return this;
+	}-*/;
+	
+	public final native JavaScriptOption getObject(final String name) /*-{
+		return this[name];
+	}-*/;
 
 	public final native JavaScriptOption set(final String name, final int value) /*-{
 		this[name] = value;
