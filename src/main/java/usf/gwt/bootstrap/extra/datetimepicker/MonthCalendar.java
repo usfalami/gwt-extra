@@ -63,8 +63,8 @@ public class MonthCalendar extends BootstrapWidget implements HasClickHandlers {
     }
     @Override
     protected void initStyle() {
-    	getElement().addClassName(DEFAULT_CALENDAR_MONTH_STYLE + " " + "datetimepicker");
-        getTable().setClassName("table table-condensed");
+    	getElement().addClassName(DEFAULT_CALENDAR_MONTH_STYLE + " " + "bootstrap-datetimepicker-widget");
+        getTable().setClassName("table-condensed");
     }
 
     public void setDiplayedMonth(int month, int year) {
@@ -126,7 +126,9 @@ public class MonthCalendar extends BootstrapWidget implements HasClickHandlers {
         return td;
     }
     protected static Element createTREmptyElement() {
-        return Document.get().createTDElement();
+    	TableCellElement tr = Document.get().createTDElement();
+    	tr.addClassName("day");
+        return tr;
     }
 
     protected TableElement getTable() {
