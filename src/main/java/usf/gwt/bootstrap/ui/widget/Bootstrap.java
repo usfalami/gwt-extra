@@ -6,88 +6,88 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 public interface Bootstrap extends IsWidget {
 	
-	public void setId(String id);
-	public String getId();
-	public Element getBaseElement();
+	void setId(String id);
+	String getId();
+	Element getBaseElement();
 	
-	public interface AttachWidget {}
-	public interface InputGroupAddOn {}
+	interface AttachWidget {}
+	interface InputGroupAddOn {}
 
-	public interface Collapser {
+	interface Collapser {
 		void setTarget(String target);
 		Element getBaseElement();
 	}
 	
-	public interface StyleEnum {}
+	interface StyleEnum {}
 	
-	 public interface HasStyle<T extends StyleEnum> {
-    	public void setStyle(T style);
-    	public T getStyle();
+	 interface HasStyle<T extends StyleEnum> {
+    	void setStyle(T style);
+    	T getStyle();
     }
-    public interface HasIcon<T extends StyleEnum> {
-    	public void setIcon(T icon);
-    	public T getIcon();
-    	public Element getIconElement();
+    interface HasIcon<T extends StyleEnum> {
+    	void setIcon(T icon);
+    	T getIcon();
+    	Element getIconElement();
     }
-    public interface HasType<T extends StyleEnum> {
-    	public void setType(T type);
-    	public T getType();
+    interface HasType<T extends StyleEnum> {
+    	void setType(T type);
+    	T getType();
     }
-    public interface HasState<T extends StyleEnum> {
-    	public void setState(T state);
+    interface HasState<T extends StyleEnum> {
+    	void setState(T state);
     }
-    public interface HasText {
-    	public void setText(String text);
-    	public String getText();    	
-    	public Text getTextElement();
+    interface HasText {
+    	void setText(String text);
+    	String getText();    	
+    	Text getTextElement();
     }
         
-    public enum AlertStyles implements StyleEnum {
+    enum AlertStyles implements StyleEnum {
         SUCCESS, INFO, WARNING, DANGER;
     }
-    public enum AlignementStyles implements StyleEnum {
+    enum AlignementStyles implements StyleEnum {
     	LEFT, RIGHT;
     }
-    public enum ButtonStyles implements StyleEnum {
+    enum ButtonStyles implements StyleEnum {
         DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
     }   
-    public enum ButtonStates implements StyleEnum {
+    enum ButtonStates implements StyleEnum {
         RESET, LOADING;
     }
-    public enum ButtonTypes implements StyleEnum {
+    enum ButtonTypes implements StyleEnum {
         BUTTON, SUBMIT, RESET;
     }
-    public enum ColumnOffsets implements StyleEnum {
+    enum ColumnOffsets implements StyleEnum {
     	MD_OFFSET_1, MD_OFFSET_2, MD_OFFSET_3, MD_OFFSET_4, MD_OFFSET_5, MD_OFFSET_6, 
     	MD_OFFSET_7, MD_OFFSET_8, MD_OFFSET_9, MD_OFFSET_10, MD_OFFSET_11, MD_OFFSET_12;
     }
-    public enum ColumnSizes implements StyleEnum {
+    enum ColumnSizes implements StyleEnum {
     	MD_1, MD_2, MD_3, MD_4, MD_5, MD_6, 
     	MD_7, MD_8, MD_9, MD_10, MD_11, MD_12;
     }
-    public enum FormStyles implements StyleEnum {
+    enum FormStyles implements StyleEnum {
         HORIZONTAL, INLINE;
     }
-	public enum LabelStyles implements StyleEnum {
+	enum LabelStyles implements StyleEnum {
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
 	}
-	public enum NavStyles implements StyleEnum {	
+	enum NavStyles implements StyleEnum {	
 		TABS, PILLS;
 	}
-	public enum PanelFrameStyles implements StyleEnum {
+	enum PanelFrameStyles implements StyleEnum {
 		HEADING, BODY, FOOTER;
 	}
-	public enum PanelStyles implements StyleEnum {
+	enum PanelStyles implements StyleEnum {
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER;
 	}
-	public enum ProgressBarStyles implements StyleEnum {
+	enum ProgressBarStyles implements StyleEnum {
 		PRIMARY, SUCCESS, INFO, WARNING, DANGER;
 	}
-	public enum ValidationStyles implements StyleEnum {
+	enum ValidationStyles implements StyleEnum {
 		SUCCESS, WARNING, ERROR;
 	}
 	
-	public enum IconTypes implements StyleEnum {
+	enum IconTypes implements StyleEnum {
 		
 		GLASS, MUSIC, SEARCH, ENVELOPE_O, HEART, STAR, STAR_O, USER, FILM, TH_LARGE, TH, TH_LIST, CHECK, REMOVE, CLOSE, TIMES, SEARCH_PLUS, SEARCH_MINUS, POWER_OFF, 
 		SIGNAL, GEAR, COG, TRASH_O, HOME, FILE_O, CLOCK_O, ROAD, DOWNLOAD, ARROW_CIRCLE_O_DOWN, ARROW_CIRCLE_O_UP, INBOX, PLAY_CIRCLE_O, ROTATE_RIGHT, REPEAT, REFRESH, 
