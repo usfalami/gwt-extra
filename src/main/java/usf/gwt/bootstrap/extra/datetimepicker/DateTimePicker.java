@@ -2,6 +2,7 @@ package usf.gwt.bootstrap.extra.datetimepicker;
 
 import java.util.Date;
 
+import usf.gwt.bootstrap.extra.datetimepicker.core.HasValueChangeHandlers;
 import usf.gwt.bootstrap.ui.js.JavaScriptArray;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
@@ -9,7 +10,6 @@ import usf.gwt.bootstrap.ui.widget.TextBox;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -288,19 +288,13 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	
     @Override
     public final HandlerRegistration addValueChangeHandler(ValueChangeHandler<Date> handler) {
-    	JqueryEvents.registerEvent(getElement(), "dp.change", onChange(), false);
+    	JqueryEvents.attachChangeHandler(this);
     	return addHandler(handler, ValueChangeEvent.getType());
     }
-    protected final void fireChange() {
-    	ValueChangeEvent.fire(this, getDate());
+    @Override
+    public final void fireChangeEvent() {
+    	ValueChangeEvent.fire(DateTimePicker.this, getDate());
     }
-    
-	protected final native JavaScriptObject onChange() /*-{
-		var that = this;
-		return function(e) {
-			that.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::fireChange()();
-		};
-	}-*/;
 	
 	@Deprecated
     public void setFocus(boolean focused) {
