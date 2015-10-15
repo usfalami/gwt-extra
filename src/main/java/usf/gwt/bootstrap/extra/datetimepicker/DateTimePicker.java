@@ -2,7 +2,7 @@ package usf.gwt.bootstrap.extra.datetimepicker;
 
 import java.util.Date;
 
-import usf.gwt.bootstrap.extra.datetimepicker.core.HasValueChangeHandlers;
+import usf.gwt.bootstrap.ui.event.HasValueChangeHandlers;
 import usf.gwt.bootstrap.ui.js.JavaScriptArray;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;

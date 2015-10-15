@@ -2,7 +2,7 @@ package usf.gwt.bootstrap.ui.js;
 
 import java.util.Date;
 
-import usf.gwt.bootstrap.extra.datetimepicker.core.HasValueChangeHandlers;
+import usf.gwt.bootstrap.ui.event.HasValueChangeHandlers;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -48,7 +48,7 @@ public final class JqueryEvents {
     
     public static final native void attachChangeHandler(final HasValueChangeHandlers<Date> v)/*-{
     	var e = v.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()();
-    	var f = function(e) {v.@usf.gwt.bootstrap.extra.datetimepicker.core.HasValueChangeHandlers::fireChangeEvent()();}
+    	var f = function(e) {v.@usf.gwt.bootstrap.ui.event.HasValueChangeHandlers::fireChangeEvent()();}
     	@usf.gwt.bootstrap.ui.js.JqueryEvents::registerEvent(Lcom/google/gwt/dom/client/Element;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Z)
     		(e, "dp.change", f, false);
 	}-*/;
