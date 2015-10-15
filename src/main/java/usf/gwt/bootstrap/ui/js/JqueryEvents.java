@@ -3,6 +3,8 @@ package usf.gwt.bootstrap.ui.js;
 import java.util.Date;
 
 import usf.gwt.bootstrap.ui.event.HasValueChangeHandlers;
+import usf.gwt.bootstrap.ui.event.HideEvent.HasHideHandlers;
+import usf.gwt.bootstrap.ui.event.ShowEvent.HasShowHandlers;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -46,11 +48,29 @@ public final class JqueryEvents {
     	f.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()()._submit=true;
     }-*/;
     
-    public static final native void attachChangeHandler(final HasValueChangeHandlers<Date> v)/*-{
-    	var e = v.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()();
-    	var f = function(e) {v.@usf.gwt.bootstrap.ui.event.HasValueChangeHandlers::fireChangeEvent()();}
+    public static final native void attachChangeHandler(final HasValueChangeHandlers<Date> h)/*-{
+    	var e = h.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()();
+    	var f = function(e) {h.@usf.gwt.bootstrap.ui.event.HasValueChangeHandlers::fireChangeEvent()();}
     	@usf.gwt.bootstrap.ui.js.JqueryEvents::registerEvent(Lcom/google/gwt/dom/client/Element;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Z)
     		(e, "dp.change", f, false);
+	}-*/;
+    public static final native void attachHideHandler(final HasHideHandlers h)/*-{
+		var e = h.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()();
+		var f = function(e) {
+			h.@com.google.gwt.user.client.ui.Widget::fireEvent(Lcom/google/gwt/event/shared/GwtEvent;)
+				(@usf.gwt.bootstrap.ui.event.HideEvent::new()());
+		}
+		@usf.gwt.bootstrap.ui.js.JqueryEvents::registerEvent(Lcom/google/gwt/dom/client/Element;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Z)
+			(e, "dp.hide", f, false);
+	}-*/;
+    public static final native void attachShowHandler(final HasShowHandlers h)/*-{
+		var e = h.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()();
+		var f = function(e) {
+			h.@com.google.gwt.user.client.ui.Widget::fireEvent(Lcom/google/gwt/event/shared/GwtEvent;)
+				(@usf.gwt.bootstrap.ui.event.ShowEvent::new()());
+		}
+		@usf.gwt.bootstrap.ui.js.JqueryEvents::registerEvent(Lcom/google/gwt/dom/client/Element;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Z)
+			(e, "dp.show", f, false);
 	}-*/;
 
     public static final native int registerEvent(Element w, String event, JavaScriptObject funct, boolean append)/*-{

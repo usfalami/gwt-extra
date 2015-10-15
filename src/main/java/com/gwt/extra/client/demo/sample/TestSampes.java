@@ -8,6 +8,10 @@ import usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker;
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerDayOfWeek;
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerFormat;
 import usf.gwt.bootstrap.ui.core.BrowserConsole;
+import usf.gwt.bootstrap.ui.event.HideEvent;
+import usf.gwt.bootstrap.ui.event.HideEvent.HideHandler;
+import usf.gwt.bootstrap.ui.event.ShowEvent;
+import usf.gwt.bootstrap.ui.event.ShowEvent.ShowHandler;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.ButtonStyles;
 import usf.gwt.bootstrap.ui.widget.Button;
@@ -62,12 +66,29 @@ public class TestSampes extends Composite {
 		    	BrowserConsole.log("Event 1 : " + arg0.getValue());
 			}
 		});
-		pick.addValueChangeHandler(new ValueChangeHandler<Date>() {
+
+		Button weekViewButton = new Button("WeekView");
+		weekViewButton.addClickHandler(new ClickHandler() {
 			@Override
-			public void onValueChange(ValueChangeEvent<Date> arg0) {
-		    	BrowserConsole.log("Event 2 : " + arg0.getValue());
+			public void onClick(ClickEvent arg0) {
+				pick.setFormat(DateTimePickerFormat.SS_MMMM);
+				pick.setShowWeeksNumber(true);
+				pick.addShowHandler(new ShowHandler() {
+					@Override
+					public void onShow(ShowEvent handler) {
+						pick.setFormat(DateTimePickerFormat.DD_MM_YYYY);
+					}
+				});
+				pick.addHideHandler(new HideHandler() {
+					@Override
+					public void onHide(HideEvent handler) {
+						pick.setFormat(DateTimePickerFormat.SS_MMMM);
+					}
+				});
 			}
 		});
+		
+		main.add(weekViewButton);
 
 //		
 //		pick.setDisabledDates(df.parse("30/10/2015"), new Date());

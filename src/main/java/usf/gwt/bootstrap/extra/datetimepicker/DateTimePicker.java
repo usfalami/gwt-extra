@@ -3,6 +3,12 @@ package usf.gwt.bootstrap.extra.datetimepicker;
 import java.util.Date;
 
 import usf.gwt.bootstrap.ui.event.HasValueChangeHandlers;
+import usf.gwt.bootstrap.ui.event.HideEvent;
+import usf.gwt.bootstrap.ui.event.HideEvent.HasHideHandlers;
+import usf.gwt.bootstrap.ui.event.HideEvent.HideHandler;
+import usf.gwt.bootstrap.ui.event.ShowEvent;
+import usf.gwt.bootstrap.ui.event.ShowEvent.HasShowHandlers;
+import usf.gwt.bootstrap.ui.event.ShowEvent.ShowHandler;
 import usf.gwt.bootstrap.ui.js.JavaScriptArray;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
@@ -22,7 +28,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  *
  */
 
-public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date> {
+public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date>, HasHideHandlers, HasShowHandlers {
 	
     protected static final String DATE_TIME_PICKER = "DateTimePicker";
     protected static final JavaScriptOption DEFAULT_OPTION = JavaScriptOption.createOption();
@@ -54,6 +60,11 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	public final native String getFormatAsString() /*-{
 		var f = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().format();
 		return f ? f : null; //f can be false if no format has been set
+	}-*/;
+	
+	
+	public final native JavaScriptObject setViewModeAsString(String viewMode) /*-{
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().viewMode(viewMode ? viewMode : false);
 	}-*/;
 
 	public final native void setDate(Date date) /*-{
@@ -190,7 +201,7 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	public final native void setOption(JavaScriptOption option) /*-{
 		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options(option);
 	}-*/;
-	public final native JavaScriptObject getOption() /*-{
+	public final native JavaScriptOption getOption() /*-{
 		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options();
 	}-*/;
 	
@@ -291,6 +302,17 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
     	JqueryEvents.attachChangeHandler(this);
     	return addHandler(handler, ValueChangeEvent.getType());
     }
+    @Override
+    public HandlerRegistration addHideHandler(HideHandler handler) {
+    	JqueryEvents.attachHideHandler(this);
+    	return addHandler(handler, HideEvent.type);
+    }
+    @Override
+    public HandlerRegistration addShowHandler(ShowHandler handler) {
+    	JqueryEvents.attachShowHandler(this);
+    	return addHandler(handler, ShowEvent.type);
+    }
+    
     @Override
     public final void fireChangeEvent() {
     	ValueChangeEvent.fire(DateTimePicker.this, getDate());
