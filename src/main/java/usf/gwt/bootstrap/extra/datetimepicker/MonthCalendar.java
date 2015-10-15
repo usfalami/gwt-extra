@@ -126,9 +126,9 @@ public class MonthCalendar extends BootstrapWidget implements HasClickHandlers {
         return td;
     }
     protected static Element createTREmptyElement() {
-    	TableCellElement tr = Document.get().createTDElement();
-    	tr.addClassName("day");
-        return tr;
+    	TableCellElement td = Document.get().createTDElement();
+    	td.addClassName("day");
+        return td;
     }
 
     protected TableElement getTable() {
