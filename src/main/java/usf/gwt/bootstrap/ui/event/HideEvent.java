@@ -14,7 +14,7 @@ public class HideEvent extends GwtEvent<HideHandler> {
     }
     
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<HideHandler> getAssociatedType() {
+	public Type<HideHandler> getAssociatedType() {
 		return type;
 	}
 	@Override
