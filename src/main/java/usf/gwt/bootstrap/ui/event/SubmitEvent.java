@@ -18,11 +18,11 @@ public class SubmitEvent extends GwtEvent<SubmitHandler> implements HasNativeEve
     	this.nativeEvent = event;
     }
     public void cancel() {
-    	cancel(nativeEvent);
+    	nativeEvent.preventDefault();
 	}
     
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<SubmitHandler> getAssociatedType() {
+	public Type<SubmitHandler> getAssociatedType() {
 		return type;
 	}
 	@Override
@@ -31,15 +31,12 @@ public class SubmitEvent extends GwtEvent<SubmitHandler> implements HasNativeEve
 	}
 	
 	public static interface SubmitHandler extends EventHandler {
-		public void onSubmit(SubmitEvent handler);
+		void onSubmit(SubmitEvent handler);
 	}
 	public static interface HasSubmitHandler extends EventHandler {
-		public HandlerRegistration addSubmitHandler(SubmitHandler handler);
+		HandlerRegistration addSubmitHandler(SubmitHandler handler);
 	}
 	
-	protected static final native void cancel(NativeEvent e) /*-{
-		e.preventDefault();
-	}-*/;
 	@Override
 	public NativeEvent getNativeEvent() {
 		return nativeEvent;

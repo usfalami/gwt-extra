@@ -11,7 +11,7 @@ public class SubmitCompleteEvent extends GwtEvent<SubmitCompleteHandler> {
     public static final Type<SubmitCompleteHandler> type = new Type<SubmitCompleteHandler>();
     
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<SubmitCompleteHandler> getAssociatedType() {
+	public Type<SubmitCompleteHandler> getAssociatedType() {
 		return type;
 	}
 	@Override
@@ -20,10 +20,10 @@ public class SubmitCompleteEvent extends GwtEvent<SubmitCompleteHandler> {
 	}
 	
 	public static interface SubmitCompleteHandler extends EventHandler {
-		public void onSubmitComplete(SubmitCompleteEvent handler);
+		void onSubmitComplete(SubmitCompleteEvent handler);
 	}
 	public static interface HasSubmitCompleteHandler extends EventHandler {
-		public HandlerRegistration addSubmitCompleteHandler(SubmitCompleteHandler handler);
+		HandlerRegistration addSubmitCompleteHandler(SubmitCompleteHandler handler);
 	}
 
 }

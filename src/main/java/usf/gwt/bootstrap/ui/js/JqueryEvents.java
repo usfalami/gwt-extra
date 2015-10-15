@@ -12,7 +12,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 
-public final class JqueryEvents {
+public class JqueryEvents {
 	
     public static final native void addDomClickHandler(final HasClickHandlers w)/*-{
 		if(w.@usf.gwt.bootstrap.ui.widget.Bootstrap::getBaseElement()()._hasClick) return;

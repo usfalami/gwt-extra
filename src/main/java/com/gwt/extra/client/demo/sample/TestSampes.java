@@ -171,7 +171,7 @@ public class TestSampes extends Composite {
 				pick.setShowCloseButton(v);
 				pick.setShowTodayButton(v);
 				pick.show();
-				log("control buttons are " + ((pick.getShowClearButton() && pick.getShowCloseButton() && pick.getShowTodayButton()) ? "shown" : "hidden"));
+				log("control buttons are " + (pick.getShowClearButton() && pick.getShowCloseButton() && pick.getShowTodayButton() ? "shown" : "hidden"));
 			}
 		};
 		

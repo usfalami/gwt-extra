@@ -23,10 +23,10 @@ public class HideEvent extends GwtEvent<HideHandler> {
 	}
 	
 	public static interface HideHandler extends EventHandler {
-		public void onHide(HideEvent handler);
+		void onHide(HideEvent handler);
 	}
 	public static interface HasHideHandlers extends EventHandler {
-		public HandlerRegistration addHideHandler(HideHandler handler);
+		HandlerRegistration addHideHandler(HideHandler handler);
 	}
 
 }

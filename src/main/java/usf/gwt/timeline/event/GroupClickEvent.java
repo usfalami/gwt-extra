@@ -30,9 +30,9 @@ public class GroupClickEvent extends GwtEvent<GroupClickHandler> {
 	}
 	
 	public static interface GroupClickHandler extends EventHandler {
-		public void onItemSelectionChange(GroupClickEvent event);
+		void onItemSelectionChange(GroupClickEvent event);
 	}
 	public static interface HasGroupClickHandler {
-		public HandlerRegistration addGroupClickHandler(GroupClickHandler handler);
+		HandlerRegistration addGroupClickHandler(GroupClickHandler handler);
 	}
 }

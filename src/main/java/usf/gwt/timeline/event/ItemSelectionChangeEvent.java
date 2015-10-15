@@ -31,9 +31,9 @@ public class ItemSelectionChangeEvent extends GwtEvent<ItemSelectionChangeHandle
 	}
 	
 	public static interface ItemSelectionChangeHandler extends EventHandler {
-		public void onItemSelectionChange(ItemSelectionChangeEvent event);
+		void onItemSelectionChange(ItemSelectionChangeEvent event);
 	}
 	public static interface HasItemSelectionChangeHandler {
-		public HandlerRegistration addItemSelectionChangeHandler(ItemSelectionChangeHandler handler);
+		HandlerRegistration addItemSelectionChangeHandler(ItemSelectionChangeHandler handler);
 	}
 }

@@ -11,7 +11,7 @@ public interface DataServiceAsync {
 	/**
 	 * Utility class for simplifying access to the instance of async service.
 	 */
-	public static class Util {
+	class Util {
 		private static DataServiceAsync instance;
 		public static DataServiceAsync getInstance(){
 			if (instance == null) {

@@ -23,10 +23,10 @@ public class ShowEvent extends GwtEvent<ShowHandler> {
 	}
 	
 	public static interface ShowHandler extends EventHandler {
-		public void onShow(ShowEvent handler);
+		void onShow(ShowEvent handler);
 	}
 	public static interface HasShowHandlers extends EventHandler {
-		public HandlerRegistration addShowHandler(ShowHandler handler);
+		HandlerRegistration addShowHandler(ShowHandler handler);
 	}
 
 }

@@ -2,8 +2,6 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.AlignementStyles;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.AttachWidget;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.ComplexPanel;
