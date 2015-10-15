@@ -4,7 +4,7 @@ import java.util.Date;
 
 import usf.gwt.timeline.JavaScriptOption;
 
-public final class TimeLineEntry extends JavaScriptOption implements TimeLineItem {
+public class TimeLineEntry extends JavaScriptOption implements TimeLineItem {
 
     protected TimeLineEntry() {
     	

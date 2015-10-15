@@ -61,10 +61,6 @@ public class TimeLine extends Widget implements HasItemSelectionChangeHandler,
 	}
 	
 	@Override
-	protected void onLoad() {
-		super.onLoad();
-	}
-	@Override
 	protected void onUnload() {
 		super.onUnload();
 		removeAllPopup();

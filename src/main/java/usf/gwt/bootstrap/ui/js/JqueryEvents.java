@@ -68,7 +68,7 @@ public class JqueryEvents {
 		var f = function(e) {
 			h.@com.google.gwt.user.client.ui.Widget::fireEvent(Lcom/google/gwt/event/shared/GwtEvent;)
 				(@usf.gwt.bootstrap.ui.event.ShowEvent::new()());
-		}
+		};
 		@usf.gwt.bootstrap.ui.js.JqueryEvents::registerEvent(Lcom/google/gwt/dom/client/Element;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Z)
 			(e, "dp.show", f, false);
 	}-*/;

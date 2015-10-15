@@ -5,9 +5,6 @@ import com.google.gwt.core.client.JsDate;
 
 public class JavaScriptOption extends JavaScriptObject {
 
-	protected JavaScriptOption() {
-	}
-
 	public final native JavaScriptOption set(final String name, final String value) /*-{
 		this[name] = value;
 		return this;
@@ -56,4 +53,8 @@ public class JavaScriptOption extends JavaScriptObject {
 	public static final native JavaScriptOption createOption() /*-{
 		return new $wnd.Object(); // return {}
 	}-*/;
+	
+	protected JavaScriptOption() {
+	}
+
 }

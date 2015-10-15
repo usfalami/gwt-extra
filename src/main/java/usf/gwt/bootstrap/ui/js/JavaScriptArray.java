@@ -3,12 +3,8 @@ package usf.gwt.bootstrap.ui.js;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsDate;
 
-public final class JavaScriptArray extends JavaScriptObject {
-	
-	protected JavaScriptArray() {
-		
-	}
-	
+public class JavaScriptArray extends JavaScriptObject {
+
 	public final native JavaScriptArray append(int value) /*-{
 		this[this.length] = value;
 		return this;
@@ -17,7 +13,6 @@ public final class JavaScriptArray extends JavaScriptObject {
 		this[this.length] = value;
 		return this;
 	}-*/;
-	
 	
 	public final native int getInteger(final int index) /*-{
 		return this[index];
@@ -32,7 +27,6 @@ public final class JavaScriptArray extends JavaScriptObject {
 		return this[index];
 	}-*/;
 
-
 	public final native int length() /*-{
 		return this.length;
 	}-*/;
@@ -43,5 +37,9 @@ public final class JavaScriptArray extends JavaScriptObject {
     public static final native JavaScriptArray createArray(int size) /*-{
 		return new $wnd.Array(size);
 	}-*/;
+    
+	protected JavaScriptArray() {
+		
+	}
 
 }
