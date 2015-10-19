@@ -2,3 +2,7 @@
 /target/
 /.gwt/
 /.settings/
+/www-test/
+/gwt-unitCache/
+/src/main/gwt-unitCache/
+/war
