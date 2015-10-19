@@ -67,29 +67,6 @@ public class TestSampes extends Composite {
 			}
 		});
 
-		Button weekViewButton = new Button("WeekView");
-		weekViewButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent arg0) {
-				pick.setFormat(DateTimePickerFormat.SS_MMMM);
-				pick.setShowWeeksNumber(true);
-				pick.addShowHandler(new ShowHandler() {
-					@Override
-					public void onShow(ShowEvent handler) {
-						pick.setFormat(DateTimePickerFormat.DD_MM_YYYY);
-					}
-				});
-				pick.addHideHandler(new HideHandler() {
-					@Override
-					public void onHide(HideEvent handler) {
-						pick.setFormat(DateTimePickerFormat.SS_MMMM);
-					}
-				});
-			}
-		});
-		
-		main.add(weekViewButton);
-
 //		
 //		pick.setDisabledDates(df.parse("30/10/2015"), new Date());
 //		

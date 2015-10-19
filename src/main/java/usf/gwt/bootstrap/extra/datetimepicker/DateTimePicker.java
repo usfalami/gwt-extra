@@ -3,12 +3,6 @@ package usf.gwt.bootstrap.extra.datetimepicker;
 import java.util.Date;
 
 import usf.gwt.bootstrap.ui.event.HasValueChangeHandlers;
-import usf.gwt.bootstrap.ui.event.HideEvent;
-import usf.gwt.bootstrap.ui.event.HideEvent.HasHideHandlers;
-import usf.gwt.bootstrap.ui.event.HideEvent.HideHandler;
-import usf.gwt.bootstrap.ui.event.ShowEvent;
-import usf.gwt.bootstrap.ui.event.ShowEvent.HasShowHandlers;
-import usf.gwt.bootstrap.ui.event.ShowEvent.ShowHandler;
 import usf.gwt.bootstrap.ui.js.JavaScriptArray;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
@@ -28,22 +22,17 @@ import com.google.gwt.event.shared.HandlerRegistration;
  *
  */
 
-public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date>, HasHideHandlers, HasShowHandlers {
+public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Date> {
 	
     protected static final String DATE_TIME_PICKER = "DateTimePicker";
     protected static final JavaScriptOption DEFAULT_OPTION = JavaScriptOption.createOption();
-
+    
 	public DateTimePicker() {
-		this(DEFAULT_OPTION);
-	}
-	public DateTimePicker(JavaScriptOption option) {
-		setOption(option);
-		setFormat(DateTimePickerFormat.DD_MM_YYYY);
+		setAutocomplete(false);
 	}
 	
 	public void setFormat(DateTimePickerFormat format) {
 		setFormatAsString(format == null ? null : format.getPattern());
-		setPlaceholder(format == null ? "" : format.getLabel());
 	}
 	public DateTimePickerFormat getFormat() {
 		String f = getFormatAsString();
@@ -61,11 +50,6 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 		var f = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().format();
 		return f ? f : null; //f can be false if no format has been set
 	}-*/;
-	
-	
-	public final native JavaScriptObject setViewModeAsString(String viewMode) /*-{
-		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().viewMode(viewMode ? viewMode : false);
-	}-*/;
 
 	public final native void setDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
@@ -73,7 +57,7 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	}-*/;
 	public final native Date getDate() /*-{
 		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date();
-		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null;
+		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(Lcom/google/gwt/core/client/JavaScriptObject;)(d) : null;  // d can be a moment or false
 	}-*/;
 
 	public final native void setDefaultDate(Date date) /*-{
@@ -82,7 +66,7 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	}-*/;
 	public final native Date getDefaultDate() /*-{
 		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().defaultDate();
-		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null;  // d can be false
+		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(Lcom/google/gwt/core/client/JavaScriptObject;)(d) : null;  // d can be a moment or false
 	}-*/;
 	
 	public final native void setMinDate(Date date) /*-{
@@ -197,11 +181,11 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	public final native boolean getSideBySide() /*-{
 		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().sideBySide();
 	}-*/;
-	
+
 	public final native void setOption(JavaScriptOption option) /*-{
 		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options(option);
 	}-*/;
-	public final native JavaScriptOption getOption() /*-{
+	public final native JavaScriptObject getOption() /*-{
 		return this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().options();
 	}-*/;
 	
@@ -248,7 +232,9 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	
 	protected final native JavaScriptObject picker() /*-{
 		var e = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::getBaseElement()();
-		return $wnd.$(e).datetimepicker().data("DateTimePicker");
+		var o = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::getDefaultOption()();
+		$wnd.console.log(o);
+		return $wnd.$(e).datetimepicker(o).data("DateTimePicker");
 	}-*/;
 	
 	public static JavaScriptOption getDefaultOption() {
@@ -267,6 +253,10 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	protected static Date toDate(JsDate date) {
 		return new Date((long)date.getTime());
 	}
+	protected static native Date toDate(JavaScriptObject moment) /*-{
+		return @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(moment.toDate().getTime());
+	}-*/;
+	
 	
 	protected static JavaScriptArray toJsArray(DateTimePickerDayOfWeek... days) {
 		if(days == null) return null;
@@ -303,36 +293,8 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
     	return addHandler(handler, ValueChangeEvent.getType());
     }
     @Override
-    public HandlerRegistration addHideHandler(HideHandler handler) {
-    	JqueryEvents.attachHideHandler(this);
-    	return addHandler(handler, HideEvent.type);
-    }
-    @Override
-    public HandlerRegistration addShowHandler(ShowHandler handler) {
-    	JqueryEvents.attachShowHandler(this);
-    	return addHandler(handler, ShowEvent.type);
-    }
-    
-    @Override
     public final void fireChangeEvent() {
     	ValueChangeEvent.fire(DateTimePicker.this, getDate());
     }
-	
-	@Deprecated
-    public void setFocus(boolean focused) {
-        if (focused) {
-            getBaseElement().focus();
-        } else {
-        	getBaseElement().blur();
-        }
-    }
-	@Deprecated
-	public String getValueString() {
-		return getText();
-	}
-	@Deprecated
-	public boolean isEmpty() {
-		String text = getText();
-		return text == null ? false : text.isEmpty();
-	}
+
 }
