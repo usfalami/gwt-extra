@@ -53,15 +53,15 @@
 		
 		<b:GridRow>
 			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
-				<b:IconButton text="Button" style="SUCCESS" icon="EURO" />
-				<b:IconButton text="Button" style="WARNING" icon="FLASH" />
-				<b:IconButton text="Button" style="DANGER" icon="PHONE" />
+				<b:Button text="Button" style="SUCCESS" icon="EURO" />
+				<b:Button text="Button" style="WARNING" icon="FLASH" />
+				<b:Button text="Button" style="DANGER" icon="PHONE" />
 			</b:GridCol>
 			<b:GridCol size="MD_8">
 				<t:XmlCode>
-					<IconButton text="Button" style="SUCCESS" icon="EURO" />
-					<IconButton text="Button" style="WARNING" icon="FLASH" />
-					<IconButton text="Button" style="DANGER" icon="PHONE" />
+					<Button text="Button" style="SUCCESS" icon="EURO" />
+					<Button text="Button" style="WARNING" icon="FLASH" />
+					<Button text="Button" style="DANGER" icon="PHONE" />
 				</t:XmlCode>
 			</b:GridCol>
 		</b:GridRow>

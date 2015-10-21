@@ -1,6 +1,11 @@
 package usf.gwt.bootstrap.ui.widget;
 
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.js.JqueryUtils;
+
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 import com.google.gwt.user.client.ui.IsWidget;
 
@@ -28,6 +33,36 @@ public interface Bootstrap extends IsWidget {
     	void setIcon(T icon);
     	T getIcon();
     	Element getIconElement();
+    	class Utils {
+    		public static SpanElement create(){
+    			SpanElement s = Document.get().createSpanElement();
+    			s.addClassName(Constants.BOOTSTRAP_ICON_PREFIX);
+    			s.setInnerHTML("&nbsp;&nbsp;");
+    			return s;
+    		}
+    		public static void setIcon(HasIcon<?> w, IconTypes icon){
+    			JqueryUtils.switchClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, icon);
+    		}
+    		public static IconTypes getIcon(HasIcon<?> w) {
+    			return w.getIconElement() == null ? null : JqueryUtils.hasClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, IconTypes.class);
+    		}
+    	}
+    }
+    interface HasText {
+    	void setText(String text);
+    	String getText();    	
+    	Text getTextElement();
+    	class Utils {
+    		public static Text create(String text){
+    			return Document.get().createTextNode(text);
+    		}
+    		public static void setText(HasText w, String text){
+    			w.getTextElement().setNodeValue(text);
+    		}
+    		public static String getText(HasText w) {
+    			return w.getTextElement().getNodeValue();
+    		}
+    	}
     }
     interface HasType<T extends StyleEnum> {
     	void setType(T type);
@@ -35,11 +70,6 @@ public interface Bootstrap extends IsWidget {
     }
     interface HasState<T extends StyleEnum> {
     	void setState(T state);
-    }
-    interface HasText {
-    	void setText(String text);
-    	String getText();    	
-    	Text getTextElement();
     }
         
     enum AlertStyles implements StyleEnum {
