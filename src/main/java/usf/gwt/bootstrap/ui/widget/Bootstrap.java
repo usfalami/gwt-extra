@@ -36,7 +36,7 @@ public interface Bootstrap extends IsWidget {
     		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> void setStyle(E w, T style, String... excludes){
     			JqueryUtils.switchClass(w.getElement(), w.getPrimaryStyle(), style, excludes);
     		}
-    		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> T getStyle(E w, Class<T> clazz, String excludes) {
+    		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> T getStyle(E w, Class<T> clazz, String... excludes) {
     			return w.getElement() == null ? null : 
     					JqueryUtils.hasClass(w.getElement(), w.getPrimaryStyle(), clazz, excludes);
     		}
