@@ -13,14 +13,15 @@ public class Nav extends List implements HasStyle<NavStyles> {
     	getContainerElement().addClassName(Constants.BOOTSTRAP_NAV_PREFIX);
     	getContainerElement().addClassName(Constants.GWT_BOOTSTRAP_NAV);
     }
-    @Override
-    public void setStyle(NavStyles style) {
-    	JqueryUtils.switchClass(getContainerElement(), Constants.BOOTSTRAP_NAV_PREFIX, style, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+	@Override
+	public NavStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, NavStyles.class, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
 	}
-    @Override
-    public NavStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, NavStyles.class, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
-    }
+	@Override
+	public void setStyle(NavStyles style) {
+		HasStyle.Utils.setStyle(this, style, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+	}
+	
     public void setStacked(boolean stack){
     	JqueryUtils.switchClass(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, stack);
     }
@@ -31,6 +32,11 @@ public class Nav extends List implements HasStyle<NavStyles> {
     public void setActiveUnique() {
     	JqueryUtils.activateUnique(getElement(), false);
 	}
+    
+    @Override
+    public String getPrimaryStyle() {
+    	return Constants.BOOTSTRAP_NAV_PREFIX;
+    }
 	
     //	$('li.gwt-bootstrap-nav-item > a', e).eq(0).click();
 }

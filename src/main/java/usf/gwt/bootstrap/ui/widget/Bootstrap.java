@@ -8,6 +8,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 public interface Bootstrap extends IsWidget {
 	
@@ -26,13 +27,27 @@ public interface Bootstrap extends IsWidget {
 	interface StyleEnum {}
 	
 	 interface HasStyle<T extends Enum<T> & StyleEnum> {
-    	void setStyle(T style);
+    	
+		 void setStyle(T style);
     	T getStyle();
+    	String getPrimaryStyle();
+    	
+    	class Utils {
+    		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> void setStyle(E w, T style, String... excludes){
+    			JqueryUtils.switchClass(w.getElement(), w.getPrimaryStyle(), style, excludes);
+    		}
+    		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> T getStyle(E w, Class<T> clazz, String excludes) {
+    			return w.getElement() == null ? null : 
+    					JqueryUtils.hasClass(w.getElement(), w.getPrimaryStyle(), clazz, excludes);
+    		}
+    	}
     }
     interface HasIcon<T extends Enum<T> & StyleEnum> {
+    	
     	void setIcon(T icon);
     	T getIcon();
     	Element getIconElement();
+    	
     	class Utils {
     		public static SpanElement create(){
     			SpanElement s = Document.get().createSpanElement();

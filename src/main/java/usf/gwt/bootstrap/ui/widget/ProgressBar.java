@@ -30,16 +30,14 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
 		getElement().addClassName(Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX);
 	}
 
-    @Override
-    public ProgressBarStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX, 
-    			ProgressBarStyles.class, Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE);
-    }
-    @Override
-    public void setStyle(ProgressBarStyles style) {
-    	JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX, style, 
-    			Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE);
-    }
+	@Override
+	public ProgressBarStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, ProgressBarStyles.class);
+	}
+	@Override
+	public void setStyle(ProgressBarStyles style) {
+		HasStyle.Utils.setStyle(this, style);
+	}
     
     public void setText(String text) {
     	getTextElement().setNodeValue(text);
@@ -70,4 +68,9 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
     	return getBaseElement().getFirstChild().cast();
     }
     
+    
+    @Override
+    public String getPrimaryStyle() {
+    	return Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX;
+    }
 }

@@ -5,7 +5,6 @@ import usf.gwt.bootstrap.ui.core.Constants;
 import usf.gwt.bootstrap.ui.event.SubmitEvent;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.FormStyles;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
 
@@ -33,11 +32,11 @@ public class Form extends BootstrapContainer implements HasStyle<FormStyles>, Ha
 
 	@Override
 	public FormStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_FORM_PREFIX, FormStyles.class);
+		return HasStyle.Utils.getStyle(this, FormStyles.class);
 	}
 	@Override
 	public void setStyle(FormStyles style) {
-    	JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_FORM_PREFIX, style);
+		HasStyle.Utils.setStyle(this, style);
 	}
     
     @Override
@@ -50,4 +49,11 @@ public class Form extends BootstrapContainer implements HasStyle<FormStyles>, Ha
     public void insert(Widget child, int index) {
     	super.insert(child, getElement(), index, true);
     }
+    
+    @Override
+    public String getPrimaryStyle() {
+    	return Constants.BOOTSTRAP_FORM_PREFIX;
+    }
+    
+    
 }

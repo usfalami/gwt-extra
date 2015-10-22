@@ -1,7 +1,6 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.ValidationStyles;
 
@@ -15,12 +14,17 @@ public class FormGroup extends GridCol implements HasStyle<ValidationStyles> {
 	}
 	
 	@Override
-	public void setStyle(ValidationStyles style) {
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_VALIDATION_PREFIX, style);
+	public ValidationStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, ValidationStyles.class);
 	}
 	@Override
-	public ValidationStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_VALIDATION_PREFIX, ValidationStyles.class);
+	public void setStyle(ValidationStyles style) {
+		HasStyle.Utils.setStyle(this, style);
+	}
+	
+	@Override
+	public String getPrimaryStyle() {
+		return Constants.BOOTSTRAP_VALIDATION_PREFIX;
 	}
 	
 }

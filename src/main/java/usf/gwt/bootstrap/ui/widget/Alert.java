@@ -2,7 +2,6 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.AlertStyles;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
 
@@ -31,13 +30,13 @@ public class Alert extends BootstrapContainer implements HasStyle<AlertStyles> {
         setDismissable(true);
     }
     
-    @Override
-    public AlertStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_ALERT_PREFIX, AlertStyles.class);
-    }
+	@Override
+	public AlertStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, AlertStyles.class);
+	}
 	@Override
 	public void setStyle(AlertStyles style) {
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_ALERT_PREFIX, style);
+		HasStyle.Utils.setStyle(this, style);
 	}
 
     public void setDismissable(boolean dismissable) {
@@ -48,5 +47,10 @@ public class Alert extends BootstrapContainer implements HasStyle<AlertStyles> {
         	getElement().removeClassName("alert-dismissable");
             close.removeFromParent();
         }
+    }
+    
+    @Override
+    public String getPrimaryStyle() {
+    	return Constants.BOOTSTRAP_ALERT_PREFIX;
     }
 }

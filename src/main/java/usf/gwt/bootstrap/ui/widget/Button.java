@@ -65,6 +65,14 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
 	public IconTypes getIcon() {
 		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
+	@Override
+	public ButtonStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, ButtonStyles.class);
+	}
+	@Override
+	public void setStyle(ButtonStyles style) {
+		HasStyle.Utils.setStyle(this, style);
+	}
     
     public void setType(ButtonTypes type) {
     	getElement().setAttribute(Constants.ATTRIB_TYPE, type.name().toLowerCase());
@@ -73,17 +81,7 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
     public ButtonTypes getType() {
     	return ButtonTypes.valueOf(getElement().getAttribute(Constants.ATTRIB_TYPE));
     }
-    
-    @Override
-    public ButtonStyles getStyle() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_BUTTON_PREFIX, ButtonStyles.class);
-    }
-    @Override
-    public void setStyle(ButtonStyles style) {
-    	JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_BUTTON_PREFIX, style);
-    }
 
-	
 	public void setLoadingText(String text){
 		getElement().setAttribute(Constants.ATTRIB_DATA_LOADING_TEXT, text);
 	}
@@ -109,5 +107,10 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
     public Text getTextElement() {
     	return text;
 	}
+    
+    @Override
+    public String getPrimaryStyle() {
+    	return Constants.BOOTSTRAP_BUTTON_PREFIX;
+    }
 
 }
