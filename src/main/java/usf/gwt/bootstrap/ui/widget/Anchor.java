@@ -31,13 +31,7 @@ public class Anchor extends BootstrapWidget implements
 		e.appendChild(text = HasText.Utils.create(""));
 		return e;
 	}
-	
-	public void setHref(String uri) {
-		getBaseElement().setHref(uri);
-	}
-	public String getHref() {
-		return getBaseElement().getHref();
-	}
+
 	@Override
 	public String getText() {
 		return HasText.Utils.getText(this);
@@ -55,6 +49,12 @@ public class Anchor extends BootstrapWidget implements
 	@Override
 	public IconTypes getIcon() {
 		return HasIcon.Utils.getIcon(this);
+	}
+	public void setHref(String uri) {
+		getBaseElement().setHref(uri);
+	}
+	public String getHref() {
+		return getBaseElement().getHref();
 	}
 	
 	@Override

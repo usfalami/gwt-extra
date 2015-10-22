@@ -25,11 +25,11 @@ public interface Bootstrap extends IsWidget {
 	
 	interface StyleEnum {}
 	
-	 interface HasStyle<T extends StyleEnum> {
+	 interface HasStyle<T extends Enum<T> & StyleEnum> {
     	void setStyle(T style);
     	T getStyle();
     }
-    interface HasIcon<T extends StyleEnum> {
+    interface HasIcon<T extends Enum<T> & StyleEnum> {
     	void setIcon(T icon);
     	T getIcon();
     	Element getIconElement();
@@ -64,11 +64,11 @@ public interface Bootstrap extends IsWidget {
     		}
     	}
     }
-    interface HasType<T extends StyleEnum> {
+    interface HasType<T extends Enum<T> & StyleEnum> {
     	void setType(T type);
     	T getType();
     }
-    interface HasState<T extends StyleEnum> {
+    interface HasState<T extends Enum<T> & StyleEnum> {
     	void setState(T state);
     }
         
