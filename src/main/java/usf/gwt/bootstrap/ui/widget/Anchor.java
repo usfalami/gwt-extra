@@ -48,7 +48,7 @@ public class Anchor extends BootstrapWidget implements
 	}
 	@Override
 	public IconTypes getIcon() {
-		return HasIcon.Utils.getIcon(this);
+		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
 	public void setHref(String uri) {
 		getBaseElement().setHref(uri);

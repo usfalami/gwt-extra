@@ -38,7 +38,7 @@ public class IconText extends BootstrapWidget implements HasIcon<IconTypes>, Inp
 	}
 	@Override
 	public IconTypes getIcon() {
-		return HasIcon.Utils.getIcon(this);
+		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
 	
 	@Override

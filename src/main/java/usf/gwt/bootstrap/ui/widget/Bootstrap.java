@@ -40,11 +40,12 @@ public interface Bootstrap extends IsWidget {
     			s.setInnerHTML("&nbsp;&nbsp;");
     			return s;
     		}
-    		public static void setIcon(HasIcon<?> w, IconTypes icon){
+    		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
     			JqueryUtils.switchClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, icon);
     		}
-    		public static IconTypes getIcon(HasIcon<?> w) {
-    			return w.getIconElement() == null ? null : JqueryUtils.hasClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, IconTypes.class);
+    		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
+    			return w.getIconElement() == null ? null : 
+    					JqueryUtils.hasClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, clazz);
     		}
     	}
     }

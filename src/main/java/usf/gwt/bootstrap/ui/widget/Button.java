@@ -63,7 +63,7 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
 	}
 	@Override
 	public IconTypes getIcon() {
-		return HasIcon.Utils.getIcon(this);
+		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
     
     public void setType(ButtonTypes type) {
