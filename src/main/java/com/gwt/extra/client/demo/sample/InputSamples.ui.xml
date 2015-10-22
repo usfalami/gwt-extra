@@ -68,14 +68,14 @@
 			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
 				<b:InputGroup>
 					<b:TextBox placeholder="Enter your text" />
-					<b:IconAnchor icon="SEARCH" />
+					<b:Anchor icon="SEARCH" />
 				</b:InputGroup>
 			</b:GridCol>
 			<b:GridCol size="MD_8">
 				<t:XmlCode>
 					<InputGroup>
 						<TextBox placeholder="Enter your text" />
-						<IconAnchor icon="SEARCH" />
+						<Anchor icon="SEARCH" />
 					</InputGroup>
 				</t:XmlCode>
 			</b:GridCol>
@@ -83,17 +83,17 @@
 		<b:GridRow>
 			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
 				<b:InputGroup>
-					<b:IconAnchor icon="CHEVRON_LEFT" />
+					<b:Anchor icon="CHEVRON_LEFT" />
 					<b:TextBox text="0" />
-					<b:IconAnchor icon="CHEVRON_RIGHT" />
+					<b:Anchor icon="CHEVRON_RIGHT" />
 				</b:InputGroup>
 			</b:GridCol>
 			<b:GridCol size="MD_8">
 				<t:XmlCode>
 					<InputGroup>
-						<IconAnchor icon="CHEVRON_LEFT" />
+						<Anchor icon="CHEVRON_LEFT" />
 						<TextBox text="0" />
-						<IconAnchor icon="CHEVRON_RIGHT" />
+						<Anchor icon="CHEVRON_RIGHT" />
 					</InputGroup>
 				</t:XmlCode>
 			</b:GridCol>

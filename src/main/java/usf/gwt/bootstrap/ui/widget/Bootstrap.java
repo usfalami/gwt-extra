@@ -1,6 +1,11 @@
 package usf.gwt.bootstrap.ui.widget;
 
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.js.JqueryUtils;
+
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 import com.google.gwt.user.client.ui.IsWidget;
 
@@ -20,26 +25,52 @@ public interface Bootstrap extends IsWidget {
 	
 	interface StyleEnum {}
 	
-	 interface HasStyle<T extends StyleEnum> {
+	 interface HasStyle<T extends Enum<T> & StyleEnum> {
     	void setStyle(T style);
     	T getStyle();
     }
-    interface HasIcon<T extends StyleEnum> {
+    interface HasIcon<T extends Enum<T> & StyleEnum> {
     	void setIcon(T icon);
     	T getIcon();
     	Element getIconElement();
-    }
-    interface HasType<T extends StyleEnum> {
-    	void setType(T type);
-    	T getType();
-    }
-    interface HasState<T extends StyleEnum> {
-    	void setState(T state);
+    	class Utils {
+    		public static SpanElement create(){
+    			SpanElement s = Document.get().createSpanElement();
+    			s.addClassName(Constants.BOOTSTRAP_ICON_PREFIX);
+    			s.setInnerHTML("&nbsp;&nbsp;");
+    			return s;
+    		}
+    		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
+    			JqueryUtils.switchClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, icon);
+    		}
+    		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
+    			return w.getIconElement() == null ? null : 
+    					JqueryUtils.hasClass(w.getIconElement(), Constants.BOOTSTRAP_ICON_PREFIX, clazz);
+    		}
+    	}
     }
     interface HasText {
     	void setText(String text);
     	String getText();    	
     	Text getTextElement();
+    	class Utils {
+    		public static Text create(String text){
+    			return Document.get().createTextNode(text);
+    		}
+    		public static void setText(HasText w, String text){
+    			w.getTextElement().setNodeValue(text);
+    		}
+    		public static String getText(HasText w) {
+    			return w.getTextElement().getNodeValue();
+    		}
+    	}
+    }
+    interface HasType<T extends Enum<T> & StyleEnum> {
+    	void setType(T type);
+    	T getType();
+    }
+    interface HasState<T extends Enum<T> & StyleEnum> {
+    	void setState(T state);
     }
         
     enum AlertStyles implements StyleEnum {
