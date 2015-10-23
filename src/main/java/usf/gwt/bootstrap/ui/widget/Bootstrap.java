@@ -24,7 +24,14 @@ public interface Bootstrap extends IsWidget {
 		Element getBaseElement();
 	}
 	
-	interface StyleEnum {}
+	interface BootstrapEnum {
+		
+	}
+	
+	interface StyleEnum extends BootstrapEnum {
+		String value();
+		String fullValue();
+	}
 	
 	 interface HasStyle<T extends Enum<T> & StyleEnum> {
     	
@@ -34,11 +41,19 @@ public interface Bootstrap extends IsWidget {
     	
     	class Utils {
     		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> void setStyle(E w, T style, String... excludes){
-    			JqueryUtils.switchClass(w.getElement(), w.getPrimaryStyle(), style, excludes);
+    			if(w.getElement() != null)
+    				JqueryUtils.switchClass(w.getElement(), w.getPrimaryStyle(), style, excludes);
     		}
     		public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> T getStyle(E w, Class<T> clazz, String... excludes) {
+    			
     			return w.getElement() == null ? null : 
     					JqueryUtils.hasClass(w.getElement(), w.getPrimaryStyle(), clazz, excludes);
+    		}
+    		public static boolean hasStyle(Element elem, String style){
+    	    	return JqueryUtils.hasClass(elem, style);
+    		}
+    		public static void setStyle(Element elem, String style, boolean set){
+    	    	JqueryUtils.switchClass(elem, style, set);
     		}
     	}
     }
@@ -89,52 +104,123 @@ public interface Bootstrap extends IsWidget {
     }
         
     enum AlertStyles implements StyleEnum {
-        SUCCESS, INFO, WARNING, DANGER;
+		
+    	NONE{@Override public String value() {return "";}}, 
+		SUCCESS, INFO, WARNING, DANGER;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_ALERT_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
     }
+    
     enum AlignementStyles implements StyleEnum {
-    	LEFT, RIGHT;
+		
+    	NONE{@Override public String value() {return "";}}, LEFT, RIGHT;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_ALIGN_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
     }
+    
     enum ButtonStyles implements StyleEnum {
-        DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
-    }   
-    enum ButtonStates implements StyleEnum {
-        RESET, LOADING;
-    }
-    enum ButtonTypes implements StyleEnum {
-        BUTTON, SUBMIT, RESET;
-    }
-    enum ColumnOffsets implements StyleEnum {
-    	MD_OFFSET_1, MD_OFFSET_2, MD_OFFSET_3, MD_OFFSET_4, MD_OFFSET_5, MD_OFFSET_6, 
-    	MD_OFFSET_7, MD_OFFSET_8, MD_OFFSET_9, MD_OFFSET_10, MD_OFFSET_11, MD_OFFSET_12;
-    }
-    enum ColumnSizes implements StyleEnum {
-    	MD_1, MD_2, MD_3, MD_4, MD_5, MD_6, 
-    	MD_7, MD_8, MD_9, MD_10, MD_11, MD_12;
-    }
-    enum FormStyles implements StyleEnum {
-        HORIZONTAL, INLINE;
-    }
-	enum LabelStyles implements StyleEnum {
+		NONE{@Override public String value() {return "";}}, 
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_BUTTON_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+    } 
+    
+    enum ButtonStates implements BootstrapEnum {
+		RESET, LOADING;
+    }
+    
+    enum ButtonTypes implements BootstrapEnum {
+		BUTTON, SUBMIT, RESET;
+    }
+    
+    enum ColumnOffsets implements StyleEnum {
+		
+    	NONE{@Override public String value() {return "";}}, 
+		MD_OFFSET_1, MD_OFFSET_2, MD_OFFSET_3, MD_OFFSET_4, MD_OFFSET_5, MD_OFFSET_6, 
+    	MD_OFFSET_7, MD_OFFSET_8, MD_OFFSET_9, MD_OFFSET_10, MD_OFFSET_11, MD_OFFSET_12;
+        
+		@Override public String value() {return this.name().toLowerCase().replaceFirst("_", "-");};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_BUTTON_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+    }
+    
+    enum ColumnSizes implements StyleEnum {
+		
+    	NONE{@Override public String value() {return "";}}, 
+		MD_1, MD_2, MD_3, MD_4, MD_5, MD_6, 
+    	MD_7, MD_8, MD_9, MD_10, MD_11, MD_12;
+       
+    	@Override public String value() {return this.name().toLowerCase().replaceFirst("_", "-");};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_BUTTON_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+    }
+    
+    enum FormStyles implements StyleEnum {
+		NONE{@Override public String value() {return "";}}, HORIZONTAL, INLINE;
+       
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_FORM_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+    }
+    
+	enum LabelStyles implements StyleEnum {
+		
+		NONE{@Override public String value() {return "";}}, 
+		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
+        @Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_LABEL_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
-	enum NavStyles implements StyleEnum {	
+	
+	enum NavStyles implements StyleEnum {
+		NONE{@Override public String value() {return "";}}, 
 		TABS, PILLS;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_NAV_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
+	
 	enum PanelFrameStyles implements StyleEnum {
+		
+		NONE{@Override public String value() {return "";}}, 
 		HEADING, BODY, FOOTER;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_PANEL_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
+	
 	enum PanelStyles implements StyleEnum {
+		
+		NONE{@Override public String value() {return "";}}, 
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_PANEL_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
+	
 	enum ProgressBarStyles implements StyleEnum {
+		
+		NONE{@Override public String value() {return "";}}, 
 		PRIMARY, SUCCESS, INFO, WARNING, DANGER;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
+	
 	enum ValidationStyles implements StyleEnum {
+		
+		NONE{@Override public String value() {return "";}}, 
 		SUCCESS, WARNING, ERROR;
+        
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_VALIDATION_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+	}
+	
+	enum ActiveStyles implements BootstrapEnum {
+		ACTIVE;
 	}
 	
 	enum IconTypes implements StyleEnum {
 		
+		NONE{@Override public String value() {return "";}}, 
 		GLASS, MUSIC, SEARCH, ENVELOPE_O, HEART, STAR, STAR_O, USER, FILM, TH_LARGE, TH, TH_LIST, CHECK, REMOVE, CLOSE, TIMES, SEARCH_PLUS, SEARCH_MINUS, POWER_OFF, 
 		SIGNAL, GEAR, COG, TRASH_O, HOME, FILE_O, CLOCK_O, ROAD, DOWNLOAD, ARROW_CIRCLE_O_DOWN, ARROW_CIRCLE_O_UP, INBOX, PLAY_CIRCLE_O, ROTATE_RIGHT, REPEAT, REFRESH, 
 		LIST_ALT, LOCK, FLAG, HEADPHONES, VOLUME_OFF, VOLUME_DOWN, VOLUME_UP, QRCODE, BARCODE, TAG, TAGS, BOOK, BOOKMARK, PRINT, CAMERA, FONT, BOLD, ITALIC, TEXT_HEIGHT, 
@@ -171,6 +257,10 @@ public interface Bootstrap extends IsWidget {
 		SOCCER_BALL_O, FUTBOL_O, TTY, BINOCULARS, PLUG, SLIDESHARE, TWITCH, YELP, NEWSPAPER_O, WIFI, CALCULATOR, PAYPAL, GOOGLE_WALLET, CC_VISA, CC_MASTERCARD, CC_DISCOVER, 
 		CC_AMEX, CC_PAYPAL, CC_STRIPE, BELL_SLASH, BELL_SLASH_O, TRASH, COPYRIGHT, AT, EYEDROPPER, PAINT_BRUSH, BIRTHDAY_CAKE, AREA_CHART, PIE_CHART, LINE_CHART, LASTFM, 
 		LASTFM_SQUARE, TOGGLE_OFF, TOGGLE_ON, BICYCLE, BUS, IOXHOST, ANGELLIST, CC, SHEKEL, SHEQEL, ILS, MEANPATH;			
+
+        @Override public String value() {return this.name().toLowerCase().replaceAll("_", "-");};
+        @Override public String fullValue() {return Constants.BOOTSTRAP_ICON_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
+	
 	}
 
 }

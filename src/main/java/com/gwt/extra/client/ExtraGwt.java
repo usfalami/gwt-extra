@@ -2,6 +2,7 @@ package com.gwt.extra.client;
 
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
+import usf.gwt.bootstrap.ui.widget.Button;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -23,6 +24,8 @@ public class ExtraGwt implements EntryPoint {
 		DateTimePicker.getDefaultOption().set("icons", icons);
 		
 		RootPanel.get("sidebar").add(new Menu());
+		
+		new Button().getStyle();
 	}
 	
 }

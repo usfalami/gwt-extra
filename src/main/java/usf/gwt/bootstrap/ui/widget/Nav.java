@@ -13,7 +13,8 @@ public class Nav extends List implements HasStyle<NavStyles> {
     	getContainerElement().addClassName(Constants.BOOTSTRAP_NAV_PREFIX);
     	getContainerElement().addClassName(Constants.GWT_BOOTSTRAP_NAV);
     }
-	@Override
+	
+    @Override
 	public NavStyles getStyle() {
 		return HasStyle.Utils.getStyle(this, NavStyles.class, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
 	}
@@ -23,10 +24,10 @@ public class Nav extends List implements HasStyle<NavStyles> {
 	}
 	
     public void setStacked(boolean stack){
-    	JqueryUtils.switchClass(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, stack);
+    	HasStyle.Utils.setStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, stack);
     }
     public boolean isStacked() {
-    	return JqueryUtils.hasClass(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+    	return HasStyle.Utils.hasStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE);
 	}
     
     public void setActiveUnique() {

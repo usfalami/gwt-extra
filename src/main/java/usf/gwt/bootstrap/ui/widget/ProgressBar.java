@@ -52,7 +52,7 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
     	return JqueryUtils.width(getElement());
 	}
     public void setActive(boolean active) {
-    	JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE, active);
+    	HasStyle.Utils.setStyle(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE, active);
     	JqueryUtils.activate(getElement(), active);
     }
     public boolean isActive(){
