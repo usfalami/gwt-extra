@@ -1,7 +1,7 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -15,7 +15,7 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Label extends GridCol implements HasText {
+public class Label extends GridCol implements Constants.HasText {
 
 	public final static String DEFAULT_LABEL_STYLE = "control-label";
 	

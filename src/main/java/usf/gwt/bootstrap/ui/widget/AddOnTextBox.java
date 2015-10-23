@@ -32,10 +32,10 @@ public class AddOnTextBox extends TextBox {
 		getElement().addClassName(DEFAULT_INPUT_GROUP_STYLE);
 	}
 	
-	public void setLeftAddOn(IconTypes type) {
+	public void setLeftAddOn(Constants.IconTypes type) {
 		setAddOn(getLeftAddOn(), type);
 	}
-	public void setRightAddOn(IconTypes type) {
+	public void setRightAddOn(Constants.IconTypes type) {
 		setAddOn(getRightAddOn(), type);
 	}
 	public void removeLeftAddOn() {
@@ -58,7 +58,7 @@ public class AddOnTextBox extends TextBox {
 		return getElement().getLastChild().cast();
 	}
 		
-	protected final static void setAddOn(AnchorElement anchor, IconTypes type){
+	protected final static void setAddOn(AnchorElement anchor, Constants.IconTypes type){
 		Element span = anchor.getFirstChildElement();
 		if(span==null) {
 			span = Document.get().createSpanElement();
@@ -66,6 +66,6 @@ public class AddOnTextBox extends TextBox {
 			anchor.addClassName(DEFAULT_GROUP_ADD_ON_STYLE);
 			anchor.appendChild(span);
 		}
-		JqueryUtils.switchClass(span, Constants.BOOTSTRAP_ICON_PREFIX, type);
+		JqueryUtils.switchClass(span, type);
 	}
 }

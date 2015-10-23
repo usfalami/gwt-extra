@@ -1,12 +1,12 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
+import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.core.ListItem;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.Collapser;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasIcon;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.IconTypes;
 
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
@@ -27,17 +27,17 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * @author Youssef ALAMI
  * 
  */
-public class NavItem extends ListItem implements HasIcon<IconTypes>, HasClickHandlers, Collapser {
+public class NavItem extends ListItem implements Constants.HasIcon<Constants.IconTypes>, HasClickHandlers, Collapser {
 	
 	public NavItem() {}
 	
     public NavItem(String text) {
     	setText(text);
 	}
-    public NavItem(IconTypes icon) {
+    public NavItem(Constants.IconTypes icon) {
     	setIcon(icon);
 	}
-    public NavItem(IconTypes icon, String text) {
+    public NavItem(Constants.IconTypes icon, String text) {
     	setIcon(icon);
     	setText(text);
 	}
@@ -59,13 +59,13 @@ public class NavItem extends ListItem implements HasIcon<IconTypes>, HasClickHan
 	}
 	
 	@Override
-    public void setIcon(IconTypes icon) {
+    public void setIcon(Constants.IconTypes icon) {
 		getIconElement().addClassName(Constants.BOOTSTRAP_ICON_PREFIX); //temp
-    	JqueryUtils.switchClass(getBaseElement(), Constants.BOOTSTRAP_ICON_PREFIX, icon);
+    	JqueryUtils.switchClass(getBaseElement(), icon);
     }
 	@Override
-    public IconTypes getIcon() {
-    	return JqueryUtils.hasClass(getElement(), Constants.BOOTSTRAP_ICON_PREFIX, IconTypes.class);
+    public Constants.IconTypes getIcon() {
+    	return JqueryUtils.hasClass(getElement(), Constants.IconTypes.class);
     }
 	
 	@Override

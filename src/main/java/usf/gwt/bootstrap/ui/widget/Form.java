@@ -2,11 +2,11 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.FormStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
 import usf.gwt.bootstrap.ui.event.SubmitEvent;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.FormStyles;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -21,7 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Youssef ALAMI
  * 
  */
-public class Form extends BootstrapContainer implements HasStyle<FormStyles>, HasSubmitHandler {
+public class Form extends BootstrapContainer implements Constants.HasStyle<Constants.FormStyles>, HasSubmitHandler {
 	
 	@Override
     protected Element initWidget() {
@@ -31,12 +31,12 @@ public class Form extends BootstrapContainer implements HasStyle<FormStyles>, Ha
     }
 
 	@Override
-	public FormStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, FormStyles.class);
+	public Constants.FormStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.FormStyles.class);
 	}
 	@Override
-	public void setStyle(FormStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.FormStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
     @Override
@@ -51,9 +51,8 @@ public class Form extends BootstrapContainer implements HasStyle<FormStyles>, Ha
     }
     
     @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_FORM_PREFIX;
+    public Element getStylElement() {
+    	return getElement();
     }
-    
     
 }

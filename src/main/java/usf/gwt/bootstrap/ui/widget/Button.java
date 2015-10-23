@@ -3,14 +3,6 @@ package usf.gwt.bootstrap.ui.widget;
 import usf.gwt.bootstrap.ui.core.Constants;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ButtonStates;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ButtonStyles;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ButtonTypes;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasIcon;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasState;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasType;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.IconTypes;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -21,8 +13,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
-public class Button extends FormControl<String> implements HasIcon<IconTypes>,
-	HasStyle<ButtonStyles>, HasState<ButtonStates>, HasType<ButtonTypes>, HasClickHandlers {
+public class Button extends FormControl<String> implements Constants.HasIcon<Constants.IconTypes>,
+	Constants.HasStyle<Constants.ButtonStyles>, Constants.HasState<Constants.ButtonStates>, Constants.HasType<Constants.ButtonTypes>, HasClickHandlers {
 
 	Text text;
 	SpanElement icon;
@@ -38,7 +30,7 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
     @Override
     protected Element initWidget() {
     	Element e = Document.get().createPushButtonElement();
-    	e.appendChild(text = HasText.Utils.create(""));
+    	e.appendChild(text = Constants.HasText.Utils.create(""));
         return e;
     }
     
@@ -49,37 +41,37 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
     
 	@Override
 	public String getText() {
-		return HasText.Utils.getText(this);
+		return Constants.HasText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		HasText.Utils.setText(this, text);
+		Constants.HasText.Utils.setText(this, text);
 	}
 	@Override
-	public void setIcon(IconTypes icon) {
+	public void setIcon(Constants.IconTypes icon) {
 		if(this.icon == null) 
-			getBaseElement().insertFirst(this.icon = HasIcon.Utils.create());
-		HasIcon.Utils.setIcon(this, icon);
+			getBaseElement().insertFirst(this.icon = Constants.HasIcon.Utils.create());
+		Constants.HasIcon.Utils.setIcon(this, icon);
 	}
 	@Override
-	public IconTypes getIcon() {
-		return HasIcon.Utils.getIcon(this, IconTypes.class);
+	public Constants.IconTypes getIcon() {
+		return Constants.HasIcon.Utils.getIcon(this, Constants.IconTypes.class);
 	}
 	@Override
-	public ButtonStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, ButtonStyles.class);
+	public Constants.ButtonStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.ButtonStyles.class);
 	}
 	@Override
-	public void setStyle(ButtonStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.ButtonStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
-    public void setType(ButtonTypes type) {
+    public void setType(Constants.ButtonTypes type) {
     	getElement().setAttribute(Constants.ATTRIB_TYPE, type.name().toLowerCase());
     }
     @Override
-    public ButtonTypes getType() {
-    	return ButtonTypes.valueOf(getElement().getAttribute(Constants.ATTRIB_TYPE));
+    public Constants.ButtonTypes getType() {
+    	return Constants.ButtonTypes.valueOf(getElement().getAttribute(Constants.ATTRIB_TYPE));
     }
 
 	public void setLoadingText(String text){
@@ -89,7 +81,7 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
 		return getElement().getAttribute(Constants.ATTRIB_DATA_LOADING_TEXT);
 	}
 	@Override
-	public void setState(ButtonStates state) {
+	public void setState(Constants.ButtonStates state) {
 		JqueryUtils.setButtonLoading(getBaseElement(), state.name().toLowerCase());
 	}
 	
@@ -107,10 +99,9 @@ public class Button extends FormControl<String> implements HasIcon<IconTypes>,
     public Text getTextElement() {
     	return text;
 	}
-    
     @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_BUTTON_PREFIX;
+    public Element getStylElement() {
+    	return getElement();
     }
 
 }

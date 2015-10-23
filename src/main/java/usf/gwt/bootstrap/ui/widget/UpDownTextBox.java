@@ -1,5 +1,7 @@
 package usf.gwt.bootstrap.ui.widget;
 
+import usf.gwt.bootstrap.ui.core.Constants;
+
 import com.google.gwt.dom.client.Element;
 
 public class UpDownTextBox extends AddOnTextBox {
@@ -9,8 +11,8 @@ public class UpDownTextBox extends AddOnTextBox {
 	public UpDownTextBox() {
 		super();
 		setValue("0");
-		setLeftAddOn(IconTypes.CHEVRON_LEFT);
-		setRightAddOn(IconTypes.CHEVRON_RIGHT);
+		setLeftAddOn(Constants.IconTypes.CHEVRON_LEFT);
+		setRightAddOn(Constants.IconTypes.CHEVRON_RIGHT);
 		init(this);
 	}
 		

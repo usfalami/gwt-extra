@@ -1,13 +1,14 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Text;
 
-public class Paragraph extends BootstrapWidget implements HasText {
+public class Paragraph extends BootstrapWidget implements Constants.HasText {
 
 	@Override
 	protected Element initWidget() {

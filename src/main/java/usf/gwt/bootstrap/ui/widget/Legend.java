@@ -1,7 +1,8 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -15,7 +16,7 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Legend extends BootstrapContainer implements HasText  {
+public class Legend extends BootstrapContainer implements Constants.HasText  {
 
 	@Override
 	protected Element initWidget() {

@@ -1,12 +1,14 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.NavStyles;
 import usf.gwt.bootstrap.ui.core.List;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.NavStyles;
 
-public class Nav extends List implements HasStyle<NavStyles> {
+import com.google.gwt.dom.client.Element;
+
+public class Nav extends List implements Constants.HasStyle<Constants.NavStyles> {
         
     @Override
     protected void initStyle() {
@@ -15,29 +17,29 @@ public class Nav extends List implements HasStyle<NavStyles> {
     }
 	
     @Override
-	public NavStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, NavStyles.class, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+	public Constants.NavStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.NavStyles.class);
 	}
 	@Override
-	public void setStyle(NavStyles style) {
-		HasStyle.Utils.setStyle(this, style, Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+	public void setStyle(Constants.NavStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
 	
     public void setStacked(boolean stack){
-    	HasStyle.Utils.setStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, stack);
+    	Constants.HasStyle.Utils.setStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE, stack);
     }
     public boolean isStacked() {
-    	return HasStyle.Utils.hasStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE);
+    	return Constants.HasStyle.Utils.hasStyle(getContainerElement(), Constants.BOOTSTRAP_NAV_STACKED_STYLE);
 	}
     
     public void setActiveUnique() {
     	JqueryUtils.activateUnique(getElement(), false);
 	}
     
-    @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_NAV_PREFIX;
-    }
+	@Override
+	public Element getStylElement() {
+		return getContainerElement();
+	}
 	
     //	$('li.gwt-bootstrap-nav-item > a', e).eq(0).click();
 }

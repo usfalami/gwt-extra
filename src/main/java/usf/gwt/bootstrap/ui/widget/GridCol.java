@@ -17,10 +17,10 @@ import usf.gwt.bootstrap.ui.js.JqueryUtils;
  */
 public class GridCol extends Layout {
 
-	public void setSize(ColumnSizes size){
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_COLUMN_PREFIX, size, "^col-md-offset");
+	public void setSize(Constants.ColumnSizes size){
+		JqueryUtils.switchClass(getElement(), size);
 	}
-	public void setOffset(ColumnOffsets offset){
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_COLUMN_PREFIX, offset, "^md-\\d");	
+	public void setOffset(Constants.ColumnOffsets offset){
+		JqueryUtils.switchClass(getElement(), offset);	
 	}
 }

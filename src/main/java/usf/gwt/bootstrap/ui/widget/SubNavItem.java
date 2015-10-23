@@ -1,9 +1,9 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
+import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasIcon;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.IconTypes;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -21,7 +21,7 @@ import com.google.gwt.dom.client.Element;
  * @author Youssef ALAMI
  * 
  */
-public class SubNavItem extends Nav implements HasIcon<IconTypes> {
+public class SubNavItem extends Nav implements Constants.HasIcon<Constants.IconTypes> {
 	
 	protected NavItem i;
 	
@@ -46,10 +46,10 @@ public class SubNavItem extends Nav implements HasIcon<IconTypes> {
 	public void setText(String text) {
 		i.setText(text);
 	}
-    public void setIcon(IconTypes icon) {
+    public void setIcon(Constants.IconTypes icon) {
     	i.setIcon(icon);
     }
-    public IconTypes getIcon() {
+    public Constants.IconTypes getIcon() {
     	return i.getIcon();
 	}
 

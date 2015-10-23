@@ -1,10 +1,10 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
+import usf.gwt.bootstrap.ui.core.Constants.ProgressBarStyles;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ProgressBarStyles;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -12,7 +12,7 @@ import com.google.gwt.dom.client.Text;
 
 
 
-public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>, HasText {
+public class ProgressBar extends Progress implements Constants.HasStyle<Constants.ProgressBarStyles>, Constants.HasText {
 	
 	@Override
 	protected Element initWidget() {
@@ -31,12 +31,12 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
 	}
 
 	@Override
-	public ProgressBarStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, ProgressBarStyles.class);
+	public Constants.ProgressBarStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.ProgressBarStyles.class);
 	}
 	@Override
-	public void setStyle(ProgressBarStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.ProgressBarStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
     public void setText(String text) {
@@ -52,7 +52,7 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
     	return JqueryUtils.width(getElement());
 	}
     public void setActive(boolean active) {
-    	HasStyle.Utils.setStyle(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE, active);
+    	Constants.HasStyle.Utils.setStyle(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE, active);
     	JqueryUtils.activate(getElement(), active);
     }
     public boolean isActive(){
@@ -68,9 +68,8 @@ public class ProgressBar extends Progress implements HasStyle<ProgressBarStyles>
     	return getBaseElement().getFirstChild().cast();
     }
     
-    
     @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_PROGRESS_BAR_PREFIX;
+    public Element getStylElement() {
+    	return getElement();
     }
 }

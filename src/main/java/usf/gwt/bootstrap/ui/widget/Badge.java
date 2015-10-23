@@ -2,8 +2,8 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.AttachWidget;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -17,7 +17,7 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Badge extends BootstrapWidget implements HasText, AttachWidget {
+public class Badge extends BootstrapWidget implements Constants.HasText, AttachWidget {
 
 	public static final String DEFAUL_BADGE_STYLE = "badge";
 	

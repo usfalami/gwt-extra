@@ -1,23 +1,25 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.PanelFrameStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.PanelFrameStyles;
 
-public class PanelFrame extends Layout implements HasStyle<PanelFrameStyles> {
+import com.google.gwt.dom.client.Element;
+
+public class PanelFrame extends Layout implements Constants.HasStyle<Constants.PanelFrameStyles> {
 	
 	@Override
-	public PanelFrameStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, PanelFrameStyles.class);
+	public Constants.PanelFrameStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.PanelFrameStyles.class);
 	}
 	@Override
-	public void setStyle(PanelFrameStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.PanelFrameStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
-    @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_PANEL_PREFIX;
-    }
+	@Override
+	public Element getStylElement() {
+		return getElement();
+	}
 
 }

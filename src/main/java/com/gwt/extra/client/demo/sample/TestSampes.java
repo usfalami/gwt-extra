@@ -8,12 +8,9 @@ import usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker;
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerDayOfWeek;
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerFormat;
 import usf.gwt.bootstrap.ui.core.BrowserConsole;
-import usf.gwt.bootstrap.ui.event.HideEvent;
-import usf.gwt.bootstrap.ui.event.HideEvent.HideHandler;
-import usf.gwt.bootstrap.ui.event.ShowEvent;
-import usf.gwt.bootstrap.ui.event.ShowEvent.ShowHandler;
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.ButtonStyles;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ButtonStyles;
 import usf.gwt.bootstrap.ui.widget.Button;
 import usf.gwt.bootstrap.ui.widget.CheckBox;
 import usf.gwt.bootstrap.ui.widget.GridCol;
@@ -99,7 +96,7 @@ public class TestSampes extends Composite {
 
 		for(final DateTimePickerFormat l : DateTimePickerFormat.values()) {
 			Button but = new Button(l.getLabel()) ;
-			but.setStyle(ButtonStyles.PRIMARY);
+			but.setStyle(Constants.ButtonStyles.PRIMARY);
 			but.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent arg0) {

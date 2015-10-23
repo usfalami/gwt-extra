@@ -1,10 +1,12 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.PanelStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.PanelStyles;
 
-public class Panel extends Layout implements HasStyle<PanelStyles> {
+import com.google.gwt.dom.client.Element;
+
+public class Panel extends Layout implements Constants.HasStyle<Constants.PanelStyles> {
 	
 	@Override
 	protected void initStyle() {
@@ -12,16 +14,16 @@ public class Panel extends Layout implements HasStyle<PanelStyles> {
 	}
 
 	@Override
-	public PanelStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, PanelStyles.class);
+	public Constants.PanelStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.PanelStyles.class);
 	}
 	@Override
-	public void setStyle(PanelStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.PanelStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
-    @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_PANEL_PREFIX;
-    }
+	@Override
+	public Element getStylElement() {
+		return getElement();
+	}
 }

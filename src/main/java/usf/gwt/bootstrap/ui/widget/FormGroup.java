@@ -1,10 +1,12 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.ValidationStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.ValidationStyles;
 
-public class FormGroup extends GridCol implements HasStyle<ValidationStyles> {
+import com.google.gwt.dom.client.Element;
+
+public class FormGroup extends GridCol implements Constants.HasStyle<Constants.ValidationStyles> {
 	
 	private static final String FORM_GROUP_STYLE = "form-group";
 
@@ -14,17 +16,16 @@ public class FormGroup extends GridCol implements HasStyle<ValidationStyles> {
 	}
 	
 	@Override
-	public ValidationStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, ValidationStyles.class);
+	public Constants.ValidationStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.ValidationStyles.class);
 	}
 	@Override
-	public void setStyle(ValidationStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.ValidationStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
-	
 	@Override
-	public String getPrimaryStyle() {
-		return Constants.BOOTSTRAP_VALIDATION_PREFIX;
+	public Element getStylElement() {
+		return getElement();
 	}
 	
 }

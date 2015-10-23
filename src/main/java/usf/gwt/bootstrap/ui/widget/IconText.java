@@ -1,9 +1,10 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasIcon;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasText;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.IconTypes;
+import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
+import usf.gwt.bootstrap.ui.core.Constants.HasText;
+import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.InputGroupAddOn;
 
 import com.google.gwt.dom.client.Document;
@@ -11,7 +12,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 
-public class IconText extends BootstrapWidget implements HasIcon<IconTypes>, InputGroupAddOn, HasText {
+public class IconText extends BootstrapWidget implements Constants.HasIcon<Constants.IconTypes>, InputGroupAddOn, Constants.HasText {
 	
 	Text text;
 	SpanElement icon;
@@ -19,26 +20,26 @@ public class IconText extends BootstrapWidget implements HasIcon<IconTypes>, Inp
 	@Override
 	protected Element initWidget() {
 		Element e = Document.get().createSpanElement();
-		e.appendChild(icon = HasIcon.Utils.create());
-		e.appendChild(text = HasText.Utils.create(""));
+		e.appendChild(icon = Constants.HasIcon.Utils.create());
+		e.appendChild(text = Constants.HasText.Utils.create(""));
 		return e;
 	}
 	
 	@Override
 	public String getText() {
-		return HasText.Utils.getText(this);
+		return Constants.HasText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		HasText.Utils.setText(this, text);
+		Constants.HasText.Utils.setText(this, text);
 	}
 	@Override
-	public void setIcon(IconTypes icon) {
-		HasIcon.Utils.setIcon(this, icon);
+	public void setIcon(Constants.IconTypes icon) {
+		Constants.HasIcon.Utils.setIcon(this, icon);
 	}
 	@Override
-	public IconTypes getIcon() {
-		return HasIcon.Utils.getIcon(this, IconTypes.class);
+	public Constants.IconTypes getIcon() {
+		return Constants.HasIcon.Utils.getIcon(this, Constants.IconTypes.class);
 	}
 	
 	@Override

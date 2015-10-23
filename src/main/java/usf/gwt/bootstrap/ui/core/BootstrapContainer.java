@@ -19,8 +19,8 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 		add(child, (child instanceof AttachWidget) ? getBaseElement() : getContainerElement());
 	}
 
-	public void setAlign(AlignementStyles align) {
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_ALIGN_PREFIX, align);
+	public void setAlign(Constants.AlignementStyles align) {
+		JqueryUtils.switchClass(getElement(), align);
 	}
 	
 	@Override

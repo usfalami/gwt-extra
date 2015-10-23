@@ -22,8 +22,8 @@ public abstract class BootstrapWidget extends Widget implements Bootstrap {
         return getBaseElement().getId();
     }
     
-	public void setAlign(AlignementStyles align) {
-		JqueryUtils.switchClass(getElement(), Constants.BOOTSTRAP_ALIGN_PREFIX, align);
+	public void setAlign(Constants.AlignementStyles align) {
+		JqueryUtils.switchClass(getElement(), align);
 	}
 
     protected abstract Element initWidget();

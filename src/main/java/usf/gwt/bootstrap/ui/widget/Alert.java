@@ -2,13 +2,13 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.AlertStyles;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.HasStyle;
+import usf.gwt.bootstrap.ui.core.Constants.AlertStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 
-public class Alert extends BootstrapContainer implements HasStyle<AlertStyles> {
+public class Alert extends BootstrapContainer implements Constants.HasStyle<Constants.AlertStyles> {
 
     protected Element close; 
     
@@ -26,17 +26,17 @@ public class Alert extends BootstrapContainer implements HasStyle<AlertStyles> {
     protected void initStyle() {
     	getElement().addClassName("alert");
         close.addClassName("close");
-        setStyle(AlertStyles.INFO);
+        setStyle(Constants.AlertStyles.INFO);
         setDismissable(true);
     }
     
 	@Override
-	public AlertStyles getStyle() {
-		return HasStyle.Utils.getStyle(this, AlertStyles.class);
+	public Constants.AlertStyles getStyle() {
+		return Constants.HasStyle.Utils.getStyle(this, Constants.AlertStyles.class);
 	}
 	@Override
-	public void setStyle(AlertStyles style) {
-		HasStyle.Utils.setStyle(this, style);
+	public void setStyle(Constants.AlertStyles style) {
+		Constants.HasStyle.Utils.setStyle(this, style);
 	}
 
     public void setDismissable(boolean dismissable) {
@@ -48,9 +48,10 @@ public class Alert extends BootstrapContainer implements HasStyle<AlertStyles> {
             close.removeFromParent();
         }
     }
-    
+ 
     @Override
-    public String getPrimaryStyle() {
-    	return Constants.BOOTSTRAP_ALERT_PREFIX;
+    public Element getStylElement() {
+    	return getElement();
     }
+    
 }
