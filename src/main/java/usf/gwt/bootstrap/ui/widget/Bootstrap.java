@@ -27,7 +27,6 @@ public interface Bootstrap extends IsWidget {
 	interface BootstrapEnum {
 		
 	}
-	
 	interface StyleEnum extends BootstrapEnum {
 		String value();
 		String fullValue();
@@ -95,11 +94,11 @@ public interface Bootstrap extends IsWidget {
     		}
     	}
     }
-    interface HasType<T extends Enum<T> & StyleEnum> {
+    interface HasType<T extends Enum<T> & BootstrapEnum> {
     	void setType(T type);
     	T getType();
     }
-    interface HasState<T extends Enum<T> & StyleEnum> {
+    interface HasState<T extends Enum<T> & BootstrapEnum> {
     	void setState(T state);
     }
         
@@ -126,14 +125,6 @@ public interface Bootstrap extends IsWidget {
 		@Override public String value() {return this.name().toLowerCase();};
         @Override public String fullValue() {return Constants.BOOTSTRAP_BUTTON_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
     } 
-    
-    enum ButtonStates implements BootstrapEnum {
-		RESET, LOADING;
-    }
-    
-    enum ButtonTypes implements BootstrapEnum {
-		BUTTON, SUBMIT, RESET;
-    }
     
     enum ColumnOffsets implements StyleEnum {
 		
@@ -214,9 +205,21 @@ public interface Bootstrap extends IsWidget {
         @Override public String fullValue() {return Constants.BOOTSTRAP_VALIDATION_PREFIX + Constants.BOOTSTRAP_STYLE_SEPARATOR + value();}
 	}
 	
-	enum ActiveStyles implements BootstrapEnum {
+	enum ActiveStyles implements StyleEnum {
+		NONE{@Override public String value() {return "";}}, 
 		ACTIVE;
+		
+		@Override public String value() {return this.name().toLowerCase();};
+        @Override public String fullValue() {return value();}
 	}
+
+    
+    enum ButtonStates implements BootstrapEnum {
+		RESET, LOADING;
+    }
+    enum ButtonTypes implements BootstrapEnum {
+		BUTTON, SUBMIT, RESET;
+    }
 	
 	enum IconTypes implements StyleEnum {
 		
