@@ -2,8 +2,6 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.FormStyles;
-import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
 import usf.gwt.bootstrap.ui.event.SubmitEvent;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;

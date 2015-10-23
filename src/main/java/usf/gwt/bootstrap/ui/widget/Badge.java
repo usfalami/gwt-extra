@@ -2,7 +2,6 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.HasText;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.AttachWidget;
 
 import com.google.gwt.dom.client.Document;

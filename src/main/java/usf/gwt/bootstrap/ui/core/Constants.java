@@ -10,6 +10,32 @@ import com.google.gwt.user.client.ui.Widget;
 
 public final class Constants {
 
+	public static interface BootstrapEnum {}
+	
+	public static interface StyleEnum extends BootstrapEnum {
+		String value();
+		String prefix();
+		String[] excludes();
+	}
+	
+
+	public static interface HasText {
+		void setText(String text);
+		String getText();    	
+		Text getTextElement();
+		class Utils {
+			public static Text create(String text){
+				return Document.get().createTextNode(text);
+			}
+			public static void setText(HasText w, String text){
+				w.getTextElement().setNodeValue(text);
+			}
+			public static String getText(HasText w) {
+				return w.getTextElement().getNodeValue();
+			}
+		}
+	}
+	
 	public static interface HasStyle<T extends Enum<T> & StyleEnum> {
 		
 		void setStyle(T style);
@@ -33,59 +59,38 @@ public final class Constants {
 			}
 		}
 	}
-	public static interface StyleEnum extends BootstrapEnum {
-		String value();
-		String prefix();
-		String[] excludes();
-	}
 	public static interface HasIcon<T extends Enum<T> & StyleEnum> {
 	    	
-	    	void setIcon(T icon);
-	    	T getIcon();
-	    	Element getIconElement();
-	    	
-	    	class Utils {
-	    		public static SpanElement create(){
-	    			SpanElement s = Document.get().createSpanElement();
-	    			s.addClassName(BOOTSTRAP_ICON_PREFIX);
-	//    			s.setInnerHTML("&nbsp;");
-	    			return s;
-	    		}
-	    		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
-	    			JqueryUtils.switchClass(w.getIconElement(), icon);
-	    		}
-	    		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
-	    			return w.getIconElement() == null ? null : 
-	    					JqueryUtils.hasClass(w.getIconElement(), clazz);
-	    		}
-	    	}
-	    }
-	public static interface BootstrapEnum {
-		
-	}
-	public static interface HasText {
-		void setText(String text);
-		String getText();    	
-		Text getTextElement();
-		class Utils {
-			public static Text create(String text){
-				return Document.get().createTextNode(text);
-			}
-			public static void setText(HasText w, String text){
-				w.getTextElement().setNodeValue(text);
-			}
-			public static String getText(HasText w) {
-				return w.getTextElement().getNodeValue();
-			}
-		}
-	}
-	public static interface HasType<T extends Enum<T> & BootstrapEnum> {
+    	void setIcon(T icon);
+    	T getIcon();
+    	Element getIconElement();
+    	
+    	class Utils {
+    		public static SpanElement create(){
+    			SpanElement s = Document.get().createSpanElement();
+    			s.addClassName(BOOTSTRAP_ICON_PREFIX);
+//    			s.setInnerHTML("&nbsp;");
+    			return s;
+    		}
+    		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
+    			JqueryUtils.switchClass(w.getIconElement(), icon);
+    		}
+    		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
+    			return w.getIconElement() == null ? null : 
+    					JqueryUtils.hasClass(w.getIconElement(), clazz);
+    		}
+    	}
+    }
+
+	public static interface HasType<T> {
 		void setType(T type);
 		T getType();
 	}
-	public static interface HasState<T extends Enum<T> & BootstrapEnum> {
+	public static interface HasState<T> {
 		void setState(T state);
 	}
+	
+	
 	public static enum AlertStyles implements StyleEnum {
 		
 		NONE{@Override public String value() {return "";}}, 

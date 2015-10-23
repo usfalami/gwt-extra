@@ -2,9 +2,6 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
-import usf.gwt.bootstrap.ui.core.Constants.HasText;
-import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.InputGroupAddOn;
 

@@ -148,10 +148,6 @@ public final class JqueryUtils {
 		return str.toString();			
 	}
 	
-	public static native Element getElementById(String id)/*-{
-		return $wnd.$(id)[0];
-	}-*/;
-    
 	public static native void jqueryConflict()/*-{
 		$wnd.$.noConflict();
 	}-*/;

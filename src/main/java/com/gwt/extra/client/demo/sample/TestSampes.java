@@ -9,7 +9,6 @@ import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerDayOfWeek;
 import usf.gwt.bootstrap.extra.datetimepicker.DateTimePickerFormat;
 import usf.gwt.bootstrap.ui.core.BrowserConsole;
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.ButtonStyles;
 import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import usf.gwt.bootstrap.ui.widget.Button;
 import usf.gwt.bootstrap.ui.widget.CheckBox;

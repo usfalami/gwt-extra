@@ -1,6 +1,5 @@
 package usf.gwt.bootstrap.ui.core;
 
-import usf.gwt.bootstrap.ui.core.Constants.HasText;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
 import com.google.gwt.dom.client.Document;

@@ -1,9 +1,6 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
-import usf.gwt.bootstrap.ui.core.Constants.HasText;
-import usf.gwt.bootstrap.ui.core.Constants.ProgressBarStyles;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
 import com.google.gwt.dom.client.Document;

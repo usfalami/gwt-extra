@@ -1,8 +1,6 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
-import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.core.ListItem;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
