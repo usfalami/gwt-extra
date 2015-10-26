@@ -39,11 +39,13 @@ public class ProgressBar extends Progress implements Constants.HasStyle<Constant
 		Constants.HasStyle.Utils.setStyle(this, style);
 	}
     
-    public void setText(String text) {
-    	getTextElement().setNodeValue(text);
+	@Override
+	public String getText() {
+		return HasNodeText.Utils.getText(this);
 	}
-    public String getText() {
-    	return getTextElement().getNodeValue();
+	@Override
+	public void setText(String text) {
+		HasNodeText.Utils.setText(this ,text);
 	}
     public void setValue(String value) {
     	JqueryUtils.width(getElement(), value);

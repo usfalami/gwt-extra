@@ -27,14 +27,14 @@ public class Legend extends BootstrapContainer implements Constants.HasNodeText 
 		return e;
 	}
 
+	@Override
 	public String getText() {
-		return getTextElement().getNodeValue();
+		return HasNodeText.Utils.getText(this);
 	}
-
+	@Override
 	public void setText(String text) {
-		getTextElement().setNodeValue(text);
+		HasNodeText.Utils.setText(this ,text);
 	}
-	
 	@Override
 	public Text getTextElement() {
 		return text;

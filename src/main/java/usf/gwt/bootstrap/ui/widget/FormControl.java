@@ -12,17 +12,6 @@ import com.google.gwt.event.shared.HandlerRegistration;
 
 public abstract class FormControl<T> extends BootstrapWidget implements HasChangeHandlers, HasFormControlEnable {
 	
-	public final static String DEFAULT_FORM_CONTROL_STYLE = "form-control";
-	
-	@Override
-	public boolean isEnabled() {
-		return HasFormControlEnable.Utils.isEnabled(this);
-	}
-	@Override
-	public void setEnabled(boolean enabled){
-		HasFormControlEnable.Utils.setEnabled(this, enabled);
-	}
-	
 	public void setName(String name) {
 		getBaseElement().setName(name);
 	}
@@ -34,6 +23,15 @@ public abstract class FormControl<T> extends BootstrapWidget implements HasChang
 	}
 	public void setValue(String value) {
 		getBaseElement().setValue(value);
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		return HasFormControlEnable.Utils.isEnabled(this);
+	}
+	@Override
+	public void setEnabled(boolean enabled){
+		HasFormControlEnable.Utils.setEnabled(this, enabled);
 	}
 	
 	@Override

@@ -32,7 +32,6 @@ public final class Constants {
 			}
 		}
 	}
-	
 	public static interface HasFormControlEnable extends HasEnable {
 		
 		Element getBaseElement();
@@ -385,4 +384,6 @@ public final class Constants {
 	public static final String BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE = "progress-bar-striped";
 	public static final String[] BOOTSTRAP_PROGRESS_BAR_NAV_EXCLUDES = {BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE};
 	public static final String BOOTSTRAP_VALIDATION_PREFIX = "has";
+	
+	public final static String DEFAULT_FORM_CONTROL_STYLE = "form-control";
 }

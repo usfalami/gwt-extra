@@ -48,12 +48,14 @@ public class Label extends GridCol implements Constants.HasNodeText {
         return getElement().getAttribute(Constants.ATTRIB_FOR);
     }
 
-    public String getText() {
-        return getTextElement().getNodeValue();
-    }
-    public void setText(String text) {
-    	getTextElement().setNodeValue(text);
-    }
+	@Override
+	public String getText() {
+		return HasNodeText.Utils.getText(this);
+	}
+	@Override
+	public void setText(String text) {
+		HasNodeText.Utils.setText(this ,text);
+	}
 	
 	@Override
 	public Text getTextElement() {

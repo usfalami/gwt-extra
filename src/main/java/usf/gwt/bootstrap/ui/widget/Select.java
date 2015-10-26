@@ -17,7 +17,7 @@ public class Select extends FormControl<String> implements HasInputText {
 	}
 	@Override
 	protected void initStyle() {
-		getElement().addClassName(DEFAULT_FORM_CONTROL_STYLE);
+		getElement().addClassName(Constants.DEFAULT_FORM_CONTROL_STYLE);
 	}
 	
 	public void setMultiple(boolean multiple) {

@@ -27,7 +27,7 @@ public class TextBox extends FormControl<String> implements HasInputText {
     }
     @Override
     protected void initStyle() {
-    	getBaseElement().addClassName(DEFAULT_FORM_CONTROL_STYLE);
+    	getBaseElement().addClassName(Constants.DEFAULT_FORM_CONTROL_STYLE);
     }
     @Override
     public String getText() {

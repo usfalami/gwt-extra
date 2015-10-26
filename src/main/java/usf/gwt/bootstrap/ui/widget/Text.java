@@ -16,11 +16,11 @@ public class Text extends Widget implements HasNodeText, com.google.gwt.user.cli
 	}
 	@Override
 	public String getText() {
-		return getElement().getNodeValue();
+		return HasNodeText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		getTextElement().setNodeValue(text);
+		HasNodeText.Utils.setText(this, text);
 	}
 
 	public com.google.gwt.dom.client.Text getTextElement() {

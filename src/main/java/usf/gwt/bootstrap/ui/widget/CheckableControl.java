@@ -54,12 +54,13 @@ public abstract class CheckableControl extends FormControl<Boolean> implements H
 	
 	@Override
 	public String getText() {
-		return getTextElement().getNodeValue();
+		return HasNodeText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		getTextElement().setNodeValue(text);
+		HasNodeText.Utils.setText(this ,text);
 	}
+
 	public void setChecked(boolean checked) {
 		getBaseElement().setChecked(checked);
 	}

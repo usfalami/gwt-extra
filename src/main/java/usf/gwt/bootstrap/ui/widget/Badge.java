@@ -17,7 +17,7 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Badge extends BootstrapWidget implements Constants.HasNodeText, AttachWidget {
+public class Badge extends BootstrapWidget implements HasNodeText, AttachWidget {
 
 	public static final String DEFAUL_BADGE_STYLE = "badge";
 	
@@ -37,11 +37,11 @@ public class Badge extends BootstrapWidget implements Constants.HasNodeText, Att
 	
 	@Override
 	public String getText() {
-		return getTextElement().getNodeValue();
+		return HasNodeText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		getTextElement().setNodeValue(text);
+		HasNodeText.Utils.setText(this ,text);
 	}
 	@Override
 	public Text getTextElement() {
