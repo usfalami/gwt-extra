@@ -31,9 +31,9 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TestSampes extends Composite {
+public class TestSamples extends Composite {
 
-	interface TestUiBinder extends UiBinder<Widget, TestSampes> {}
+	interface TestUiBinder extends UiBinder<Widget, TestSamples> {}
 	private static TestUiBinder uiBinder = GWT.create(TestUiBinder.class);
 
 	@UiField TextArea log;
@@ -43,7 +43,7 @@ public class TestSampes extends Composite {
 	
 	DateTimeFormat df = DateTimeFormat.getFormat("dd/MM/yyyy");
 	
-	public TestSampes() {
+	public TestSamples() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		

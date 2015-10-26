@@ -2,18 +2,20 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Text;
 
-public class Paragraph extends BootstrapWidget implements Constants.HasText {
+public class Paragraph extends BootstrapWidget implements Constants.HasNodeText {
 
+	Text text;
+	
 	@Override
 	protected Element initWidget() {
 		Element e = Document.get().createPElement();
-		Text t = Document.get().createTextNode("");
-		e.appendChild(t);
+		e.appendChild(text = HasNodeText.Utils.create(""));
 		return e;
 	}
 	@Override
@@ -26,7 +28,7 @@ public class Paragraph extends BootstrapWidget implements Constants.HasText {
 	}
 	@Override
 	public Text getTextElement() {
-		return getElement().getFirstChild().cast();
+		return text;
 	}
 
 }

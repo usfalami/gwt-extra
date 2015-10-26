@@ -1,15 +1,15 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasInputText;
 import usf.gwt.bootstrap.ui.core.KeyValue;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.OptionElement;
-import com.google.gwt.dom.client.Text;
 
-public class Select extends FormControl<String> {
+public class Select extends FormControl<String> implements HasInputText {
 	
 	@Override
 	protected Element initWidget() {
@@ -21,7 +21,7 @@ public class Select extends FormControl<String> {
 	}
 	
 	public void setMultiple(boolean multiple) {
-		JqueryUtils.switchAttribute(getElement(), Constants.ATTRIB_MULTIPLE, multiple);
+		JqueryUtils.toggleAttribute(getElement(), Constants.ATTRIB_MULTIPLE, multiple);
 	}
 	public boolean isMultiple() {
 		return JqueryUtils.hasAttrib(getElement(), Constants.ATTRIB_MULTIPLE);
@@ -44,10 +44,6 @@ public class Select extends FormControl<String> {
 	@Override
 	public void setText(String text) {
 		
-	}
-	@Override
-	public Text getTextElement() {
-		return null;
 	}
 
 }

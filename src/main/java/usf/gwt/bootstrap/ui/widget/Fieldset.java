@@ -1,12 +1,12 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.HasFormControlEnable;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 
-public class Fieldset extends BootstrapContainer {
+public class Fieldset extends BootstrapContainer implements HasFormControlEnable {
 	
 	@Override
 	protected Element initWidget() {
@@ -14,7 +14,11 @@ public class Fieldset extends BootstrapContainer {
 	}
 	
 	public void setEnabled(boolean enabled){
-		JqueryUtils.setFormControlEnabled(getElement(), enabled);
+		HasFormControlEnable.Utils.setEnabled(this, enabled);
+	}
+	@Override
+	public boolean isEnabled() {
+		return HasFormControlEnable.Utils.isEnabled(this);
 	}
 	
 }

@@ -1,16 +1,18 @@
 package usf.gwt.bootstrap.ui.widget;
 
-import usf.gwt.bootstrap.ui.core.BootstrapWidget;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.Widget;
 
-public class Text extends BootstrapWidget implements HasText {
+public class Text extends Widget implements HasNodeText, com.google.gwt.user.client.ui.HasText {
 
-	@Override
+	public Text() {
+		setElement(initWidget());
+	}
+	
 	protected Element initWidget() {
-		return Document.get().createTextNode("").cast();
+		return HasNodeText.Utils.create("").cast();
 	}
 	@Override
 	public String getText() {

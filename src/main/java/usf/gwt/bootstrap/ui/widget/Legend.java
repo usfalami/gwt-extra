@@ -2,6 +2,7 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -15,13 +16,14 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Legend extends BootstrapContainer implements Constants.HasText  {
+public class Legend extends BootstrapContainer implements Constants.HasNodeText  {
+
+	Text text;
 
 	@Override
 	protected Element initWidget() {
 		Element e = Document.get().createLegendElement();
-		Text t = Document.get().createTextNode("");
-		e.appendChild(t);
+		e.appendChild(text = HasNodeText.Utils.create(""));
 		return e;
 	}
 
@@ -35,7 +37,7 @@ public class Legend extends BootstrapContainer implements Constants.HasText  {
 	
 	@Override
 	public Text getTextElement() {
-		return getElement().getFirstChild().cast();
+		return text;
 	}
 
 }

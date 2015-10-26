@@ -1,13 +1,14 @@
 package usf.gwt.bootstrap.ui.core;
 
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.AlignementStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasAlign;
 import usf.gwt.bootstrap.ui.widget.Bootstrap;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class BootstrapContainer extends ComplexPanel implements Bootstrap {
+public abstract class BootstrapContainer extends ComplexPanel implements Bootstrap, HasAlign<AlignementStyles> {
 
 	public BootstrapContainer() {
 		setElement(initWidget());
@@ -19,8 +20,13 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 		add(child, (child instanceof AttachWidget) ? getBaseElement() : getContainerElement());
 	}
 
+	@Override
 	public void setAlign(Constants.AlignementStyles align) {
-		JqueryUtils.switchClass(getElement(), align);
+		HasAlign.Utils.setAlign(this, align);
+	}
+	@Override
+	public AlignementStyles getAlign() {
+		return HasAlign.Utils.getAlign(this, AlignementStyles.class);
 	}
 	
 	@Override

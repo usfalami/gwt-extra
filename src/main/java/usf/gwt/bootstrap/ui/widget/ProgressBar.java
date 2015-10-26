@@ -1,6 +1,8 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasActive;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
 import com.google.gwt.dom.client.Document;
@@ -9,14 +11,15 @@ import com.google.gwt.dom.client.Text;
 
 
 
-public class ProgressBar extends Progress implements Constants.HasStyle<Constants.ProgressBarStyles>, Constants.HasText {
+public class ProgressBar extends Progress implements Constants.HasStyle<Constants.ProgressBarStyles>, Constants.HasNodeText, Constants.HasActive {
 	
+	Text text;
+
 	@Override
 	protected Element initWidget() {
 		Element e =  super.initWidget();
 		Element s = Document.get().createSpanElement();
-		Text t = Document.get().createTextNode("");
-		s.appendChild(t);
+		s.appendChild(text = HasNodeText.Utils.create(""));
 		e.appendChild(s);
 		return e;
 	}
@@ -48,12 +51,15 @@ public class ProgressBar extends Progress implements Constants.HasStyle<Constant
     public String getValue() {
     	return JqueryUtils.width(getElement());
 	}
+    
+    @Override
     public void setActive(boolean active) {
     	Constants.HasStyle.Utils.setStyle(getElement(), Constants.BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE, active);
-    	JqueryUtils.activate(getElement(), active);
+    	HasActive.Utils.setActive(this, active);
     }
+    @Override
     public boolean isActive(){
-    	return JqueryUtils.isActive(getElement());
+    	return HasActive.Utils.isActive(this);
     }
     
     @Override
@@ -62,7 +68,7 @@ public class ProgressBar extends Progress implements Constants.HasStyle<Constant
     }
     @Override
     public Text getTextElement(){
-    	return getBaseElement().getFirstChild().cast();
+    	return text;
     }
     
     @Override

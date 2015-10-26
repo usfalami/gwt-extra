@@ -18,9 +18,9 @@ import usf.gwt.bootstrap.ui.js.JqueryUtils;
 public class GridCol extends Layout {
 
 	public void setSize(Constants.ColumnSizes size){
-		JqueryUtils.switchClass(getElement(), size);
+		JqueryUtils.toggleClass(getElement(), size);
 	}
 	public void setOffset(Constants.ColumnOffsets offset){
-		JqueryUtils.switchClass(getElement(), offset);	
+		JqueryUtils.toggleClass(getElement(), offset);	
 	}
 }

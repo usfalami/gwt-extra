@@ -2,6 +2,8 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.FormStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasStyle;
 import usf.gwt.bootstrap.ui.event.SubmitEvent;
 import usf.gwt.bootstrap.ui.event.SubmitEvent.HasSubmitHandler;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
@@ -19,7 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Youssef ALAMI
  * 
  */
-public class Form extends BootstrapContainer implements Constants.HasStyle<Constants.FormStyles>, HasSubmitHandler {
+public class Form extends BootstrapContainer implements HasStyle<FormStyles>, HasSubmitHandler {
 	
 	@Override
     protected Element initWidget() {
@@ -29,12 +31,12 @@ public class Form extends BootstrapContainer implements Constants.HasStyle<Const
     }
 
 	@Override
-	public Constants.FormStyles getStyle() {
-		return Constants.HasStyle.Utils.getStyle(this, Constants.FormStyles.class);
+	public FormStyles getStyle() {
+		return HasStyle.Utils.getStyle(this, FormStyles.class);
 	}
 	@Override
-	public void setStyle(Constants.FormStyles style) {
-		Constants.HasStyle.Utils.setStyle(this, style);
+	public void setStyle(FormStyles style) {
+		HasStyle.Utils.setStyle(this, style);
 	}
     
     @Override

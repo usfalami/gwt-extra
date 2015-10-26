@@ -1,11 +1,10 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.HasInputText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.Text;
 
 /**
  * <pre>{@code
@@ -16,7 +15,7 @@ import com.google.gwt.dom.client.Text;
  * 
  */
 
-public class TextBox extends FormControl<String> {
+public class TextBox extends FormControl<String> implements HasInputText {
 	
 
 	public TextBox() {
@@ -32,11 +31,11 @@ public class TextBox extends FormControl<String> {
     }
     @Override
     public String getText() {
-        return JqueryUtils.val(getBaseElement());
+        return HasInputText.Utils.getText(this);
     }
     @Override
     public void setText(String text) {
-        JqueryUtils.val(getBaseElement(), text);
+        HasInputText.Utils.setText(this, text);
     }
     public void setPlaceholder(String placeholder) {
     	getBaseElement().setAttribute(Constants.ATTRIB_PLACEHOLDER, placeholder);
@@ -55,9 +54,5 @@ public class TextBox extends FormControl<String> {
 	}
     public int getMaxLength() {
     	return getBaseElement().getMaxLength();
-	}
-	@Override
-	public Text getTextElement() {
-		return null;
 	}
 }

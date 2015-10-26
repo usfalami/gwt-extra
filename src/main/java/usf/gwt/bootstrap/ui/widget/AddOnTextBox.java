@@ -66,6 +66,6 @@ public class AddOnTextBox extends TextBox {
 			anchor.addClassName(DEFAULT_GROUP_ADD_ON_STYLE);
 			anchor.appendChild(span);
 		}
-		JqueryUtils.switchClass(span, type);
+		JqueryUtils.toggleClass(span, type);
 	}
 }

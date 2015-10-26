@@ -1,7 +1,8 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.HasEnable;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -23,8 +24,10 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public abstract class CheckableControl extends FormControl<Boolean> {
+public abstract class CheckableControl extends FormControl<Boolean> implements HasNodeText {
 
+	Text text;
+	
 	public CheckableControl() {
 		super();
 	}
@@ -33,7 +36,7 @@ public abstract class CheckableControl extends FormControl<Boolean> {
 		Element div = Document.get().createDivElement(); //TODO Remove this div 
 		Element label = Document.get().createLabelElement();
 		check.setId(Document.get().createUniqueId());
-		label.appendChild(Document.get().createTextNode(""));
+		label.appendChild(text = HasNodeText.Utils.create(""));
 		label.setAttribute(Constants.ATTRIB_FOR, check.getId());
 		div.appendChild(check);
 		div.appendChild(label);
@@ -46,7 +49,7 @@ public abstract class CheckableControl extends FormControl<Boolean> {
 	@Override
 	public void setEnabled(boolean enabled){
 		super.setEnabled(enabled);
-		JqueryUtils.setStyleEnabled(getElement(), enabled);
+		HasEnable.Utils.setEnabled(this, enabled);
 	}
 	
 	@Override
@@ -73,7 +76,7 @@ public abstract class CheckableControl extends FormControl<Boolean> {
 	}
 	@Override
 	public Text getTextElement() {
-		return getLabelElement().getFirstChild().cast();
+		return text;
 	}
 	
 }

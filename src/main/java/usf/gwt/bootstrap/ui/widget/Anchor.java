@@ -16,7 +16,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 public class Anchor extends BootstrapWidget implements 
-	Constants.HasText, Constants.HasIcon<Constants.IconTypes>, InputGroupAddOn, HasClickHandlers {
+	Constants.HasNodeText, Constants.HasIcon<Constants.IconTypes>, InputGroupAddOn, HasClickHandlers {
 
 	Text text;
 	SpanElement icon;
@@ -25,17 +25,17 @@ public class Anchor extends BootstrapWidget implements
 	protected Element initWidget() {
 		AnchorElement e = Document.get().createAnchorElement();
 		e.setHref(Constants.VALUE_JAVA_SCRIPT_EMPTY_FUNCTION);
-		e.appendChild(text = Constants.HasText.Utils.create(""));
+		e.appendChild(text = Constants.HasNodeText.Utils.create(""));
 		return e;
 	}
 
 	@Override
 	public String getText() {
-		return Constants.HasText.Utils.getText(this);
+		return Constants.HasNodeText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		Constants.HasText.Utils.setText(this, text);
+		Constants.HasNodeText.Utils.setText(this, text);
 	}
 	@Override
 	public void setIcon(Constants.IconTypes icon) {

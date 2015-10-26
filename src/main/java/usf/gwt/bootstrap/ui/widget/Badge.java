@@ -2,6 +2,7 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.AttachWidget;
 
 import com.google.gwt.dom.client.Document;
@@ -16,15 +17,16 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Badge extends BootstrapWidget implements Constants.HasText, AttachWidget {
+public class Badge extends BootstrapWidget implements Constants.HasNodeText, AttachWidget {
 
 	public static final String DEFAUL_BADGE_STYLE = "badge";
+	
+	Text text;
 	
 	@Override
 	protected Element initWidget() {
 		Element e = Document.get().createSpanElement();
-		Text t = Document.get().createTextNode("");
-		e.appendChild(t);
+		e.appendChild(text = HasNodeText.Utils.create(""));
 		return e;
 	}
 	@Override
@@ -43,7 +45,7 @@ public class Badge extends BootstrapWidget implements Constants.HasText, AttachW
 	}
 	@Override
 	public Text getTextElement() {
-		return getElement().getFirstChild().cast();
+		return text;
 	}
 
 }

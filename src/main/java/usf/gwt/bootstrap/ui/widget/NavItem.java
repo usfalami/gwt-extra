@@ -2,6 +2,7 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
 import usf.gwt.bootstrap.ui.core.ListItem;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 import usf.gwt.bootstrap.ui.widget.Bootstrap.Collapser;
@@ -27,6 +28,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
  */
 public class NavItem extends ListItem implements Constants.HasIcon<Constants.IconTypes>, HasClickHandlers, Collapser {
 	
+	Text text;
+	
 	public NavItem() {}
 	
     public NavItem(String text) {
@@ -46,8 +49,7 @@ public class NavItem extends ListItem implements Constants.HasIcon<Constants.Ico
 		e.setAttribute(Constants.ATTRIB_ROLE, Constants.VALUE_PRESENTATION);
 		AnchorElement a = Document.get().createAnchorElement();
 		a.setHref(Constants.VALUE_JAVA_SCRIPT_EMPTY_FUNCTION);
-		Text text = Document.get().createTextNode("");
-		a.appendChild(text);
+		a.appendChild(text = HasNodeText.Utils.create(""));
 		e.appendChild(a);
 		return e;
 	}
@@ -59,7 +61,7 @@ public class NavItem extends ListItem implements Constants.HasIcon<Constants.Ico
 	@Override
     public void setIcon(Constants.IconTypes icon) {
 		getIconElement().addClassName(Constants.BOOTSTRAP_ICON_PREFIX); //temp
-    	JqueryUtils.switchClass(getBaseElement(), icon);
+    	JqueryUtils.toggleClass(getBaseElement(), icon);
     }
 	@Override
     public Constants.IconTypes getIcon() {
@@ -83,7 +85,7 @@ public class NavItem extends ListItem implements Constants.HasIcon<Constants.Ico
 	}
 	@Override
 	public Text getTextElement() {
-		return getBaseElement().getFirstChild().cast();
+		return text;
 	}
 	@Override
 	public Element getIconElement() {

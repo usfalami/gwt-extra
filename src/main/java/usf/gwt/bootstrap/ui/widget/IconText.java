@@ -9,7 +9,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 
-public class IconText extends BootstrapWidget implements Constants.HasIcon<Constants.IconTypes>, InputGroupAddOn, Constants.HasText {
+public class IconText extends BootstrapWidget implements Constants.HasIcon<Constants.IconTypes>, InputGroupAddOn, Constants.HasNodeText {
 	
 	Text text;
 	SpanElement icon;
@@ -18,17 +18,17 @@ public class IconText extends BootstrapWidget implements Constants.HasIcon<Const
 	protected Element initWidget() {
 		Element e = Document.get().createSpanElement();
 		e.appendChild(icon = Constants.HasIcon.Utils.create());
-		e.appendChild(text = Constants.HasText.Utils.create(""));
+		e.appendChild(text = Constants.HasNodeText.Utils.create(""));
 		return e;
 	}
 	
 	@Override
 	public String getText() {
-		return Constants.HasText.Utils.getText(this);
+		return Constants.HasNodeText.Utils.getText(this);
 	}
 	@Override
 	public void setText(String text) {
-		Constants.HasText.Utils.setText(this, text);
+		Constants.HasNodeText.Utils.setText(this, text);
 	}
 	@Override
 	public void setIcon(Constants.IconTypes icon) {

@@ -11,36 +11,14 @@ import com.google.gwt.dom.client.Element;
  * 
  */
 public final class JqueryUtils {
-	
-	public static boolean isActive(Element e) {
-		return hasClass(e, Constants.BOOTSTRAP_ACTIVE);
-	}
-	public static void activate(Element e, boolean add) {
-		switchClass(e, Constants.BOOTSTRAP_ACTIVE, add);
-	}
-	public static void activateUnique(Element e, boolean add) {
-		switchClassUnique(e, Constants.BOOTSTRAP_ACTIVE, add);
-	}
-	public static boolean isStyleEnabled(Element e) {
-		return !hasClass(e, Constants.BOOTSTRAP_DISABLED);
-	}
-	public static void setStyleEnabled(Element e, boolean value) {
-		switchClass(e, Constants.BOOTSTRAP_DISABLED, !value);
-	}
-	public static boolean isFormControlEnabled(Element e) {
-		return !hasAttrib(e, Constants.BOOTSTRAP_DISABLED);
-	}
-	public static void setFormControlEnabled(Element e, boolean value) {
-		switchAttribute(e, Constants.BOOTSTRAP_DISABLED, !value);
-	}
-	
+		
 	public static <T extends Enum<T> & Constants.StyleEnum> T hasClass(Element e, Class<T> clazz){
 		T style = Enum.valueOf(clazz, "NONE");
 		if(style == null) return null;
 		String s = findClassByPrefix(e, style.prefix(), 2, arrayToJsString(style.excludes()));
 		return s == null ? style : bootstrapStyleToJavaEnum(clazz, s);
 	}
-	public static <T extends Enum<T> & Constants.StyleEnum> void switchClass(Element e, T value) {
+	public static <T extends Enum<T> & Constants.StyleEnum> void toggleClass(Element e, T value) {
 		String c = value==null ? null : javaEnumToBootstrapStyle(value.prefix(), value.value());
 		switchClass(e, findClassByPrefix(e, value.prefix(), 0, arrayToJsString(value.excludes())), c);
 	}
@@ -102,14 +80,14 @@ public final class JqueryUtils {
 	public static native void removeClass(Element e, String c)/*-{
 		$wnd.$(e).removeClass(c);
 	}-*/;
-	public static native void switchClass(Element e, String className, boolean a)/*-{
+	public static native void toggleClass(Element e, String className, boolean a)/*-{
 		a && $wnd.$(e).addClass(className);
 		a || $wnd.$(e).removeClass(className);
 	}-*/;
 	public static native void switchClass(Element e, String oldClass, String newClass)/*-{
 		$wnd.$(e).removeClass(oldClass).addClass(newClass);
 	}-*/;
-	public static native void switchClassUnique(Element e, String c, boolean a) /*-{
+	public static native void toggleClassUnique(Element e, String c, boolean a) /*-{
 		$wnd.$(e).parent().find(e.tagName).removeClass(c);
 		a && $wnd.$(e).addClass(c);
 	}-*/;
@@ -117,7 +95,7 @@ public final class JqueryUtils {
 	public static native boolean hasAttrib(Element e, String c)/*-{
 		return $wnd.$(e).is('['+ c +']');
 	}-*/;
-	public static native void switchAttribute(Element e, String attr, boolean a)/*-{
+	public static native void toggleAttribute(Element e, String attr, boolean a)/*-{
 		$wnd.$(e).attr(attr, a ? '' : null);
 	}-*/;
 	

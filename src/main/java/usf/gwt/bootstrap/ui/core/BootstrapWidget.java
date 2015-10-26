@@ -1,12 +1,13 @@
 package usf.gwt.bootstrap.ui.core;
 
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.AlignementStyles;
+import usf.gwt.bootstrap.ui.core.Constants.HasAlign;
 import usf.gwt.bootstrap.ui.widget.Bootstrap;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class BootstrapWidget extends Widget implements Bootstrap {
+public abstract class BootstrapWidget extends Widget implements Bootstrap, HasAlign<AlignementStyles> {
 
     public BootstrapWidget() {
         setElement(initWidget());
@@ -22,8 +23,13 @@ public abstract class BootstrapWidget extends Widget implements Bootstrap {
         return getBaseElement().getId();
     }
     
+	@Override
 	public void setAlign(Constants.AlignementStyles align) {
-		JqueryUtils.switchClass(getElement(), align);
+		HasAlign.Utils.setAlign(this, align);
+	}
+	@Override
+	public AlignementStyles getAlign() {
+		return HasAlign.Utils.getAlign(this, AlignementStyles.class);
 	}
 
     protected abstract Element initWidget();

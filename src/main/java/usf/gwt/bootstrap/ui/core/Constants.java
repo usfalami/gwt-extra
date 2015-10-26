@@ -6,7 +6,6 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
-import com.google.gwt.user.client.ui.Widget;
 
 public final class Constants {
 
@@ -18,20 +17,101 @@ public final class Constants {
 		String[] excludes();
 	}
 	
-
+	public static interface HasEnable {
+		
+		boolean isEnabled();
+		void setEnabled(boolean enabled);
+		Element getElement();
+		
+		class Utils {
+			public static boolean isEnabled(HasEnable w) {
+				return !JqueryUtils.hasClass(w.getElement(), BOOTSTRAP_DISABLED);
+			}
+			public static void setEnabled(HasEnable w, boolean enabled) {
+				JqueryUtils.toggleClass(w.getElement(), BOOTSTRAP_DISABLED, !enabled);
+			}
+		}
+	}
+	
+	public static interface HasFormControlEnable extends HasEnable {
+		
+		Element getBaseElement();
+		
+		class Utils {
+			public static boolean isEnabled(HasFormControlEnable w) {
+				return !JqueryUtils.hasAttrib(w.getBaseElement(), BOOTSTRAP_DISABLED);
+			}
+			public static void setEnabled(HasFormControlEnable w, boolean enabled) {
+				JqueryUtils.toggleAttribute(w.getBaseElement(), BOOTSTRAP_DISABLED, !enabled);
+			}
+		}
+	}
+	
+	public static interface HasActive {
+		
+		boolean isActive();
+		void setActive(boolean active);
+		Element getElement();
+		
+		class Utils {
+			public static boolean isActive(HasActive w) {
+				return JqueryUtils.hasClass(w.getElement(), BOOTSTRAP_ACTIVE);
+			}
+			public static void setActive(HasActive w, boolean value) {
+				JqueryUtils.toggleClass(w.getElement(), BOOTSTRAP_ACTIVE, value);
+			}
+			public static void setActiveUnique(HasActive w, boolean value) {
+				JqueryUtils.toggleClassUnique(w.getElement(), BOOTSTRAP_ACTIVE, value);
+			}
+		}
+	}
+	
 	public static interface HasText {
 		void setText(String text);
-		String getText();    	
+		String getText();
+	}
+	public static interface HasInputText extends HasText {
+
+		Element getBaseElement();
+		
+		class Utils {
+			public static void setText(HasInputText w, String text){
+				JqueryUtils.val(w.getBaseElement(), text);
+			}
+			public static String getText(HasInputText w) {
+				return JqueryUtils.val(w.getBaseElement());
+			}
+		}
+	}
+	public static interface HasNodeText extends HasText {
+
 		Text getTextElement();
+		
 		class Utils {
 			public static Text create(String text){
 				return Document.get().createTextNode(text);
 			}
-			public static void setText(HasText w, String text){
+			public static void setText(HasNodeText w, String text){
 				w.getTextElement().setNodeValue(text);
 			}
-			public static String getText(HasText w) {
+			public static String getText(HasNodeText w) {
 				return w.getTextElement().getNodeValue();
+			}
+		}
+	}
+	
+	public static interface HasAlign<T extends Enum<T> & StyleEnum> {
+
+		void setAlign(T align);
+		T getAlign();
+		Element getElement();
+		
+		class Utils {
+			public static <T extends Enum<T> & StyleEnum> void setAlign(HasAlign<T> w, T align) {
+				JqueryUtils.toggleClass(w.getElement(), align);
+			}
+			public static <T extends Enum<T> & StyleEnum> T getAlign(HasAlign<T> w, Class<T> clazz) {
+				return JqueryUtils.hasClass(w.getElement(), clazz);
 			}
 		}
 	}
@@ -43,19 +123,21 @@ public final class Constants {
 		Element getStylElement();
 		
 		class Utils {
-			
-			public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> void setStyle(E w, T style){
-				if(w.getElement() != null)
-					JqueryUtils.switchClass(w.getElement(), style);
-			}
-			public static <T extends Enum<T> & StyleEnum, E extends Widget & HasStyle<T>> T getStyle(E w, Class<T> clazz) {
-				return w.getElement() == null ? null : JqueryUtils.hasClass(w.getElement(), clazz);
-			}
+
 			public static boolean hasStyle(Element elem, String style){
 		    	return JqueryUtils.hasClass(elem, style);
 			}
 			public static void setStyle(Element elem, String style, boolean set){
-		    	JqueryUtils.switchClass(elem, style, set);
+		    	JqueryUtils.toggleClass(elem, style, set);
+			}
+			public static void setStyleUnique(Element elem, String style, boolean set){
+		    	JqueryUtils.toggleClassUnique(elem, style, set);
+			}
+			public static <T extends Enum<T> & StyleEnum> void setStyle(HasStyle<T> w, T style){
+				JqueryUtils.toggleClass(w.getStylElement(), style);
+			}
+			public static <T extends Enum<T> & StyleEnum> T getStyle(HasStyle<T> w, Class<T> clazz) {
+				return JqueryUtils.hasClass(w.getStylElement(), clazz);
 			}
 		}
 	}
@@ -73,11 +155,10 @@ public final class Constants {
     			return s;
     		}
     		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
-    			JqueryUtils.switchClass(w.getIconElement(), icon);
+    			JqueryUtils.toggleClass(w.getIconElement(), icon);
     		}
     		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
-    			return w.getIconElement() == null ? null : 
-    					JqueryUtils.hasClass(w.getIconElement(), clazz);
+    			return JqueryUtils.hasClass(w.getIconElement(), clazz);
     		}
     	}
     }
@@ -89,7 +170,6 @@ public final class Constants {
 	public static interface HasState<T> {
 		void setState(T state);
 	}
-	
 	
 	public static enum AlertStyles implements StyleEnum {
 		
@@ -184,7 +264,7 @@ public final class Constants {
 	    
 		@Override public String value() {return this.name().toLowerCase();};
 	    @Override public String prefix() {return BOOTSTRAP_PROGRESS_BAR_PREFIX;}
-	    @Override public String[] excludes() {return null;}
+	    @Override public String[] excludes() {return BOOTSTRAP_PROGRESS_BAR_NAV_EXCLUDES;}
 	}
 	public static enum ValidationStyles implements StyleEnum {
 		
@@ -302,6 +382,7 @@ public final class Constants {
 	public static final String[] BOOTSTRAP_NAV_EXCLUDES = {BOOTSTRAP_NAV_STACKED_STYLE};
 	public static final String BOOTSTRAP_PANEL_PREFIX = "panel";
 	public static final String BOOTSTRAP_PROGRESS_BAR_PREFIX = "progress-bar";
-	public static final String BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE ="progress-bar-striped";
+	public static final String BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE = "progress-bar-striped";
+	public static final String[] BOOTSTRAP_PROGRESS_BAR_NAV_EXCLUDES = {BOOTSTRAP_PROGRESS_BAR_STRIPED_STYLE};
 	public static final String BOOTSTRAP_VALIDATION_PREFIX = "has";
 }

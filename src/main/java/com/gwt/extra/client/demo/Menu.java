@@ -19,7 +19,7 @@ import com.gwt.extra.client.demo.sample.InputSamples;
 import com.gwt.extra.client.demo.sample.NavSamples;
 import com.gwt.extra.client.demo.sample.PanelSamples;
 import com.gwt.extra.client.demo.sample.ProgressSampes;
-import com.gwt.extra.client.demo.sample.TestSampes;
+import com.gwt.extra.client.demo.sample.TestSamples;
 
 public class Menu extends Composite implements ClickHandler {
 	
@@ -53,7 +53,7 @@ public class Menu extends Composite implements ClickHandler {
 	
 	@Override
 	protected void onLoad() {
-		RootPanel.get("gwt").add(new TestSampes());
+		RootPanel.get("gwt").add(new TestSamples());
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class Menu extends Composite implements ClickHandler {
 		NavItem c = (NavItem) event.getSource();
 		if(c.isActive()) return;
 		RootPanel.get("gwt").clear();
-		if(c == test) RootPanel.get("gwt").add(new TestSampes());
+		if(c == test) RootPanel.get("gwt").add(new TestSamples());
 		else if(c == navs) RootPanel.get("gwt").add(new NavSamples());
 		else if(c == groups) RootPanel.get("gwt").add(new GroupSamples());
 		else if(c == panels) RootPanel.get("gwt").add(new PanelSamples());

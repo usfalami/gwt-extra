@@ -1,6 +1,7 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -14,9 +15,11 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Label extends GridCol implements Constants.HasText {
+public class Label extends GridCol implements Constants.HasNodeText {
 
 	public final static String DEFAULT_LABEL_STYLE = "control-label";
+	
+	Text text;
 	
     public Label() {
     	super();
@@ -29,8 +32,7 @@ public class Label extends GridCol implements Constants.HasText {
     @Override
     protected Element initWidget() {
         Element e = Document.get().createLabelElement();
-        Text t = Document.get().createTextNode("");
-        e.appendChild(t);
+		e.appendChild(text = HasNodeText.Utils.create(""));
         return e;
     }
     
@@ -55,7 +57,7 @@ public class Label extends GridCol implements Constants.HasText {
 	
 	@Override
 	public Text getTextElement() {
-		return getElement().getFirstChild().cast();
+		return text;
 	}
 
 
