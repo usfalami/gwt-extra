@@ -1,7 +1,6 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapContainer;
-import usf.gwt.bootstrap.ui.core.Constants;
 import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 
 import com.google.gwt.dom.client.Document;
@@ -16,7 +15,7 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class Legend extends BootstrapContainer implements Constants.HasNodeText  {
+public class Legend extends BootstrapContainer implements HasNodeText  {
 
 	Text text;
 

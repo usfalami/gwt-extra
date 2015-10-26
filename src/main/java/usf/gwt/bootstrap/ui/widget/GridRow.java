@@ -1,5 +1,7 @@
 package usf.gwt.bootstrap.ui.widget;
 
+import usf.gwt.bootstrap.ui.core.Constants;
+
 /**
  * <pre>{@code
  *  <div class='row'> ... </div>
@@ -14,11 +16,9 @@ package usf.gwt.bootstrap.ui.widget;
  */
 public class GridRow extends Layout {
 	
-	public static final String DEFAULT_ROW_STYLE = "row";
-
 	@Override
 	protected void initStyle() {
-		getElement().addClassName(DEFAULT_ROW_STYLE);
+		getElement().addClassName(Constants.DEFAULT_ROW_STYLE);
 	}
 
 }

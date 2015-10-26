@@ -387,4 +387,10 @@ public final class Constants {
 	
 	public final static String DEFAULT_FORM_CONTROL_STYLE = "form-control";
 	public static final String FORM_GROUP_STYLE = "form-group";
+	public static final String DEFAULT_ROW_STYLE = "row";
+	public static final String DEFAULT_GROUP_STYLE = "list-group";
+	public static final String DEGAULT_GROUP_ITEM_STYLE = "list-group-item";
+	public static final String DEFAULT_INPUT_GROUP_STYLE = "input-group";
+	public static final String DEFAULT_GROUP_ADD_ON_STYLE = "input-group-addon";
+	public final static String DEFAULT_LABEL_STYLE = "control-label";
 }

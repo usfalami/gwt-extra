@@ -17,8 +17,6 @@ import com.google.gwt.dom.client.Text;
  */
 public class Label extends GridCol implements Constants.HasNodeText {
 
-	public final static String DEFAULT_LABEL_STYLE = "control-label";
-	
 	Text text;
 	
     public Label() {
@@ -38,7 +36,7 @@ public class Label extends GridCol implements Constants.HasNodeText {
     
     @Override
     protected void initStyle() {
-        getElement().addClassName(DEFAULT_LABEL_STYLE);
+        getElement().addClassName(Constants.DEFAULT_LABEL_STYLE);
     }
 
     public void setFor(String id) {
