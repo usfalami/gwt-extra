@@ -19,8 +19,6 @@ import com.google.gwt.dom.client.Text;
  */
 public class Badge extends BootstrapWidget implements HasNodeText, AttachWidget {
 
-	public static final String DEFAUL_BADGE_STYLE = "badge";
-	
 	Text text;
 	
 	@Override
@@ -31,7 +29,7 @@ public class Badge extends BootstrapWidget implements HasNodeText, AttachWidget 
 	}
 	@Override
 	protected void initStyle() {
-		getElement().addClassName(DEFAUL_BADGE_STYLE);
+		getElement().addClassName(Constants.DEFAUL_BADGE_STYLE);
 		getElement().addClassName(Constants.GWT_BOOTSTRAP_BADGE);
 	}
 	
