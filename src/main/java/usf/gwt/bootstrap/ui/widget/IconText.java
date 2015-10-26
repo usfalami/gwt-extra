@@ -19,7 +19,7 @@ public class IconText extends BootstrapWidget implements HasIcon<IconTypes>, Inp
 	@Override
 	protected Element initWidget() {
 		Element e = Document.get().createSpanElement();
-		e.appendChild(icon = HasIcon.Utils.create());
+//		e.appendChild(icon = HasIcon.Utils.create());
 		e.appendChild(text = HasNodeText.Utils.create(""));
 		return e;
 	}
@@ -41,6 +41,10 @@ public class IconText extends BootstrapWidget implements HasIcon<IconTypes>, Inp
 		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
 	
+	@Override
+	public void setIconElement(SpanElement e) {
+		getElement().insertFirst(icon = e);
+	}
 	@Override
 	public SpanElement getIconElement() {
 		return icon;

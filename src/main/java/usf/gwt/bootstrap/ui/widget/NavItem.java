@@ -10,6 +10,7 @@ import usf.gwt.bootstrap.ui.widget.Bootstrap.Collapser;
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -86,6 +87,12 @@ public class NavItem extends ListItem implements Constants.HasIcon<Constants.Ico
 	@Override
 	public Text getTextElement() {
 		return text;
+	}
+	
+	@Override
+	public void setIconElement(SpanElement e) {//TODO
+//		if((icon = e) != null)
+//			getElement().insertFirst(icon);
 	}
 	@Override
 	public Element getIconElement() {

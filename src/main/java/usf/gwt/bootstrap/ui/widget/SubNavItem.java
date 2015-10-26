@@ -5,6 +5,7 @@ import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 
 
 /**
@@ -72,5 +73,9 @@ public class SubNavItem extends Nav implements Constants.HasIcon<Constants.IconT
 	@Override
 	public Element getIconElement() {
 		return i.getIconElement();
+	}
+	@Override
+	public void setIconElement(SpanElement e) {
+		i.setIconElement(e);
 	}
 }

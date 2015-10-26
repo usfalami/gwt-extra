@@ -145,16 +145,27 @@ public final class Constants {
     	void setIcon(T icon);
     	T getIcon();
     	Element getIconElement();
+    	void setIconElement(SpanElement e);
     	
     	class Utils {
     		public static SpanElement create(){
     			SpanElement s = Document.get().createSpanElement();
     			s.addClassName(BOOTSTRAP_ICON_PREFIX);
-//    			s.setInnerHTML("&nbsp;");
     			return s;
     		}
     		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
-    			JqueryUtils.toggleClass(w.getIconElement(), icon);
+    			if(icon == null || icon.name().equals(BOOTSTRAP_EMPTY_STYLE)){
+    				if(w.getIconElement() != null)
+    					w.getIconElement().removeFromParent();
+    			}
+    			else {
+    				SpanElement e;
+    				if(w.getIconElement() == null) 
+        				w.setIconElement(e = create());
+    				else 
+    					e = w.getIconElement().cast();
+        			JqueryUtils.toggleClass(e, icon);
+    			}
     		}
     		public static <T extends Enum<T> & StyleEnum> T getIcon(HasIcon<T> w, Class<T> clazz) {
     			return JqueryUtils.hasClass(w.getIconElement(), clazz);
@@ -394,4 +405,6 @@ public final class Constants {
 	public static final String DEFAULT_GROUP_ADD_ON_STYLE = "input-group-addon";
 	public static final String DEFAULT_LABEL_STYLE = "control-label";
 	public static final String DEFAUL_BADGE_STYLE = "badge";
+	
+	public static final String BOOTSTRAP_EMPTY_STYLE = "NONE";
 }

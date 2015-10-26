@@ -101,8 +101,8 @@ public class Button extends FormControl<String> implements HasNodeText, HasIcon<
     }
     
 	@Override
-	public SpanElement getIconElement() {
-		return icon;
+	public void setIconElement(SpanElement e) {
+		getElement().insertFirst(icon = e);
 	}
     @Override
     public Text getTextElement() {
@@ -112,5 +112,9 @@ public class Button extends FormControl<String> implements HasNodeText, HasIcon<
     public Element getStylElement() {
     	return getElement();
     }
+	@Override
+	public SpanElement getIconElement() {
+		return icon;
+	}
 
 }

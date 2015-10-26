@@ -42,14 +42,13 @@ public class Anchor extends BootstrapWidget implements
 	}
 	@Override
 	public void setIcon(IconTypes icon) {
-		if(this.icon == null) 
-			getElement().insertFirst(this.icon = HasIcon.Utils.create());
 		HasIcon.Utils.setIcon(this, icon);
 	}
 	@Override
 	public IconTypes getIcon() {
 		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
+	
 	public void setHref(String uri) {
 		getBaseElement().setHref(uri);
 	}
@@ -64,12 +63,16 @@ public class Anchor extends BootstrapWidget implements
 	}
 
 	@Override
-	public Text getTextElement() {
-		return text;
+	public void setIconElement(SpanElement e) {
+		getElement().insertFirst(icon = e);
 	}
 	@Override
 	public SpanElement getIconElement() {
 		return icon;
+	}
+	@Override
+	public Text getTextElement() {
+		return text;
 	}
 	@Override
 	public AnchorElement getBaseElement() {
