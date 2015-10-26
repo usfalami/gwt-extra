@@ -35,12 +35,6 @@ public final class JqueryUtils {
     	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
 	}
 	
-	public static native void test(Element e, String t) /*-{
-		var target = $wnd.$(t);
-		target.on('hidden.bs.collapse', function () {$wnd.console.log(e); $wnd.$(e).addClass(@usf.gwt.bootstrap.ui.core.Constants::BOOTSTRAP_COLLAPSED)});
-		target.on('shown.bs.collapse', function () {$wnd.console.log(e); $wnd.$(e).removeClass(@usf.gwt.bootstrap.ui.core.Constants::BOOTSTRAP_COLLAPSED)});
-	}-*/;
-	
 	public static void collapse(Element e, Element target, boolean collapse) {
         if(collapse){
         	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE_IN, Constants.BOOTSTRAP_COLLAPSE);
