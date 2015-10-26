@@ -19,7 +19,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 public class Anchor extends BootstrapWidget implements 
-	Constants.HasNodeText, HasIcon<IconTypes>, InputGroupAddOn, HasClickHandlers {
+	HasNodeText, HasIcon<IconTypes>, InputGroupAddOn, HasClickHandlers {
 
 	Text text;
 	SpanElement icon;
