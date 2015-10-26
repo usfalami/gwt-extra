@@ -2,8 +2,10 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
+import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 
@@ -24,7 +26,6 @@ public final class Constants {
 				return style == null ? null : Enum.valueOf(clazz, style.replaceAll(BOOTSTRAP_STYLE_SEPARATOR, JAVA_STYLE_SEPARATOR).toUpperCase());
 			}
 		}
-		
 	}
 	
 	public static interface HasEnable {
@@ -42,6 +43,7 @@ public final class Constants {
 			}
 		}
 	}
+	
 	public static interface HasFormControlEnable extends HasEnable {
 		
 		Element getBaseElement();
@@ -108,6 +110,46 @@ public final class Constants {
 			}
 		}
 	}
+	
+	public static interface CanCollapse {
+		
+		boolean isCollapsed();
+		void setCollapsed(boolean collapse);
+		Element getContainerElement();
+		
+		class Utils {
+			public static boolean isCollapse(CanCollapse w) {
+				return JqueryUtils.hasClass(w.getContainerElement(), BOOTSTRAP_COLLAPSE) || 
+						!JqueryUtils.hasClass(w.getContainerElement(), BOOTSTRAP_COLLAPSE_IN);
+			}
+			public static void setCollapse(CanCollapse w, boolean collapse) {
+			   if(collapse)
+				   JqueryUtils.replaceClass(w.getContainerElement(), BOOTSTRAP_COLLAPSE_IN, BOOTSTRAP_COLLAPSE);
+			   else
+				   JqueryUtils.replaceClass(w.getContainerElement(), BOOTSTRAP_COLLAPSE, BOOTSTRAP_COLLAPSE_IN);
+			}
+		}
+	}
+	
+	public static interface HasCollapser {
+		
+		void setTarget(String id);
+		String getTarget(String id);
+		Element getBaseElement();
+		
+		class Utils {
+
+			public static void setTarget(AnchorElement anchor, String target) {
+		        anchor.setHref(Constants.JQUERY_ID_SELECTOR + target);
+		        anchor.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
+			}
+			public static void setTarget(InputElement anchor, String target) {
+		        anchor.setAttribute(Constants.ATTRIB_DATA_TARGET, Constants.JQUERY_ID_SELECTOR + target);
+		        anchor.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
+			}
+		}
+	}
+	
 	
 	public static interface HasAlign<T extends Enum<T> & StyleEnum> {
 

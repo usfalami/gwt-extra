@@ -2,10 +2,13 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.core.Constants.HasActive;
 import usf.gwt.bootstrap.ui.core.Constants.HasEnable;
+import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
 import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
+import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 
 /**
@@ -16,9 +19,10 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class ListItem extends BootstrapContainer implements HasNodeText, HasActive, HasEnable {
+public class ListItem extends BootstrapContainer implements HasNodeText, HasIcon<IconTypes>, HasActive, HasEnable {
 
-	Text text;
+	protected Text text;
+	protected SpanElement icon;
 	
 	@Override
 	protected Element initWidget() {
@@ -34,6 +38,15 @@ public class ListItem extends BootstrapContainer implements HasNodeText, HasActi
 	@Override
 	public void setText(String text) {
 		HasNodeText.Utils.setText(this, text);
+	}
+
+	@Override
+	public void setIcon(IconTypes icon) {
+		HasIcon.Utils.setIcon(this, icon);
+	}
+	@Override
+	public IconTypes getIcon() {
+		return HasIcon.Utils.getIcon(this, IconTypes.class);
 	}
 	
 	@Override
@@ -60,6 +73,15 @@ public class ListItem extends BootstrapContainer implements HasNodeText, HasActi
 	@Override
 	public Text getTextElement() {
 		return text;
+	}
+
+	@Override
+	public Element getIconElement() {
+		return icon;
+	}
+	@Override
+	public void setIconElement(SpanElement e) {
+		getElement().insertFirst(this.icon = e);
 	}
 	
 }

@@ -23,29 +23,6 @@ public final class JqueryUtils {
 		String c = enm==null ? null : StyleEnum.Utils.fullValue(enm);
 		replaceClass(e, findClassByPrefix(e, enm.prefix(), 0, arrayToJsString(enm.excludes())), c);
 	}
-	
-	public static void attachCollapser(Element elem, String target) {
-        elem.setAttribute(Constants.ATTRIB_DATA_TARGET, target);
-        elem.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
-        //test(elem, target);
-	}
-	public static void attachCollapser(Element elem, Element target) {
-        elem.setAttribute(Constants.ATTRIB_DATA_TARGET, Constants.JQUERY_ID_SELECTOR + target.getId());
-        elem.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
-    	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
-	}
-	
-	public static void collapse(Element e, Element target, boolean collapse) {
-        if(collapse){
-        	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE_IN, Constants.BOOTSTRAP_COLLAPSE);
-        	e.addClassName(Constants.BOOTSTRAP_COLLAPSED);
-        }
-        else {
-        	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
-        	e.removeClassName(Constants.BOOTSTRAP_COLLAPSED);
-        }
-    }
-
 
 	public static native boolean hasClass(Element e, String c)/*-{
 		return $wnd.$(e).hasClass(c);

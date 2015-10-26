@@ -1,11 +1,11 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.Constants;
-import usf.gwt.bootstrap.ui.js.JqueryUtils;
+import usf.gwt.bootstrap.ui.core.Constants.HasCollapser;
+import usf.gwt.bootstrap.ui.core.Constants.NavStyles;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.SpanElement;
 
 
 /**
@@ -20,62 +20,43 @@ import com.google.gwt.dom.client.SpanElement;
  * @author Youssef ALAMI
  * 
  */
-public class SubNavItem extends Nav implements Constants.HasIcon<Constants.IconTypes> {
+public class SubNavItem extends NavItem {
 	
-	protected NavItem i;
+	protected Nav nav;
 	
 	@Override
 	protected Element initWidget() {
-		i = new NavItem();
-		Element l = super.initWidget();
-		l.setId(Document.get().createUniqueId());
-		i.getElement().appendChild(l);
-		JqueryUtils.attachCollapser(i.getBaseElement(), l);
-		return i.getElement();
+		Element e = super.initWidget();
+		nav = new Nav();
+		nav.setId(Document.get().createUniqueId());
+		e.appendChild(nav.getElement());
+		HasCollapser.Utils.setTarget(getBaseElement(), nav.getId());
+		nav.setCollapsed(false);
+		return e;
 	}
     @Override
     protected void initStyle() {
-    	getContainerElement().addClassName(Constants.BOOTSTRAP_NAV_PREFIX);
-    	JqueryUtils.replaceClass(i.getElement(), Constants.GWT_BOOTSTRAP_NAV_ITEM, Constants.GWT_BOOTSTRAP_SUB_NAV);
+    	getElement().addClassName(Constants.GWT_BOOTSTRAP_SUB_NAV);
+    	nav.getContainerElement().removeClassName(Constants.GWT_BOOTSTRAP_NAV);
     }
+
+	public NavStyles getStyle() {
+		return nav.getStyle();
+	}
+	public void setStyle(NavStyles style) {
+		nav.setStyle(style);
+	}
 	
-	public String getText() {
-		return i.getText();
-	}
-	public void setText(String text) {
-		i.setText(text);
-	}
-    public void setIcon(Constants.IconTypes icon) {
-    	i.setIcon(icon);
+    public void setStacked(boolean stack){
+    	nav.setStacked(stack);
     }
-    public Constants.IconTypes getIcon() {
-    	return i.getIcon();
+    public boolean isStacked() {
+    	return nav.isStacked();
 	}
-
-	public void setCollapsed(boolean collapse) {
-		JqueryUtils.collapse(getBaseElement(), getContainerElement(), collapse);
-	}
-
-	/**
-	 * Return the Anchor Element
-	 */
+    
 	@Override
-	public Element getBaseElement() {
-		return i.getBaseElement();
+	public Element getContainerElement() {
+		return nav.getContainerElement();
 	}
-	/**
-	 * Return the UL Element
-	 */
-	@Override
-	protected Element getContainerElement() {
-		return getElement().getChild(1).cast();
-	}
-	@Override
-	public Element getIconElement() {
-		return i.getIconElement();
-	}
-	@Override
-	public void setIconElement(SpanElement e) {
-		i.setIconElement(e);
-	}
+	
 }

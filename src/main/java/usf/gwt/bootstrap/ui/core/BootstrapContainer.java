@@ -2,13 +2,14 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.core.Constants.AlignementStyles;
 import usf.gwt.bootstrap.ui.core.Constants.HasAlign;
+import usf.gwt.bootstrap.ui.core.Constants.CanCollapse;
 import usf.gwt.bootstrap.ui.widget.Bootstrap;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class BootstrapContainer extends ComplexPanel implements Bootstrap, HasAlign<AlignementStyles> {
+public abstract class BootstrapContainer extends ComplexPanel implements Bootstrap, CanCollapse, HasAlign<AlignementStyles> {
 
 	public BootstrapContainer() {
 		setElement(initWidget());
@@ -41,10 +42,22 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 	public Element getBaseElement() {
 		return getElement();
 	}
-	protected Element getContainerElement() {
+	public Element getContainerElement() {
 		return getElement();
 	}
 	
 	protected abstract Element initWidget();
 	protected void initStyle() {}
+	
+
+	@Override
+	public void setCollapsed(boolean collapse) {
+		CanCollapse.Utils.setCollapse(this, collapse);
+	}
+	@Override
+	public boolean isCollapsed() {
+		return CanCollapse.Utils.isCollapse(this);
+	}
+	
+	
 }

@@ -107,10 +107,10 @@
 		<b:GridRow>
 			<b:GridCol size="MD_4">
 				<b:Nav style="PILLS" stacked="true">
-					<b:SubNavItem text="Nav 1" style="PILLS" stacked="true" collapsed="true">
-						<b:SubNavItem text="Sub Nav 1.1" style="PILLS" stacked="true" collapsed="true">
-							<b:SubNavItem text="Sub Nav item 1.1.1" stacked="true" collapsed="true">
-								<b:NavItem text="Nav item 1.1.1.1" />
+					<b:SubNavItem text="Nav 1" style="PILLS" stacked="true" collapsed="true" icon="EYE">
+						<b:SubNavItem text="Sub Nav 1.1" style="PILLS" stacked="true" collapsed="true" icon="EYE">
+							<b:SubNavItem text="Sub Nav item 1.1.1" stacked="true" collapsed="true" icon="NONE">
+								<b:NavItem text="Nav item 1.1.1.1"  icon="EYE"/>
 							</b:SubNavItem>
 						</b:SubNavItem>
 					</b:SubNavItem>
