@@ -386,4 +386,5 @@ public final class Constants {
 	public static final String BOOTSTRAP_VALIDATION_PREFIX = "has";
 	
 	public final static String DEFAULT_FORM_CONTROL_STYLE = "form-control";
+	public static final String FORM_GROUP_STYLE = "form-group";
 }
