@@ -58,8 +58,6 @@ public class Button extends FormControl<String> implements HasNodeText, HasIcon<
 	}
 	@Override
 	public void setIcon(IconTypes icon) {
-		if(this.icon == null) 
-			getBaseElement().insertFirst(this.icon = HasIcon.Utils.create());
 		HasIcon.Utils.setIcon(this, icon);
 	}
 	@Override
@@ -102,7 +100,7 @@ public class Button extends FormControl<String> implements HasNodeText, HasIcon<
     
 	@Override
 	public void setIconElement(SpanElement e) {
-		getElement().insertFirst(icon = e);
+		getBaseElement().insertFirst(icon = e);
 	}
     @Override
     public Text getTextElement() {

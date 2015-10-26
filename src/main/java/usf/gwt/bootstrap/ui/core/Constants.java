@@ -18,10 +18,10 @@ public final class Constants {
 		
 		class Utils {
 			public static <T extends Enum<T> & StyleEnum> String fullValue(T enm){
-				return enm.prefix() + BOOTSTRAP_STYLE_SEPARATOR + enm.value();
+				return enm == null ? null : enm.prefix() + BOOTSTRAP_STYLE_SEPARATOR + enm.value();
 			}
 			public static <T extends Enum<T> & StyleEnum> T valueOf(Class<T> clazz, String style){
-				return Enum.valueOf(clazz, style.replaceAll(BOOTSTRAP_STYLE_SEPARATOR, JAVA_STYLE_SEPARATOR).toUpperCase());
+				return style == null ? null : Enum.valueOf(clazz, style.replaceAll(BOOTSTRAP_STYLE_SEPARATOR, JAVA_STYLE_SEPARATOR).toUpperCase());
 			}
 		}
 		

@@ -24,7 +24,7 @@ public abstract class BootstrapWidget extends Widget implements Bootstrap, HasAl
     }
     
 	@Override
-	public void setAlign(Constants.AlignementStyles align) {
+	public void setAlign(AlignementStyles align) {
 		HasAlign.Utils.setAlign(this, align);
 	}
 	@Override
