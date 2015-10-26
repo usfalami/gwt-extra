@@ -1,6 +1,7 @@
 package usf.gwt.bootstrap.ui.js;
 
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Constants.StyleEnum;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -13,21 +14,14 @@ import com.google.gwt.dom.client.Element;
 public final class JqueryUtils {
 		
 	public static <T extends Enum<T> & Constants.StyleEnum> T hasClass(Element e, Class<T> clazz){
-		T style = Enum.valueOf(clazz, "NONE");
-		if(style == null) return null;
-		String s = findClassByPrefix(e, style.prefix(), 2, arrayToJsString(style.excludes()));
-		return s == null ? style : bootstrapStyleToJavaEnum(clazz, s);
+		if(clazz.getEnumConstants().length == 0) return null;
+		T enm = clazz.getEnumConstants()[0];
+		String style = findClassByPrefix(e, enm.prefix(), 2, arrayToJsString(enm.excludes()));
+		return style == null ? enm : StyleEnum.Utils.valueOf(clazz, style);
 	}
-	public static <T extends Enum<T> & Constants.StyleEnum> void toggleClass(Element e, T value) {
-		String c = value==null ? null : javaEnumToBootstrapStyle(value.prefix(), value.value());
-		switchClass(e, findClassByPrefix(e, value.prefix(), 0, arrayToJsString(value.excludes())), c);
-	}
-	
-	public static <T extends Enum<T>> T bootstrapStyleToJavaEnum(Class<T> clazz, String style){
-		return Enum.valueOf(clazz, style.toUpperCase().replaceAll(Constants.BOOTSTRAP_STYLE_SEPARATOR, Constants.JAVA_STYLE_SEPARATOR));
-	}
-	public static String javaEnumToBootstrapStyle(String prefix, String style){
-		return prefix + Constants.BOOTSTRAP_STYLE_SEPARATOR + style;
+	public static <T extends Enum<T> & Constants.StyleEnum> void toggleClass(Element e, T enm) {
+		String c = enm==null ? null : StyleEnum.Utils.fullValue(enm);
+		replaceClass(e, findClassByPrefix(e, enm.prefix(), 0, arrayToJsString(enm.excludes())), c);
 	}
 	
 	public static void attachCollapser(Element elem, String target) {
@@ -38,7 +32,7 @@ public final class JqueryUtils {
 	public static void attachCollapser(Element elem, Element target) {
         elem.setAttribute(Constants.ATTRIB_DATA_TARGET, Constants.JQUERY_ID_SELECTOR + target.getId());
         elem.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
-    	switchClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
+    	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
 	}
 	
 	public static native void test(Element e, String t) /*-{
@@ -49,11 +43,11 @@ public final class JqueryUtils {
 	
 	public static void collapse(Element e, Element target, boolean collapse) {
         if(collapse){
-        	switchClass(target, Constants.BOOTSTRAP_COLLAPSE_IN, Constants.BOOTSTRAP_COLLAPSE);
+        	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE_IN, Constants.BOOTSTRAP_COLLAPSE);
         	e.addClassName(Constants.BOOTSTRAP_COLLAPSED);
         }
         else {
-        	switchClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
+        	replaceClass(target, Constants.BOOTSTRAP_COLLAPSE, Constants.BOOTSTRAP_COLLAPSE_IN);
         	e.removeClassName(Constants.BOOTSTRAP_COLLAPSED);
         }
     }
@@ -84,7 +78,7 @@ public final class JqueryUtils {
 		a && $wnd.$(e).addClass(className);
 		a || $wnd.$(e).removeClass(className);
 	}-*/;
-	public static native void switchClass(Element e, String oldClass, String newClass)/*-{
+	public static native void replaceClass(Element e, String oldClass, String newClass)/*-{
 		$wnd.$(e).removeClass(oldClass).addClass(newClass);
 	}-*/;
 	public static native void toggleClassUnique(Element e, String c, boolean a) /*-{

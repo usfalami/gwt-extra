@@ -36,7 +36,7 @@ public class SubNavItem extends Nav implements Constants.HasIcon<Constants.IconT
     @Override
     protected void initStyle() {
     	getContainerElement().addClassName(Constants.BOOTSTRAP_NAV_PREFIX);
-    	JqueryUtils.switchClass(i.getElement(), Constants.GWT_BOOTSTRAP_NAV_ITEM, Constants.GWT_BOOTSTRAP_SUB_NAV);
+    	JqueryUtils.replaceClass(i.getElement(), Constants.GWT_BOOTSTRAP_NAV_ITEM, Constants.GWT_BOOTSTRAP_SUB_NAV);
     }
 	
 	public String getText() {

@@ -15,6 +15,16 @@ public final class Constants {
 		String value();
 		String prefix();
 		String[] excludes();
+		
+		class Utils {
+			public static <T extends Enum<T> & StyleEnum> String fullValue(T enm){
+				return enm.prefix() + BOOTSTRAP_STYLE_SEPARATOR + enm.value();
+			}
+			public static <T extends Enum<T> & StyleEnum> T valueOf(Class<T> clazz, String style){
+				return Enum.valueOf(clazz, style.replaceAll(BOOTSTRAP_STYLE_SEPARATOR, JAVA_STYLE_SEPARATOR).toUpperCase());
+			}
+		}
+		
 	}
 	
 	public static interface HasEnable {
@@ -154,7 +164,7 @@ public final class Constants {
     			return s;
     		}
     		public static <T extends Enum<T> & StyleEnum> void setIcon(HasIcon<T> w, T icon){
-    			if(icon == null || icon.name().equals(BOOTSTRAP_EMPTY_STYLE)){
+    			if(icon == null || icon.name().equals(BOOTSTRAP_EMPTY_CONSTANT)){
     				if(w.getIconElement() != null)
     					w.getIconElement().removeFromParent();
     			}
@@ -183,7 +193,7 @@ public final class Constants {
 	
 	public static enum AlertStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		SUCCESS, INFO, WARNING, DANGER;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -192,14 +202,14 @@ public final class Constants {
 	}
 	public static enum AlignementStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, LEFT, RIGHT;
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, LEFT, RIGHT;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
 	    @Override public String prefix() {return BOOTSTRAP_ALIGN_PREFIX;}
 	    @Override public String[] excludes() {return null;}
 	}
 	public static enum ButtonStyles implements StyleEnum {
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
 		@Override public String value() {return this.name().toLowerCase();};
 	    @Override public String prefix() {return BOOTSTRAP_BUTTON_PREFIX;}
@@ -207,7 +217,7 @@ public final class Constants {
 	}
 	public static enum ColumnOffsets implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		MD_OFFSET_1, MD_OFFSET_2, MD_OFFSET_3, MD_OFFSET_4, MD_OFFSET_5, MD_OFFSET_6, 
 		MD_OFFSET_7, MD_OFFSET_8, MD_OFFSET_9, MD_OFFSET_10, MD_OFFSET_11, MD_OFFSET_12;
 	    
@@ -217,7 +227,7 @@ public final class Constants {
 	}
 	public static enum ColumnSizes implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		MD_1, MD_2, MD_3, MD_4, MD_5, MD_6, 
 		MD_7, MD_8, MD_9, MD_10, MD_11, MD_12;
 	
@@ -226,7 +236,7 @@ public final class Constants {
 	    @Override public String[] excludes() {return BOOTSTRAP_COLUMN_SIZE_EXCLUDES;}
 	}
 	public static enum FormStyles implements StyleEnum {
-		NONE{@Override public String value() {return "";}}, HORIZONTAL, INLINE;
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, HORIZONTAL, INLINE;
 	
 		@Override public String value() {return this.name().toLowerCase();};
 	    @Override public String prefix() {return BOOTSTRAP_FORM_PREFIX;}
@@ -234,7 +244,7 @@ public final class Constants {
 	}
 	public static enum LabelStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER, LINK;
 	    @Override public String value() {return this.name().toLowerCase();};
 	    @Override public String prefix() {return BOOTSTRAP_LABEL_PREFIX;}
@@ -242,7 +252,7 @@ public final class Constants {
 	}
 	public static enum NavStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		TABS, PILLS;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -251,7 +261,7 @@ public final class Constants {
 	}
 	public static enum PanelFrameStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		HEADING, BODY, FOOTER;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -260,7 +270,7 @@ public final class Constants {
 	}
 	public static enum PanelStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		DEFAULT, PRIMARY, SUCCESS, INFO, WARNING, DANGER;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -269,7 +279,7 @@ public final class Constants {
 	}
 	public static enum ProgressBarStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		PRIMARY, SUCCESS, INFO, WARNING, DANGER;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -278,7 +288,7 @@ public final class Constants {
 	}
 	public static enum ValidationStyles implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		SUCCESS, WARNING, ERROR;
 	    
 		@Override public String value() {return this.name().toLowerCase();};
@@ -286,7 +296,7 @@ public final class Constants {
 	    @Override public String[] excludes() {return null;}
 	}
 	public static enum ActiveStyles implements StyleEnum {
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		ACTIVE;
 		
 		@Override public String value() {return this.name().toLowerCase();};
@@ -301,7 +311,7 @@ public final class Constants {
 	}
 	public static enum IconTypes implements StyleEnum {
 		
-		NONE{@Override public String value() {return "";}}, 
+		NONE{@Override public String value() {return BOOTSTRAP_EMPTY_STYLE;}}, 
 		GLASS, MUSIC, SEARCH, ENVELOPE_O, HEART, STAR, STAR_O, USER, FILM, TH_LARGE, TH, TH_LIST, CHECK, REMOVE, CLOSE, TIMES, SEARCH_PLUS, SEARCH_MINUS, POWER_OFF, 
 		SIGNAL, GEAR, COG, TRASH_O, HOME, FILE_O, CLOCK_O, ROAD, DOWNLOAD, ARROW_CIRCLE_O_DOWN, ARROW_CIRCLE_O_UP, INBOX, PLAY_CIRCLE_O, ROTATE_RIGHT, REPEAT, REFRESH, 
 		LIST_ALT, LOCK, FLAG, HEADPHONES, VOLUME_OFF, VOLUME_DOWN, VOLUME_UP, QRCODE, BARCODE, TAG, TAGS, BOOK, BOOKMARK, PRINT, CAMERA, FONT, BOLD, ITALIC, TEXT_HEIGHT, 
@@ -406,5 +416,6 @@ public final class Constants {
 	public static final String DEFAULT_LABEL_STYLE = "control-label";
 	public static final String DEFAUL_BADGE_STYLE = "badge";
 	
-	public static final String BOOTSTRAP_EMPTY_STYLE = "NONE";
+	public static final String BOOTSTRAP_EMPTY_CONSTANT = "NONE";
+	public static final String BOOTSTRAP_EMPTY_STYLE = " ";
 }
