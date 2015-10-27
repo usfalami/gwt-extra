@@ -2,10 +2,8 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.js.JqueryUtils;
 
-import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.dom.client.Text;
 
@@ -14,6 +12,7 @@ public final class Constants {
 	public static interface BootstrapEnum {}
 	
 	public static interface StyleEnum extends BootstrapEnum {
+		
 		String value();
 		String prefix();
 		String[] excludes();
@@ -134,18 +133,20 @@ public final class Constants {
 	public static interface HasCollapser {
 		
 		void setTarget(String id);
-		String getTarget(String id);
+		String getTarget();
 		Element getBaseElement();
 		
 		class Utils {
-
-			public static void setTarget(AnchorElement anchor, String target) {
-		        anchor.setHref(Constants.JQUERY_ID_SELECTOR + target);
-		        anchor.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
-			}
-			public static void setTarget(InputElement anchor, String target) {
+			public static void setTarget(Element anchor, String target) {
 		        anchor.setAttribute(Constants.ATTRIB_DATA_TARGET, Constants.JQUERY_ID_SELECTOR + target);
 		        anchor.setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
+			}
+			public static void setTarget(HasCollapser w, String target) {
+		        w.getBaseElement().setAttribute(Constants.ATTRIB_DATA_TARGET, Constants.JQUERY_ID_SELECTOR + target);
+		        w.getBaseElement().setAttribute(Constants.ATTRIB_DATA_TOGGLE, Constants.BOOTSTRAP_COLLAPSE);
+			}
+			public static String getTarget(HasCollapser w){
+				return w.getBaseElement().getAttribute(Constants.ATTRIB_DATA_TARGET);
 			}
 		}
 	}

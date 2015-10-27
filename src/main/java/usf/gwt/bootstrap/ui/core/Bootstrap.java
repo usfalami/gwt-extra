@@ -1,4 +1,4 @@
-package usf.gwt.bootstrap.ui.widget;
+package usf.gwt.bootstrap.ui.core;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -11,10 +11,4 @@ public interface Bootstrap extends IsWidget {
 	
 	interface AttachWidget {}
 	interface InputGroupAddOn {}
-
-	interface Collapser {
-		void setTarget(String target);
-		Element getBaseElement();
-	}
-
 }

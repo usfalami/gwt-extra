@@ -2,11 +2,12 @@ package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
 import usf.gwt.bootstrap.ui.core.Constants;
+import usf.gwt.bootstrap.ui.core.Bootstrap.InputGroupAddOn;
+import usf.gwt.bootstrap.ui.core.Constants.HasCollapser;
 import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
 import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
 import usf.gwt.bootstrap.ui.js.JqueryEvents;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.InputGroupAddOn;
 
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
@@ -18,7 +19,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
-public class Anchor extends BootstrapWidget implements HasNodeText, HasIcon<IconTypes>, InputGroupAddOn, HasClickHandlers {
+public class Anchor extends BootstrapWidget implements 
+		
+	HasNodeText, HasIcon<IconTypes>, HasCollapser, InputGroupAddOn, HasClickHandlers {
 
 	Text text;
 	SpanElement icon;
@@ -56,22 +59,31 @@ public class Anchor extends BootstrapWidget implements HasNodeText, HasIcon<Icon
 	}
 	
 	@Override
+	public String getTarget() {
+		return null;
+	}
+	@Override
+	public void setTarget(String id) {
+		HasCollapser.Utils.setTarget(this, id);
+	}
+	
+	@Override
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		JqueryEvents.addDomClickHandler(this);
 		return addHandler(handler, ClickEvent.getType());
 	}
 
 	@Override
-	public void setIconElement(SpanElement e) {
-		getElement().insertFirst(icon = e);
+	public Text getTextElement() {
+		return text;
 	}
 	@Override
 	public SpanElement getIconElement() {
 		return icon;
 	}
 	@Override
-	public Text getTextElement() {
-		return text;
+	public void setIconElement(SpanElement e) {
+		getElement().insertFirst(icon = e);
 	}
 	@Override
 	public AnchorElement getBaseElement() {

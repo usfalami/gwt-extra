@@ -19,7 +19,8 @@ import com.google.gwt.dom.client.Text;
  * @author Youssef ALAMI
  * 
  */
-public class ListItem extends BootstrapContainer implements HasNodeText, HasIcon<IconTypes>, HasActive, HasEnable {
+public class ListItem extends BootstrapContainer implements 
+	HasNodeText, HasIcon<IconTypes>, HasEnable, HasActive {
 
 	protected Text text;
 	protected SpanElement icon;
@@ -74,7 +75,6 @@ public class ListItem extends BootstrapContainer implements HasNodeText, HasIcon
 	public Text getTextElement() {
 		return text;
 	}
-
 	@Override
 	public Element getIconElement() {
 		return icon;

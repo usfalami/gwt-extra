@@ -2,7 +2,6 @@ package usf.gwt.bootstrap.ui.core;
 
 import usf.gwt.bootstrap.ui.core.Constants.AlignementStyles;
 import usf.gwt.bootstrap.ui.core.Constants.HasAlign;
-import usf.gwt.bootstrap.ui.widget.Bootstrap;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;

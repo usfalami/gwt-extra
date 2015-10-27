@@ -3,7 +3,6 @@ package usf.gwt.bootstrap.ui.core;
 import usf.gwt.bootstrap.ui.core.Constants.AlignementStyles;
 import usf.gwt.bootstrap.ui.core.Constants.CanCollapse;
 import usf.gwt.bootstrap.ui.core.Constants.HasAlign;
-import usf.gwt.bootstrap.ui.widget.Bootstrap;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.ComplexPanel;
@@ -18,7 +17,7 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 	
 	@Override
 	public void add(Widget child) {
-		add(child, (child instanceof AttachWidget) ? getBaseElement() : getContainerElement());
+		add(child, child instanceof AttachWidget ? getBaseElement() : getContainerElement());
 	}
 
 	@Override
@@ -39,17 +38,6 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 		return getElement().getId();
 	}
 
-	public Element getBaseElement() {
-		return getElement();
-	}
-	public Element getContainerElement() {
-		return getElement();
-	}
-	
-	protected abstract Element initWidget();
-	protected void initStyle() {}
-	
-
 	@Override
 	public void setCollapsed(boolean collapse) {
 		CanCollapse.Utils.setCollapse(this, collapse);
@@ -59,5 +47,16 @@ public abstract class BootstrapContainer extends ComplexPanel implements Bootstr
 		return CanCollapse.Utils.isCollapse(this);
 	}
 	
+
+	public Element getBaseElement() {
+		return getElement();
+	}
+	public Element getContainerElement() {
+		return getElement();
+	}
+	
+	protected abstract Element initWidget();
+	protected void initStyle() {}
+
 	
 }

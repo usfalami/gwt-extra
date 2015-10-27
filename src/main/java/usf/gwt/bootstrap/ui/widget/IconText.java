@@ -1,10 +1,10 @@
 package usf.gwt.bootstrap.ui.widget;
 
 import usf.gwt.bootstrap.ui.core.BootstrapWidget;
+import usf.gwt.bootstrap.ui.core.Bootstrap.InputGroupAddOn;
 import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
 import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.core.Constants.IconTypes;
-import usf.gwt.bootstrap.ui.widget.Bootstrap.InputGroupAddOn;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;

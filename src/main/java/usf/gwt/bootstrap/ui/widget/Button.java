@@ -4,6 +4,7 @@ import usf.gwt.bootstrap.ui.core.Constants;
 import usf.gwt.bootstrap.ui.core.Constants.ButtonStates;
 import usf.gwt.bootstrap.ui.core.Constants.ButtonStyles;
 import usf.gwt.bootstrap.ui.core.Constants.ButtonTypes;
+import usf.gwt.bootstrap.ui.core.Constants.HasCollapser;
 import usf.gwt.bootstrap.ui.core.Constants.HasIcon;
 import usf.gwt.bootstrap.ui.core.Constants.HasNodeText;
 import usf.gwt.bootstrap.ui.core.Constants.HasState;
@@ -23,7 +24,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 public class Button extends FormControl<String> implements HasNodeText, HasIcon<Constants.IconTypes>,
-	HasStyle<ButtonStyles>, HasState<ButtonStates>, HasType<ButtonTypes>, HasClickHandlers {
+	HasStyle<ButtonStyles>, HasState<ButtonStates>, HasType<ButtonTypes>, HasCollapser, HasClickHandlers {
 
 	Text text;
 	SpanElement icon;
@@ -90,6 +91,15 @@ public class Button extends FormControl<String> implements HasNodeText, HasIcon<
 	@Override
 	public void setState(ButtonStates state) {
 		JqueryUtils.setButtonLoading(getBaseElement(), state.name().toLowerCase());
+	}
+	
+	@Override
+	public void setTarget(String id) {
+		HasCollapser.Utils.setTarget(this, id);
+	}	
+	@Override
+	public String getTarget() {
+		return HasCollapser.Utils.getTarget(this);
 	}
 	
     @Override

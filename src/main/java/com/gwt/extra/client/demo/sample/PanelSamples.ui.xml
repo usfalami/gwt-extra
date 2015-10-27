@@ -113,6 +113,39 @@
 				</t:XmlCode>
 			</b:GridCol>
 		</b:GridRow>
+		
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4">
+				<b:Panel style="DEFAULT">
+					<b:PanelFrame style="HEADING">
+						<b:Anchor text="Collapse" target="id_99887" icon="CHEVRON_DOWN"/>
+					</b:PanelFrame>
+					<b:PanelFrame style="BODY" b:id="id_99887" collapsed="false">
+						<b:Text>
+							Lorem ipsum dolor sit amet, dicant minimum vituperata et vix, mel soleat vocent ei. 
+							Labitur appellantur vix ea, ex munere vocibus dissentiunt eos, ut idque sensibus vix. 
+							Sed nisl delicata theophrastus ea, etiam mnesarchum sententiae vis eu. 
+							Recusabo delicata repudiare ad vix, ad everti appellantur nam.
+						</b:Text>
+					</b:PanelFrame>
+				</b:Panel>
+			</b:GridCol>
+			
+			<b:GridCol size="MD_8">
+			
+				<t:XmlCode>
+					<Panel style="DEFAULT">
+						<PanelFrame style="HEADING">
+							<Anchor text="Collapse" target="id_" icon="CHEVRON_DOWN"/>
+						</PanelFrame>
+						<PanelFrame style="BODY" id="id_" collapsed="false">
+						</PanelFrame>
+					</Panel>
+				</t:XmlCode>
+				
+			</b:GridCol>
+		</b:GridRow>
 	
 	</b:Layout>
 	
