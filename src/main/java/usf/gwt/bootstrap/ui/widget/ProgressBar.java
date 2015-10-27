@@ -64,17 +64,17 @@ public class ProgressBar extends Progress implements Constants.HasStyle<Constant
     	return HasActive.Utils.isActive(this);
     }
     
-    @Override
-    public Element getBaseElement() {
-    	return getElement().getFirstChildElement();
-    }
+
     @Override
     public Text getTextElement(){
     	return text;
     }
-    
     @Override
     public Element getStylElement() {
     	return getElement();
+    }
+    @Override
+    public Element getBaseElement() {
+    	return getElement().getFirstChildElement();
     }
 }
