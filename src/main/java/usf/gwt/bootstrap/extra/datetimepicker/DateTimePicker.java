@@ -75,7 +75,7 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	}-*/;
 	public final native Date getMinDate() /*-{
 		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().minDate();
-		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null; // d can be false
+		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(Lcom/google/gwt/core/client/JavaScriptObject;)(d) : null;  // d can be a moment or false
 	}-*/;
 	public final native void setMaxDate(Date date) /*-{
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
@@ -83,7 +83,7 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 	}-*/;
 	public final native Date getMaxDate() /*-{
 		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().maxDate();
-		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(D)(d) : null; // d can be false
+		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(Lcom/google/gwt/core/client/JavaScriptObject;)(d) : null;  // d can be a moment or false
 	}-*/;
 	
 	/**

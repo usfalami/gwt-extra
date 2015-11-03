@@ -11,10 +11,7 @@ public enum DateTimePickerFormat {
     DD_MM_YYYY_HH_MM_SS("DD/MM/YYYY HH:mm:ss", "jj/mm/aaaa hh:mm:ss"), 
     
     HH_MM("HH:mm", "hh:mm"), 
-    HH_MM_SS("HH:mm:ss", "hh:mm:ss"),
-    
-    SS("WW", "ss"),
-    SS_MMMM("WW \\(MMMM\\)", "ss (mmmm)");
+    HH_MM_SS("HH:mm:ss", "hh:mm:ss");
     
     private String pattern;
     private String label;

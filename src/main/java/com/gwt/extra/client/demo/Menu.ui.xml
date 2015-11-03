@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
  	xmlns:b="urn:import:usf.gwt.bootstrap.ui.widget">
 	
-	<b:Nav style="PILLS" stacked="true">
+	<b:Nav style="PILLS" stacked="true" ui:field="menu">
 		<b:NavItem text="Test .." active="true" ui:field="test"/>
 		<b:NavItem text="Panels" ui:field="panels"/>
 		<b:NavItem text="Foms" ui:field="forms"/>
@@ -14,6 +14,7 @@
 		<b:NavItem text="Groups" ui:field="groups"/>
 		<b:NavItem text="Progress" ui:field="progress"/>
 		<b:NavItem text="Calendar" ui:field="calendars" />
+		<b:NavItem text="DateTimePicker" ui:field="datetimepickers" />
 	</b:Nav>
 
 </ui:UiBinder> 

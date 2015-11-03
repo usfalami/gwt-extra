@@ -1,10 +1,12 @@
 package com.gwt.extra.client.demo;
 
+import usf.gwt.bootstrap.ui.widget.Nav;
 import usf.gwt.bootstrap.ui.widget.NavItem;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -12,6 +14,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwt.extra.client.demo.sample.CalendarSamples;
 import com.gwt.extra.client.demo.sample.CheckableSamples;
+import com.gwt.extra.client.demo.sample.DateTimePickerSamples;
 import com.gwt.extra.client.demo.sample.FormControlSamles;
 import com.gwt.extra.client.demo.sample.FormSamples;
 import com.gwt.extra.client.demo.sample.GroupSamples;
@@ -26,6 +29,8 @@ public class Menu extends Composite implements ClickHandler {
 	private static MenuUiBinder uiBinder = GWT.create(MenuUiBinder.class);
 	interface MenuUiBinder extends UiBinder<Widget, Menu> {}
 
+	@UiField Nav menu;
+	
 	@UiField NavItem test;
 	@UiField NavItem panels;
 	@UiField NavItem navs;
@@ -36,19 +41,21 @@ public class Menu extends Composite implements ClickHandler {
 	@UiField NavItem inputs;
 	@UiField NavItem checkables;
 	@UiField NavItem calendars;
+	@UiField NavItem datetimepickers;
 	
 	public Menu() {
 		initWidget(uiBinder.createAndBindUi(this));
-		test.addClickHandler(this);
-		panels.addClickHandler(this);
-		navs.addClickHandler(this);
-		groups.addClickHandler(this);
-		forms.addClickHandler(this);
-		progress.addClickHandler(this);
-		controls.addClickHandler(this);
-		inputs.addClickHandler(this);
-		checkables.addClickHandler(this);
-		calendars.addClickHandler(this);
+		
+		int widgets = menu.getWidgetCount();
+		
+		HasClickHandlers w = null;
+		
+		for(int i=0; i<widgets; i++) {
+			if(menu.getWidget(i) instanceof HasClickHandlers) {
+				w = (HasClickHandlers)menu.getWidget(i);
+				w.addClickHandler(this);
+			}
+		}
 	}
 	
 	@Override
@@ -71,6 +78,7 @@ public class Menu extends Composite implements ClickHandler {
 		else if(c == inputs) RootPanel.get("gwt").add(new InputSamples());
 		else if(c == checkables) RootPanel.get("gwt").add(new CheckableSamples());
 		else if(c == calendars) RootPanel.get("gwt").add(new CalendarSamples());
+		else if(c == datetimepickers) RootPanel.get("gwt").add(new DateTimePickerSamples());
 		c.setActiveUnique();
 	}
 

@@ -12,7 +12,8 @@ public class Fieldset extends BootstrapContainer implements HasFormControlEnable
 	protected Element initWidget() {
 		return Document.get().createFieldSetElement();
 	}
-	
+
+	@Override
 	public void setEnabled(boolean enabled){
 		HasFormControlEnable.Utils.setEnabled(this, enabled);
 	}
