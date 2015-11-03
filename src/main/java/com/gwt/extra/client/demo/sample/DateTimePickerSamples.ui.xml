@@ -22,7 +22,7 @@
 	
 		<b:GridRow>
 			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
-				<d:DateTimePicker format="DD_MM_YYYY"/>
+				<d:DateTimePicker format="MM_YYYY"/>
 			</b:GridCol>
 		
 			<b:GridCol size="MD_8">
@@ -77,6 +77,18 @@
 			<b:GridCol size="MD_8">
 				<t:XmlCode>
 					<DateTimePicker sideBySide="true" format="DD_MM_YYYY_HH_MM_SS"/>
+				</t:XmlCode>
+			</b:GridCol>
+		</b:GridRow>
+		
+		<b:GridRow>
+			<b:GridCol size="MD_4" addStyleNames="exempleAlign">
+				<d:DateTimePicker date="12/2016" format="MM_YYYY"/>
+			</b:GridCol>
+		
+			<b:GridCol size="MD_8">
+				<t:XmlCode>
+					<DateTimePicker date="12/2016" format="MM_YYYY"/>
 				</t:XmlCode>
 			</b:GridCol>
 		</b:GridRow>

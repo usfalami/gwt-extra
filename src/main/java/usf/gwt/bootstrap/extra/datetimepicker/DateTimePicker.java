@@ -55,6 +55,9 @@ public class DateTimePicker extends TextBox implements HasValueChangeHandlers<Da
 		var c = @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDouble(Ljava/util/Date;);
 		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date(date ? new $wnd.Date(c(date)) : null);
 	}-*/;
+	public final native void setDate(String date) /*-{
+		this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date(date);
+	}-*/;
 	public final native Date getDate() /*-{
 		var d = this.@usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::picker()().date();
 		return d ? @usf.gwt.bootstrap.extra.datetimepicker.DateTimePicker::toDate(Lcom/google/gwt/core/client/JavaScriptObject;)(d) : null;  // d can be a moment or false
