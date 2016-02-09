@@ -176,7 +176,7 @@ function ($) {
             
             var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : { query : query };
             var jAjax = (this.ajax.method === "post") ? $.post : $.get;
-            this.ajax.xhr = jAjax(this.ajax.url, {'':''}, $.proxy(this.ajaxLookup, this));
+            this.ajax.xhr = jAjax(this.ajax.url, params, $.proxy(this.ajaxLookup, this));
             this.ajax.timerId = null;
         },
     
