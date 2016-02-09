@@ -50,8 +50,7 @@ function ($) {
         this.render = this.options.render || this.render;
         this.select = this.options.select || this.select;
         this.sorter = this.options.sorter || this.sorter;
-        this.source = this.options.source || this.source;      
-		this.checker = this.options.checker || this.checker;		
+        this.source = this.options.source || this.source;        
                 
         if (!this.source.length) {
             var ajax = this.options.ajax;
@@ -73,6 +72,29 @@ function ($) {
     Typeahead.prototype = {
 
         constructor: Typeahead,
+		
+		setSource : function(data) { //@uSf : added to alternate between static source & async data load (ajax)
+			console.log(data);
+			if(!data){
+				this.ajax = this.source = null;
+			}
+			else {
+				this.source = null;
+				if (typeof data === 'string') {
+					this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax,{url:data});
+				}
+				else if (typeof data === 'object' && !data.length) {
+					if (!data.url) this.ajax = null;
+					else this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, data);
+				}
+				else {
+					this.source = data;
+					this.ajax = null;
+				}
+			}
+		},
+		
+		
 
         //=============================================================================================================
         //
@@ -154,7 +176,7 @@ function ($) {
             
             var params = this.ajax.preDispatch ? this.ajax.preDispatch(query) : { query : query };
             var jAjax = (this.ajax.method === "post") ? $.post : $.get;
-            this.ajax.xhr = jAjax(this.ajax.url, params, $.proxy(this.ajaxLookup, this));
+            this.ajax.xhr = jAjax(this.ajax.url, {'':''}, $.proxy(this.ajaxLookup, this));
             this.ajax.timerId = null;
         },
     
@@ -174,7 +196,7 @@ function ($) {
             }
 
             // Save for selection retreival
-            this.ajax.data = data;
+            this.ajax.data = JSON.parse(data); //@uSf : data must be parsed as JSON
 
             items = this.grepper(this.ajax.data);
     
@@ -248,18 +270,13 @@ function ($) {
 
             return this.sorter(items);                
         },
-		
-		checker:function() {
-			var that = this;
-			return $.grep(this.source, function (item) { return item[that.options.display] === that.$element.val()});
-		},
 
         //------------------------------------------------------------------
         //
         //  Looks for a match in the source
         //
         matcher: function (item) {
-            return item.toLowerCase().indexOf(this.query.toLowerCase()) == 0;
+            return ~item.toLowerCase().indexOf(this.query.toLowerCase());
         },
 
         //------------------------------------------------------------------

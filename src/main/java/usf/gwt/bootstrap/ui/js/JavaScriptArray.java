@@ -13,6 +13,10 @@ public class JavaScriptArray extends JavaScriptObject {
 		this[this.length] = value;
 		return this;
 	}-*/;
+	public final native JavaScriptArray append(JavaScriptObject value) /*-{
+		this[this.length] = value;
+		return this;
+	}-*/;
 	
 	public final native int getInteger(final int index) /*-{
 		return this[index];

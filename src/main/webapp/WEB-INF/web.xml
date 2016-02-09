@@ -9,13 +9,23 @@
   <welcome-file-list>
     <welcome-file>StmAddOn.html</welcome-file>
   </welcome-file-list>
+  
   <servlet>
   	<servlet-name>DataService</servlet-name>
   	<servlet-class>com.gwt.extra.server.DataServiceImpl</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ComboService</servlet-name>
+  	<servlet-class>com.gwt.extra.server.ComboService</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
   	<servlet-name>DataService</servlet-name>
   	<url-pattern>/stmaddon/DataService</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+  	<servlet-name>ComboService</servlet-name>
+  	<url-pattern>/data/load</url-pattern>
   </servlet-mapping>
 
 </web-app>

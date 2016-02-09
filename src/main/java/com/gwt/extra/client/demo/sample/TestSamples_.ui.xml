@@ -8,13 +8,11 @@
 		<b:GridRow>
 			
 			<b:GridCol size="MD_6" ui:field="main">
-				<b:Typeahead ui:field="type"/>
-				<b:Button ui:field="btn1" text="setData"/>
-				<b:Button ui:field="btn3" text="setURL"/>
-				<b:Button ui:field="btn2" text="getValue"/>
+				<d:DateTimePicker ui:field="pick" b:id="usf"/>
 			</b:GridCol>
 			
 			<b:GridCol size="MD_6">
+				<g:TextArea ui:field="log" readOnly="true"  width="100%" height="600px" text="log :" />
 			</b:GridCol>
 			
 		</b:GridRow>
