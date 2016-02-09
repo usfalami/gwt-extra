@@ -74,7 +74,6 @@ function ($) {
         constructor: Typeahead,
 		
 		setSource : function(data) { //@uSf : added to alternate between static source & async data load (ajax)
-			console.log(data);
 			if(!data){
 				this.ajax = this.source = null;
 			}
