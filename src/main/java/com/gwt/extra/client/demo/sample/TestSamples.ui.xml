@@ -11,6 +11,7 @@
 				<b:Typeahead ui:field="type"/>
 				<b:Button ui:field="btn1" text="setData"/>
 				<b:Button ui:field="btn3" text="setURL"/>
+				<b:Button ui:field="btn4" text="get_URL_WITH_PARAM"/>
 				<b:Button ui:field="btn2" text="getValue"/>
 			</b:GridCol>
 			

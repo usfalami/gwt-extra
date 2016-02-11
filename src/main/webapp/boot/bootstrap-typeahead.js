@@ -84,9 +84,17 @@ function ($) {
 				}
 				else if (typeof data === 'object' && !data.length) {
 					if (!data.url) this.ajax = null;
-					else this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, data);
+					else {
+						if(data.params) {
+							data.preDispatch = function(query){
+								data.params.query = query;
+								return data.params;
+							}
+						}
+						this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, data);
+					}
 				}
-				else {
+				else { //if Array
 					this.source = data;
 					this.ajax = null;
 				}

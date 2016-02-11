@@ -11,10 +11,10 @@ import usf.gwt.bootstrap.ui.js.JavaScriptOption;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
-public class Typeahead extends TextBox {
+// https://github.com/tcrosen/twitter-bootstrap-typeahead
+// see also http://twitter.github.io/typeahead.js/examples/#
 
-	// https://github.com/tcrosen/twitter-bootstrap-typeahead
-	// see also http://twitter.github.io/typeahead.js/examples/#
+public class Typeahead extends TextBox {
 	
 	protected SimpleKeyValue item;
 	protected JavaScriptObject typeahead;
@@ -39,16 +39,30 @@ public class Typeahead extends TextBox {
 	public void setAjax(String url) {
 		setSource(url);
 	}
+	public void setAjax(String url, String method, Map<String, String> params) {
+		JavaScriptOption o = JavaScriptOption.createOption();
+		JavaScriptOption p = JavaScriptOption.createOption();
+		if(params != null) {
+			for(String key : params.keySet()) 
+				p.set(key, params.get(key));
+		}
+		setSource(o.set("url", url).set("method", method).set("params", p));
+	}
+	
 	public void setData(Collection<? extends KeyValue> list) {
 		JavaScriptArray a = JavaScriptArray.createArray();
-		for(KeyValue v : list) 
-			a.append(createJavascriptKeyValue(v));
+		if(list != null) {
+			for(KeyValue v : list) 
+				a.append(createJavascriptKeyValue(v));
+		}
 		setSource(a);
 	}
 	public void setData(Map<String, String> map) {
 		JavaScriptArray a = JavaScriptArray.createArray();
-		for(String key : map.keySet())
-			a.append(createJavascriptKeyValue(key, map.get(key)));
+		if(map != null) {
+			for(String key : map.keySet())
+				a.append(createJavascriptKeyValue(key, map.get(key)));
+		}
 		setSource(a);
 	}
 	

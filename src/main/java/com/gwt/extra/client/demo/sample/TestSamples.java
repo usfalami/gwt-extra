@@ -21,9 +21,11 @@ public class TestSamples extends Composite {
 	private static TestUiBinder uiBinder = GWT.create(TestUiBinder.class);
 	
 	@UiField Typeahead type;
+	
 	@UiField Button btn1;
 	@UiField Button btn2;
 	@UiField Button btn3;
+	@UiField Button btn4;
 	
 	private static Map<String, String> map = new HashMap<String, String>();
 	private static Map<String, String> map2 = new HashMap<String, String>();
@@ -52,6 +54,15 @@ public class TestSamples extends Composite {
 	@UiHandler("btn3")
 	protected void btnClick3(ClickEvent e){
 		type.setAjax("/data/load");
+	}
+	@UiHandler("btn4")
+	protected void btnClick4(ClickEvent e){
+		Map<String, String> param = new HashMap<String, String>();
+		
+		param.put("comboName", "Communes");
+		param.put("cache", "30s");
+		
+		type.setAjax("/data/load", "post", param);
 	}
 	
 	@Override
