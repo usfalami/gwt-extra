@@ -74,17 +74,14 @@ function ($) {
         constructor: Typeahead,
 		
 		setSource : function(data) { //@uSf : added to alternate between static source & async data load (ajax)
-			if(!data){
-				this.ajax = this.source = null;
-			}
-			else {
-				this.source = null;
-				if (typeof data === 'string') {
+			this.source = [];
+			this.ajax = null;
+			if(data){
+				if (typeof data === 'string') { // Ajax url
 					this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax,{url:data});
 				}
-				else if (typeof data === 'object' && !data.length) {
-					if (!data.url) this.ajax = null;
-					else {
+				else if (typeof data === 'object') { 
+					if(data.url) { // Ajax object
 						if(data.params) {
 							data.preDispatch = function(query){
 								data.params.query = query;
@@ -93,16 +90,14 @@ function ($) {
 						}
 						this.ajax = $.extend({}, $.fn.typeahead.defaults.ajax, data);
 					}
-				}
-				else { //if Array
-					this.source = data;
-					this.ajax = null;
+					else if(data.length) { // Array
+						this.source = data;
+						this.ajax = null;
+					}
 				}
 			}
 		},
 		
-		
-
         //=============================================================================================================
         //
         //  Utils

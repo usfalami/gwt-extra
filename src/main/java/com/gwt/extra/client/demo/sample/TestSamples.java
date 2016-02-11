@@ -62,7 +62,7 @@ public class TestSamples extends Composite {
 		param.put("comboName", "Communes");
 		param.put("cache", "30s");
 		
-		type.setAjax("/data/load", "post", param);
+		type.setAjax("/data/load", "get", param);
 	}
 	
 	@Override

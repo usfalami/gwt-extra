@@ -92,11 +92,6 @@ public class Typeahead extends TextBox {
 		}}).data(@usf.gwt.bootstrap.ui.core.Constants::BOOTSTRAP_TYPEAHEAD);
 	}-*/;
 	
-	@Deprecated
-	public String getSelectedValue() {
-		return getSelectedItem()==null ? null : item.getValue();
-	};
-	
 	public static class SimpleKeyValue implements KeyValue {
 		private String value, text;
 		public SimpleKeyValue(String value, String text) {
@@ -107,4 +102,9 @@ public class Typeahead extends TextBox {
 		@Override public String getValue() {return value;}
 		@Override public String toString() {return "SimpleKeyValue [value=" + value + ", text=" + text + "]";}
 	}	
+
+	@Deprecated
+	public String getSelectedValue() {
+		return getSelectedItem()==null ? null : item.getValue();
+	};
 }
